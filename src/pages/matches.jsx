@@ -32,7 +32,7 @@ class Matches extends Component {
     const { matches } = this.state;
     return (
       <div className="container mx-auto bg-white w-2/3 shadow-lg">
-        <div className="bg-white font-bold shadow-lg">
+        <div className="bg-white text-gray-800 font-bold shadow-lg">
           <h1 className="">Match day 1-38</h1>
         </div>
         <div className="grid grid-cols-2 gap-2">
