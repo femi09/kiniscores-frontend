@@ -4,11 +4,8 @@ import NavBar from "./components/navBar";
 import NavItems from "./components/navItems";
 import Matches from "./pages/matches";
 import Standings from "./pages/standings";
-import Teams from './pages/teams';
-import Scorers from './pages/scorers';
-import Players from './pages/players';
-import "./App.css";
-
+import News from "./pages/news";
+import Scorers from "./pages/scorers";
 
 function App() {
   return (
@@ -17,8 +14,7 @@ function App() {
       <NavItems />
       <Switch>
         <Route path="/scorers" component={Scorers} />
-        <Route path="/teams" component={Teams} />
-        <Route path="/players" component={Players} />
+        <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
         <Route path="/" component={Matches} />
       </Switch>

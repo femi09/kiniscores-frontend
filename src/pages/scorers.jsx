@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React from 'react'
 
-class Scorers extends Component {
-  state = {};
-  render() {
-    return <h1>Scorers</h1>;
-  }
+const Scorers = () => {
+  return (
+    <div>
+      
+    </div>
+  )
 }
 
-export default Scorers;
+export default Scorers
+
