@@ -2,7 +2,7 @@ import React from "react";
 const Match = ({ match, date }) => {
   return (
     <>
-      <div className="grid grid-cols-3 py-6 border-r-2 bg-gray-100">
+      <div className="grid grid-cols-3 py-6 bg-gray-100">
         <div className="flex items-center col-span-2 justify-between">
           <div className="flex justify-start text-xs items-start font-semibold text-gray-700 flex-col left">
             <div className="flex justify-between items-center p-3 team-name">
