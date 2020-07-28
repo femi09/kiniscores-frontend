@@ -14,11 +14,11 @@ function App() {
       <NavBar />
       <NavItems />
       <Switch>
+        <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
-        <Route path="/" component={Matches} />
-        <Route path="/teams" component={Teams}/>
+        <Route path="/matches" exact component={Matches}/>
       </Switch>
     </div>
   );

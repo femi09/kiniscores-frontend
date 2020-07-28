@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {footballApi, authToken} from '../config.json'
+import { footballApi, authToken } from "../config.json";
 import femi from "../services/httpService";
 import Match from "./../components/match";
 
@@ -9,12 +9,9 @@ const Matches = () => {
 
   useEffect(() => {
     const getMatches = async () => {
-      const {
-        data,
-      } = await femi.get(
-        `${footballApi}/matches?matchday=38`,
-        { headers: { "X-Auth-Token": authToken } }
-      );
+      const { data } = await femi.get(`${footballApi}/matches?matchday=38`, {
+        headers: { "X-Auth-Token": authToken },
+      });
       setMatches(data.matches);
       setcurrentMatchDay(data.matches[0].season.currentMatchday);
     };
