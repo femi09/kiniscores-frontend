@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import femi from "../services/httpService";
+import {footballApi} from '../config.json'
 import StandingTable from "../components/Standingtable";
 
 const Standings = () => {
@@ -10,8 +11,8 @@ const Standings = () => {
       const {
         data,
       } = await femi.get(
-        "http://api.football-data.org/v2/competitions/2021/standings",
-        { headers: { "X-Auth-Token": "964e10439c784972ad30aacb080af27c" } }
+        `${footballApi}/standings`,
+        { headers: { "X-Auth-Token": process.env.REACT_APP_KINISCORES_API_KEY} }
       );
       setTables(data.standings[0].table);
     };
