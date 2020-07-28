@@ -1,5 +1,5 @@
 {
-    "footballApi": "http://api.football-data.org/v2/competitions/2021/",
+    "footballApi": "https://api.football-data.org/v2/competitions/2021/",
     "authToken": "964e10439c784972ad30aacb080af27c"
 
 }
