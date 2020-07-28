@@ -12,10 +12,13 @@ const NavItems = () => {
         <Link to="/standings">Standings</Link>
         </li>
         <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-        <Link to="/news">News</Link>
+        <Link to="/news">Transfer News</Link>
         </li>
         <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-        <Link to="/scorers">Scorers</Link>
+        <Link to="/scorers">Top Scorers</Link>
+        </li>
+        <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
+        <Link to="/teams">Teams</Link>
         </li>
       </ul>
     </div>

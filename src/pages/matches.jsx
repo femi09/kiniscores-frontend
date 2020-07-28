@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import {footballApi, authToken} from '../config.json'
+import femi from "../services/httpService";
 import Match from "./../components/match";
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [currentMatchDay, setcurrentMatchDay] = useState("");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    const {
-      data,
-    } = await axios.get(
-      "http://api.football-data.org/v2/competitions/2021/matches?matchday=38",
-      { headers: { "X-Auth-Token": "964e10439c784972ad30aacb080af27c" } }
-    );
-    setMatches(data.matches);
-    setcurrentMatchDay(data.matches[0].season.currentMatchday);
+  useEffect(() => {
+    const getMatches = async () => {
+      const {
+        data,
+      } = await femi.get(
+        `${footballApi}/matches?matchday=38`,
+        { headers: { "X-Auth-Token": authToken } }
+      );
+      setMatches(data.matches);
+      setcurrentMatchDay(data.matches[0].season.currentMatchday);
+    };
+    getMatches();
   }, []);
 
   return (

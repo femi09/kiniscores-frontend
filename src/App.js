@@ -6,6 +6,7 @@ import Matches from "./pages/matches";
 import Standings from "./pages/standings";
 import News from "./pages/news";
 import Scorers from "./pages/scorers";
+import Teams from "./pages/teams";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
         <Route path="/" component={Matches} />
+        <Route path="/teams" component={Teams}/>
       </Switch>
     </div>
   );

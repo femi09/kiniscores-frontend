@@ -1,8 +1,13 @@
 import React from "react";
 
-const Table = ({ tables }) => {
+const StandingTable = ({ tables }) => {
   return (
-    <table className="table-auto container mx-auto w-2/3 bg-gray-200">
+
+    <div>
+      <div className="shadow text-gray-800 lg text-center font-bold w-2/3 mx-auto">
+        <h1 className="text-yellow-600">2019/2020 Premier League Table</h1>
+      </div>
+      <table className="table-auto container mx-auto w-2/3 bg-gray-200">
       <thead className="bg-blue-900 text-gray-200 text-sm">
         <tr className="">
           <th className="px-2 py-2">Position</th>
@@ -19,17 +24,15 @@ const Table = ({ tables }) => {
       </thead>
       <tbody className="text-sm text-center text-gray-800">
         {tables.map((table) => (
-          <tr className="">
+          <tr key={table.team.id}>
             <td className="py-2">{table.position}</td>
-            <td className=" text-left py-2">
-              <div className="flex">
-                <img
-                  className="w-5 h-5 mr-4"
-                  src={`./assets/${table.team.id}.png`}
-                  alt=""
-                />
-                {table.team.name}
-              </div>
+            <td className=" flex text-left py-2">
+              <img
+                className="w-5 h-5 mr-4"
+                src={`./assets/${table.team.id}.png`}
+                alt=""
+              />
+              {table.team.name}
             </td>
             <td className="px-4 py-2">{table.playedGames}</td>
             <td className="px-4 py-2">{table.won}</td>
@@ -43,7 +46,8 @@ const Table = ({ tables }) => {
         ))}
       </tbody>
     </table>
+    </div>
   );
 };
 
-export default Table;
+export default StandingTable;
