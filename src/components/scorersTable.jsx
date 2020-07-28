@@ -3,8 +3,8 @@ import React from "react";
 const ScorersTable = ({ scorers }) => {
   return (
     <div>
-      <div className="shadow text-gray-800 lg text-center font-bold w-1/2 mx-auto">
-        <h1 className="text-yellow-600"> 2019/2020 Premier League Top Scorers</h1>
+      <div className="shadow-lg text-center py-4 font-bold w-1/2 mx-auto">
+        <h1 className="text-blue-900"> 2019/2020 Premier League Top Scorers</h1>
       </div>
       <table className="table-auto container mx-auto w-1/2 bg-gray-200">
         <thead className="bg-blue-900 text-gray-200 text-sm">
@@ -17,7 +17,7 @@ const ScorersTable = ({ scorers }) => {
         </thead>
         <tbody className="text-sm text-gray-800">
           {scorers.map((scorer, index) => (
-            <tr key={scorer.player.id} className="border-4">
+            <tr key={scorer.player.id} className="border-b-4">
               <td className="px-4 py-2">{index + 1}</td>
               <td className="px-4 py-2">{scorer.player.name}</td>
               <td className="flex text-left py-2">

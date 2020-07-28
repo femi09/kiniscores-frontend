@@ -1,14 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-class News extends Component {
-  state = {};
-  render() {
-    return (
-      <div className="">
-        <h1 className="text-3xl font-bold text-center text-blue-700">Transfer News</h1>
-      </div>
-    );
-  }
-}
+const News = () => {
+  return (
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-blue-600">Transfer News</h1>
+    </div>
+  );
+};
 
 export default News;
