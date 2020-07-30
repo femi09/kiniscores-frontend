@@ -7,6 +7,7 @@ import Standings from "./pages/standings";
 import News from "./pages/news";
 import Scorers from "./pages/scorers";
 import Teams from "./pages/teams";
+import './App.css'
 
 function App() {
   return (
