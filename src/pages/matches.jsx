@@ -2,27 +2,37 @@ import React, { useState, useEffect } from "react";
 import { footballApi } from "../config.json";
 import femi from "../services/httpService";
 import { formatDate } from "../utils";
-import Match from "./../components/match";
-import MatchDay from "./../components/matchDay";
+import Match from "../components/match";
+import MatchDay from "../components/matchDay";
 
 const authToken = process.env.REACT_APP_KINISCORES_API_KEY;
 
 const Matches = () => {
+
   const [matches, setMatches] = useState([]);
-  const [currentMatchDay, setCurrentMatchDay] = useState(38);
+  const [currentMatchDay, setCurrentMatchDay] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getMatches = async () => {
-      const { data } = await femi.get(
-        `${footballApi}/matches?matchday=${currentMatchDay}`,
-        {
-          headers: { "X-Auth-Token": authToken },
-        }
-      );
-      setMatches(data.matches);
+      const { data } = await femi.get(`${footballApi}/matches`, {
+        headers: { "X-Auth-Token": authToken },
+      });
+
+      // A reducer function to group the array of matches by matchday
+      let matches = data.matches.reduce((r, a) => {
+        r[a.matchday] = [...(r[a.matchday] || []), a];
+        return r;
+      }, {});
+
+      // displaying the latest match by getting the last item in the matches object
+      let latestMatch = Object.keys(matches).pop();
+      setMatches(matches[latestMatch]);
+      setCurrentMatchDay(latestMatch);
+      setIsLoading(false);
     };
     getMatches();
-  }, [currentMatchDay]);
+  }, []);
 
   const getPrevMatchDay = async () => {
     const matchday =
@@ -59,11 +69,17 @@ const Matches = () => {
           prevMatch={getPrevMatchDay}
         />
       </div>
-      <div className="grid grid-cols-2 gap-2">
-        {matches.map((match) => (
-          <Match key={match.id} match={match} date={formatDate} />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="font-bold p-8 bg-white text-center text-2xl text-blue-700">
+          <h1>Loading Matches...</h1>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-2">
+          {matches.map((match) => (
+            <Match key={match.id} match={match} date={formatDate} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
