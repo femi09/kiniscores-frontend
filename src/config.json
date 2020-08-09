@@ -1,3 +1,4 @@
 {
-    "footballApi": "http://api.football-data.org/v2/competitions/2021/"
+    "footballApi": "http://api.football-data.org/v2/competitions/2021/",
+    "kiniscoresApi": "http://localhost:3000/api"
 }

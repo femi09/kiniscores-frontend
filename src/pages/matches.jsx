@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { footballApi } from "../config.json";
+import { footballApi, kiniscoresApi } from "../config.json";
 import femi from "../services/httpService";
+import { getPremierLeagueMatches, getPrevPremierLeagueMatches } from "../services/matchesService";
 import { formatDate } from "../utils";
 import Match from "../components/match";
 import MatchDay from "../components/matchDay";
@@ -8,19 +9,16 @@ import MatchDay from "../components/matchDay";
 const authToken = process.env.REACT_APP_KINISCORES_API_KEY;
 
 const Matches = () => {
-
   const [matches, setMatches] = useState([]);
   const [currentMatchDay, setCurrentMatchDay] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getMatches = async () => {
-      const { data } = await femi.get(`${footballApi}/matches`, {
-        headers: { "X-Auth-Token": authToken },
-      });
-
+      const { data } = await getPremierLeagueMatches();
+      
       // A reducer function to group the array of matches by matchday
-      let matches = data.matches.reduce((r, a) => {
+      let matches = data.reduce((r, a) => {
         r[a.matchday] = [...(r[a.matchday] || []), a];
         return r;
       }, {});
@@ -37,14 +35,11 @@ const Matches = () => {
   const getPrevMatchDay = async () => {
     const matchday =
       currentMatchDay === 1 ? currentMatchDay : currentMatchDay - 1;
-    const { data } = await femi.get(
-      `${footballApi}/matches?matchday=${matchday}`,
-      {
-        headers: { "X-Auth-Token": authToken },
-      }
-    );
-    setMatches(data.matches);
-    setCurrentMatchDay(matchday);
+      const { data: matches } = await getPremierLeagueMatches();
+     const prevMatches = matches.filter(match => match.matchday === matchday)
+     console.log(prevMatches)
+    // setMatches(matches);
+    // setCurrentMatchDay(matchday);
   };
 
   const getNextMatchDay = async () => {
