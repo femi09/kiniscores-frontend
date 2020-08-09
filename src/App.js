@@ -7,6 +7,7 @@ import Standings from "./pages/standings";
 import News from "./pages/news";
 import Scorers from "./pages/scorers";
 import Teams from "./pages/teams";
+import Home from "./pages/home"
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
         <Route path="/matches" exact component={Matches}/>
+        <Route path="/" component={Home}/>
       </Switch>
     </div>
   );
