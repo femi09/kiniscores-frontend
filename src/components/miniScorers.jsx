@@ -9,7 +9,6 @@ const MiniScorers = () => {
     const getScorers = async () => {
       const { data: scorers } = await getPremierLeagueScorers();
       const miniScorers = scorers.slice(0, 4);
-      console.log(miniScorers);
       setScorers(miniScorers);
     };
     getScorers();

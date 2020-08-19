@@ -7,7 +7,7 @@ const Hero = () => {
         <img src="./assets/Joel-Veltman.jpg" alt="" />
       </div>
       <div className="w-1/3 flex flex-col text-left justify-center items-start px-8 bg-gray-200 rounded-r">
-        <div class="w-full text-gray-900 font-bold text-2xl mb-2">
+        <div className="w-full text-gray-900 font-bold text-2xl mb-2">
           Brighton Sign Joel Veltman
         </div>
 

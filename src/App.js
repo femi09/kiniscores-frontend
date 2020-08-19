@@ -22,7 +22,7 @@ function App() {
         <Route path="/scorers" component={Scorers} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
-        <Route path="/matches" exact component={Matches}/>
+        <Route path="/matches" component={Matches}/>
         <Route path="/" component={Home}/>
       </Switch>
     </div>
