@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
-import femi from "../services/httpService";
-import { footballApi } from "../config.json";
+import { getPremierLeagueStandings } from "../services/standingsService";
 import StandingTable from "../components/Standingtable";
 
-const authToken = process.env.REACT_APP_KINISCORES_API_KEY;
 const Standings = () => {
   const [tables, setTables] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getTable = async () => {
-      const { data } = await femi.get(`${footballApi}/standings`, {
-        headers: { "X-Auth-Token": authToken },
-      });
-      setTables(data.standings[0].table);
+      const { data: standings } = await getPremierLeagueStandings()
+      setTables(standings[0].table);
       setIsLoading(false);
     };
 

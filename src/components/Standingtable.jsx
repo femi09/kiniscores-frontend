@@ -4,7 +4,7 @@ const StandingTable = ({ tables }) => {
   return (
     <div>
       <div className="shadow-lg py-4 text-center font-bold w-2/3 mx-auto">
-        <h1 className="text-blue-800">2019/2020 Premier League Table</h1>
+        <h1 className="text-blue-800">2020/2021 Premier League Table</h1>
       </div>
       <table className="table-auto container mx-auto w-2/3 bg-gray-100">
         <thead className="bg-blue-900 text-gray-200 text-sm">
