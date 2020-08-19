@@ -4,9 +4,9 @@ const StandingTable = ({ tables }) => {
   return (
     <div>
       <div className="shadow-lg py-4 text-center font-bold w-2/3 mx-auto">
-        <h1 className="text-blue-800">2019/2020 Premier League Table</h1>
+        <h1 className="text-blue-800">2020/2021 Premier League Table</h1>
       </div>
-      <table className="table-auto container mx-auto w-2/3 bg-gray-200">
+      <table className="table-auto container mx-auto w-2/3 bg-gray-100">
         <thead className="bg-blue-900 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2">Position</th>
@@ -21,7 +21,7 @@ const StandingTable = ({ tables }) => {
             <th className="px-4 py-2">Points</th>
           </tr>
         </thead>
-        <tbody className="text-sm text-center text-gray-800">
+        <tbody className="text-sm font-bold text-center text-blue-900">
           {tables.map((table) => (
             <tr key={table.team.id}>
               <td className="py-2">{table.position}</td>

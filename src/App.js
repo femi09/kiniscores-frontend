@@ -7,7 +7,9 @@ import Standings from "./pages/standings";
 import News from "./pages/news";
 import Scorers from "./pages/scorers";
 import Teams from "./pages/teams";
-import './App.css'
+import Fixtures from "./pages/fixtures";
+import Home from "./pages/home";
+import './App.css';
 
 function App() {
   return (
@@ -15,11 +17,13 @@ function App() {
       <NavBar />
       <NavItems />
       <Switch>
+        <Route path="/fixtures" component={Fixtures}/>
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
-        <Route path="/"  component={Matches}/>
+        <Route path="/matches" exact component={Matches}/>
+        <Route path="/" component={Home}/>
       </Switch>
     </div>
   );

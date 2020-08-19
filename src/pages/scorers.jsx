@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { footballApi } from "../config.json";
-import femi from "../services/httpService";
+import { getPremierLeagueScorers } from "../services/scorerService";
 import ScorersTable from "../components/scorersTable";
-
-const authToken = process.env.REACT_APP_KINISCORES_API_KEY;
 
 const Scorers = () => {
   const [scorers, setScorers] = useState([]);
@@ -11,22 +8,25 @@ const Scorers = () => {
 
   useEffect(() => {
     const getScorers = async () => {
-      const { data } = await femi.get(`${footballApi}/scorers?limit=20`, {
-        headers: { "X-Auth-Token": authToken },
-      });
-      setScorers(data.scorers);
+      const { data: scorers } = await getPremierLeagueScorers();
+      setScorers(scorers);
       setIsLoading(false);
     };
     getScorers();
   }, []);
   return (
     <div>
+      {!isLoading && scorers.length === 0 && (
+        <h1 className="text-3xl font-semibold text-blue-800  text-center mx-auto mt-8">
+          No scorers for the current season
+        </h1>
+      )}
       {isLoading ? (
         <div className="font-bold p-8 bg-white text-center text-2xl text-blue-700">
           <h1>Loading Scorers...</h1>
         </div>
       ) : (
-        <ScorersTable scorers={scorers} />
+        scorers.length !== 0 && <ScorersTable scorers={scorers} />
       )}
     </div>
   );
