@@ -4,7 +4,6 @@ const NewsCard = () => {
   return (
     <div className="my-8 max-w-xs bg-gray-100 overflow-hidden">
       <img
-        className="w-full"
         src="./assets/Nathan-Ake.jpg"
         alt="Sunset in the mountains"
       />

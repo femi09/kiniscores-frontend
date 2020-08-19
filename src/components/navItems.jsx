@@ -21,7 +21,7 @@ const NavItems = () => {
         <Link to="/scorers">Top Scorers</Link>
         </li>
         <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-        <Link to="/teams">Teams</Link>
+        <Link to="/fixtures">Fixtures</Link>
         </li>
       </ul>
     </div>
