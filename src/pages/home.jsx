@@ -51,7 +51,7 @@ const Home = () => {
           </animated.div>
         </div>
 
-        <div className="flex flex-col justify-around p-6 my-6 bg-gray-200 w-1/4">
+        <div className="flex flex-col justify-around px-6 py-4 my-6 bg-gray-200 w-1/4">
           <animated.div style={contentProps}>
             <MiniMatch />
             <MiniTable />

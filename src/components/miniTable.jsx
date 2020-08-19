@@ -11,7 +11,6 @@ const MiniTable = () => {
     const getTable = async () => {
       const { data: standings } = await getPremierLeagueStandings();
       const miniTable = standings[0].table.slice(0, 5);
-      console.log(miniTable);
       setTables(miniTable);
     };
 
@@ -33,8 +32,8 @@ const MiniTable = () => {
           </tr>
         </thead>
         <tbody className="text-sm text-center text-gray-800">
-          {tables.map((table) => (
-            <tr>
+          {tables.map((table, index) => (
+            <tr key={index}>
               <td className="py-2 font-semibold text-xs">{table.position}</td>
               <td className=" flex items-center text-left text-sm py-2">
                 <img className="w-4 h-4" src={`./assets/${table.team.id}.png`} alt="" />
