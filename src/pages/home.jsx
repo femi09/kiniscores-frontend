@@ -6,15 +6,28 @@ import NewsCard from "../components/newsCard";
 import MiniTable from "../components/miniTable";
 import MiniMatch from "../components/miniMatch";
 import MiniScorers from "../components/miniScorers";
+import { getLatestNews } from "../services/latestServices";
 
 const Home = () => {
   const [show, set] = useState(false);
+  const [latestNews, setLatestNews] = useState([]);
+  const [featuredNews, setFeaturedNews] = useState([])
   useEffect(() => {
     const setShow = () => {
       set(true);
     };
     setShow();
-  });
+
+    const getNews = async () => {
+      const { data: news } = await getLatestNews()
+      console.log(news)
+      let featuredNews =news.filter(news => news.isFeatured === true)
+      console.log(featuredNews[0])
+      setFeaturedNews(featuredNews[0])
+      setLatestNews(news);
+    };
+    getNews();
+  }, []);
   const transitions = useTransition(show, null, {
     config: config.slow,
     from: { opacity: 0, marginLeft: -200 },
@@ -25,7 +38,7 @@ const Home = () => {
   const contentProps = useSpring({
     from: { opacity: 0, marginTop: -200 },
     to: { opacity: 1, marginTop: 0 },
-    config: config.slow
+    config: config.slow,
   });
   return (
     <div className="container mx-auto text-center">
@@ -36,17 +49,16 @@ const Home = () => {
             ({ item, key, props }) =>
               item && (
                 <animated.div key={key} style={props}>
-                  <Hero />
+                  <Hero featuredNews={featuredNews} />
                 </animated.div>
               )
           )}
 
           <animated.div style={contentProps}>
             <div className="bg-gray-200 grid grid-cols-4 gap-4">
-              <NewsCard />
-              <NewsCard />
-              <NewsCard />
-              <NewsCard />
+              {latestNews.map((news) => (
+                <NewsCard news={news} key={news._id} />
+              ))}
             </div>
           </animated.div>
         </div>
