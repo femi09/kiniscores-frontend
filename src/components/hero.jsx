@@ -1,19 +1,20 @@
 import React from "react";
+import {kiniscoresApi} from '../config.json'
 
-const Hero = () => {
+const Hero = ({featuredNews}) => {
+  const imageUrl = `${kiniscoresApi}/news/newsImage/${featuredNews._id}`
   return (
-    <div className="w-full flex justify-around">
+    <div className="w-full h-full flex justify-around">
       <div className="w-2/3 overflow-hidden">
-        <img src="./assets/Joel-Veltman.jpg" alt="" />
+        <img className="w-full" src={imageUrl} alt="" />
       </div>
       <div className="w-1/3 flex flex-col text-left justify-center items-start px-8 bg-gray-200 rounded-r">
         <div className="w-full text-gray-900 font-bold text-2xl mb-2">
-          Brighton Sign Joel Veltman
+          {featuredNews.headline}
         </div>
 
         <div className="w-full text-gray-900  text-xl w-1/2 mb-2">
-          Versatile Dutch defender 28, moves to Anex stadium on three-year deal for
-          undisclosed fee. 
+          {featuredNews.subTitle}
         </div>
 
       </div>

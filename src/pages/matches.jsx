@@ -12,6 +12,7 @@ const Matches = () => {
   useEffect(() => {
     const getMatches = async () => {
       const { data } = await getPremierLeagueMatches();
+      console.log(data)
       // A reducer function to group the array of matches by matchday
       let matches = data.reduce((r, a) => {
         r[a.matchday] = [...(r[a.matchday] || []), a];

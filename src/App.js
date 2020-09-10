@@ -9,7 +9,9 @@ import Scorers from "./pages/scorers";
 import Teams from "./pages/teams";
 import Fixtures from "./pages/fixtures";
 import Home from "./pages/home";
+import AdminPanel from "./pages/admin";
 import './App.css';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <NavBar />
       <NavItems />
       <Switch>
+        <Route path="/admin" component={AdminPanel}/>
         <Route path="/fixtures" component={Fixtures}/>
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
