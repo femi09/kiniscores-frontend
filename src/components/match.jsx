@@ -1,5 +1,5 @@
 import React from "react";
-const Match = ({ match, date }) => {
+const Match = ({ match, matchDate, matchTime }) => {
   return (
     <>
       <div className="grid grid-cols-3 py-6 bg-gray-100">
@@ -29,8 +29,16 @@ const Match = ({ match, date }) => {
           </div>
         </div>
         <div className="text-xs text-center font-semibold text-blue-900 right">
-          <p className="p-3">FT</p>
-          <p className="p-3">{date(match.utcDate)}</p>
+          <p className="p-3">{match.status}</p>
+          <div className="p-3 flex justify-around items-center">
+          <img className="w-4 h-4"src="./assets/calendar.png" alt=""/>
+            <p>{matchDate(match.utcDate)}</p>
+          </div>
+
+          <div className="bg-yellow-500 font-bold flex items-center justify-center">
+          <img className="w-4 h-4 mr-2"src="./assets/clock.png" alt=""/>
+            <p className="">{matchTime(match.utcDate)}</p>
+          </div>
         </div>
       </div>
     </>

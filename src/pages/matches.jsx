@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getPremierLeagueMatches } from "../services/matchesService";
-import { formatDate } from "../utils";
+import { formatDate, formatMatchTime } from "../utils";
 import Match from "../components/match";
 import MatchDay from "../components/matchDay";
+import _ from 'lodash'
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
@@ -11,40 +12,46 @@ const Matches = () => {
 
   useEffect(() => {
     const getMatches = async () => {
-      const { data } = await getPremierLeagueMatches();
-      console.log(data)
-      // A reducer function to group the array of matches by matchday
-      let matches = data.reduce((r, a) => {
-        r[a.matchday] = [...(r[a.matchday] || []), a];
-        return r;
-      }, {});
-
-      // displaying the latest match by getting the last item in the matches object
-      let latestMatch = Object.keys(matches).pop();
-      latestMatch !== undefined && setMatches(matches[latestMatch]);
-      setCurrentMatchDay(latestMatch);
+      const { data: matches } = await getPremierLeagueMatches()
+      let latestMatches = matches.filter( match => match.matchday === match.season.currentMatchday)
+      console.log(latestMatches)
+      const sortedMatches = _.sortBy(latestMatches, (dateObj)=> {
+        return new Date(dateObj.utcDate)
+      })
+      setMatches(sortedMatches)
+      setCurrentMatchDay(latestMatches[0].matchday);
       setIsLoading(false);
     };
     getMatches();
   }, []);
 
   const getPrevMatchDay = async () => {
+    setIsLoading(true)
     const matchday =
       currentMatchDay === 1 ? currentMatchDay : currentMatchDay - 1;
     const { data: matches } = await getPremierLeagueMatches();
     const prevMatches = matches.filter((match) => match.matchday === matchday);
-    console.log(prevMatches);
-    setMatches(prevMatches);
+    const sortedMatches = _.sortBy(prevMatches, (dateObj)=> {
+      return new Date(dateObj.utcDate)
+    })
+    console.log(sortedMatches);
+    setMatches(sortedMatches);
     setCurrentMatchDay(matchday);
+    setIsLoading(false)
   };
 
   const getNextMatchDay = async () => {
+    setIsLoading(true)
     const matchday =
       currentMatchDay === 38 ? currentMatchDay : currentMatchDay + 1;
     const { data: matches } = await getPremierLeagueMatches();
     const nextMatches = matches.filter((match) => match.matchday === matchday);
-    setMatches(nextMatches);
+    const sortedMatches = _.sortBy(nextMatches, (dateObj)=> {
+      return new Date(dateObj.utcDate)
+    })
+    setMatches(sortedMatches);
     setCurrentMatchDay(matchday);
+    setIsLoading(false)
   };
 
   return (
@@ -72,7 +79,7 @@ const Matches = () => {
       ) : (
         <div className="grid grid-cols-2 gap-2">
           {matches.map((match) => (
-            <Match key={match.id} match={match} date={formatDate} />
+            <Match key={match.id} match={match} matchDate={formatDate} matchTime={formatMatchTime} />
           ))}
         </div>
       )}

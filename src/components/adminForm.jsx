@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import femi from "../services/httpService";
-import {kiniscoresApi} from '../config.json'
+import {kiniscoresApi} from '../config.json';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminForm = () => {
   const [newsImage, setNewsImage] = useState(null);
@@ -35,12 +37,6 @@ const AdminForm = () => {
     formData.append("body", newsField.body);
     formData.append("source", newsField.source);
     formData.append("isFeatured", newsField.isFeatured);
-    console.log(formData.get("newsImage"));
-    console.log(formData.get("headline"));
-    console.log(formData.get("subTitle"));
-    console.log(formData.get("body"));
-    console.log(formData.get("source"));
-    console.log(formData.get("isFeatured"));
     try {
       const res = await femi.post(
         `${kiniscoresApi}/news`,
@@ -52,14 +48,17 @@ const AdminForm = () => {
         }
       );
       console.log(res);
+      toast.success("Your news has been successfully uploaded!!!")
     } catch (error) {
       console.log(error.message);
+      toast.error(error.message)
     }
   };
 
   return (
     <div>
       <div className="w-1/2 mx-auto bg-blue-900 my-8">
+        <ToastContainer/>
         <h1 className="text-3xl font-semibold text-white  text-center mx-auto">
           KiniScores
         </h1>
