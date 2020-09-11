@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {formatCurrentDate} from '../utils'
 
 const MiniMatch = () => {
+  const today = new Date()
   return (
     <div>
       <div className="bg-white py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
-      <p className="text-xs py-1 font-bold bg-blue-900 text-white">
-        19 August 2020
+      <p className="text-xs text-center py-1 font-bold bg-blue-900 text-white">
+        {formatCurrentDate(today)}
       </p>
       <div className="flex bg-gray-200 items-center justify-center px-2 py-8 border-b">
         <h1 className="text-sm font-semibold text-blue-900 text-center mx-auto">

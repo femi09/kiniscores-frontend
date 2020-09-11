@@ -22,8 +22,8 @@ const Home = () => {
       const { data: news } = await getLatestNews()
       console.log(news)
       let featuredNews =news.filter(news => news.isFeatured === true)
-      console.log(featuredNews[0])
-      setFeaturedNews(featuredNews[0])
+      console.log(featuredNews[2])
+      setFeaturedNews(featuredNews[2])
       setLatestNews(news);
     };
     getNews();
@@ -41,21 +41,21 @@ const Home = () => {
     config: config.slow,
   });
   return (
-    <div className="container mx-auto text-center">
-      <div className="flex">
+    <div className="container mx-auto my-6">
+      <div className="flex items-start">
         {/* Major */}
-        <div className="grid grid-col-2 grid-gap-2 rounded-lg w-3/4 m-6">
+        <div className="rounded-lg w-3/4">
           {transitions.map(
             ({ item, key, props }) =>
               item && (
-                <animated.div key={key} style={props}>
+                <animated.div key={key} style={props} className="mb-4">
                   <Hero featuredNews={featuredNews} />
                 </animated.div>
               )
           )}
 
           <animated.div style={contentProps}>
-            <div className="bg-gray-200 grid grid-cols-4 gap-4">
+            <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
               {latestNews.map((news) => (
                 <NewsCard news={news} key={news._id} />
               ))}
@@ -63,7 +63,7 @@ const Home = () => {
           </animated.div>
         </div>
 
-        <div className="flex flex-col justify-around px-6 py-4 my-6 bg-gray-200 w-1/4">
+        <div className="flex flex-col justify-around px-6 py-4 ml-6 bg-gray-200 w-1/4 rounded-lg">
           <animated.div style={contentProps}>
             <MiniMatch />
             <MiniTable />
