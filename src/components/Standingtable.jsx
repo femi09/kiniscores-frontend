@@ -19,28 +19,30 @@ const StandingTable = ({ tables }) => {
             <th className="px-4 py-2">GA</th>
             <th className="px-4 py-2">GD</th>
             <th className="px-4 py-2">Points</th>
+            <th className="px-4 py-2">Form</th>
           </tr>
         </thead>
         <tbody className="text-sm font-bold text-center text-blue-900">
           {tables.map((table) => (
-            <tr key={table.team.id}>
-              <td className="py-2">{table.position}</td>
+            <tr key={table.team_id}>
+              <td className="py-2">{table.rank}</td>
               <td className=" flex text-left py-2">
                 <img
                   className="w-5 h-5 mr-4"
-                  src={`./assets/${table.team.id}.png`}
+                  src={table.logo}
                   alt=""
                 />
-                {table.team.name}
+                {table.teamName}
               </td>
-              <td className="px-4 py-2">{table.playedGames}</td>
-              <td className="px-4 py-2">{table.won}</td>
-              <td className="px-4 py-2">{table.draw}</td>
-              <td className="px-4 py-2">{table.lost}</td>
-              <td className="px-4 py-2">{table.goalsFor}</td>
-              <td className="px-4 py-2">{table.goalsAgainst}</td>
-              <td className="px-4 py-2">{table.goalDifference}</td>
+              <td className="px-4 py-2">{table.all.matchsPlayed}</td>
+              <td className="px-4 py-2">{table.all.win}</td>
+              <td className="px-4 py-2">{table.all.draw}</td>
+              <td className="px-4 py-2">{table.all.lose}</td>
+              <td className="px-4 py-2">{table.all.goalsFor}</td>
+              <td className="px-4 py-2">{table.all.goalsAgainst}</td>
+              <td className="px-4 py-2">{table.goalsDiff}</td>
               <td className="px-4 py-2">{table.points}</td>
+              <td className={`px-4 py-2 ${table.forme ==="W" } ? "text-green-500" ? ${table.forme === "L"}: "text-red-500"`}>{table.forme}</td>
             </tr>
           ))}
         </tbody>

@@ -32,21 +32,21 @@ const MiniScorers = () => {
               <th className="px-2 py-1">Goals</th>
             </tr>
           </thead>
-          <tbody className="text-xs text-center text-gray-800">
+          <tbody className="text-xs text-center text-blue-900">
             {scorers.map((scorer, index) => (
-              <tr key={scorer.team.id}>
-                <td className="py-2 font-semibold">{index + 1}</td>
-                <td className=" flex text-left font-semibold py-2">
+              <tr key={index}>
+                <td className="py-2 font-bold">{index + 1}</td>
+                <td className=" flex text-left font-bold py-2">
                   {scorer.player.name}
                 </td>
-                <td className="px-2 font-semibold py-2">
+                <td className="px-2 font-bold py-2">
                   <img
                     className="w-4 h-4 mr-1"
                     src={`./assets/${scorer.team.id}.png`}
                     alt=""
                   />
                 </td>
-                <td className="px-2 font-semibold text-xs py-2">
+                <td className="px-2 font-bold text-xs py-2">
                   {scorer.numberOfGoals}
                 </td>
               </tr>

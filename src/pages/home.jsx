@@ -20,9 +20,7 @@ const Home = () => {
 
     const getNews = async () => {
       const { data: news } = await getLatestNews()
-      console.log(news)
       let featuredNews =news.filter(news => news.isFeatured === true)
-      console.log(featuredNews[2])
       setFeaturedNews(featuredNews[2])
       setLatestNews(news);
     };
@@ -63,7 +61,7 @@ const Home = () => {
           </animated.div>
         </div>
 
-        <div className="flex flex-col justify-around px-6 py-4 ml-6 bg-gray-200 w-1/4 rounded-lg">
+        <div className="flex flex-col justify-around px-4 py-4 ml-5 bg-gray-200 w-1/4 rounded-lg">
           <animated.div style={contentProps}>
             <MiniMatch />
             <MiniTable />
