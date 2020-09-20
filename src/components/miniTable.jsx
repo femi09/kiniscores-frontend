@@ -10,7 +10,7 @@ const MiniTable = () => {
   useEffect(() => {
     const getTable = async () => {
       const { data: standings } = await getPremierLeagueStandings();
-      const miniTable = standings[0].table.slice(0, 5);
+      const miniTable = standings.slice(0, 5);
       setTables(miniTable);
     };
 
@@ -31,17 +31,17 @@ const MiniTable = () => {
             <th className="px-2 py-1">Pts</th>
           </tr>
         </thead>
-        <tbody className="text-sm text-center text-gray-800">
+        <tbody className="text-sm text-center text-blue-900">
           {tables.map((table, index) => (
             <tr key={index}>
-              <td className="py-2 font-semibold text-xs">{table.position}</td>
+              <td className="py-2 font-bold text-xs">{table.rank}</td>
               <td className=" flex items-center text-left text-sm py-2">
-                <img className="w-4 h-4" src={`./assets/${table.team.id}.png`} alt="" />
-                <span className="w-full px-2 text-xs font-semibold">{truncateTeamName(table.team.name)}</span>
+                <img className="w-4 h-4" src={table.logo} alt="" />
+                <span className="px-2 text-xs font-bold">{table.teamName}</span>
               </td>
-          <td className="px-2 font-semibold text-xs py-2">{table.playedGames}</td>
-          <td className="px-2 font-semibold text-xs py-2">{table.goalDifference}</td>
-          <td className="px-2 font-semibold text-xs py-2">{table.points}</td>
+          <td className="px-2 font-bold text-xs py-2">{table.all.matchsPlayed}</td>
+          <td className="px-2 font-bold text-xs py-2">{table.goalsDiff}</td>
+          <td className="px-2 font-bold text-xs py-2">{table.points}</td>
             </tr>
           ))}
         </tbody>

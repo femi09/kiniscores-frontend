@@ -9,7 +9,7 @@ const Standings = () => {
   useEffect(() => {
     const getTable = async () => {
       const { data: standings } = await getPremierLeagueStandings()
-      setTables(standings[0].table);
+      setTables(standings);
       setIsLoading(false);
     };
 

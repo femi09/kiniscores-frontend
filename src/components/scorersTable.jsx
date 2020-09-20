@@ -4,7 +4,7 @@ const ScorersTable = ({ scorers }) => {
   return (
     <div>
       <div className="shadow-lg text-center py-4 font-bold w-1/2 mx-auto">
-        <h1 className="text-blue-900"> 2019/2020 Premier League Top Scorers</h1>
+        <h1 className="text-blue-900"> 2020/2021 Premier League Top Scorers</h1>
       </div>
       <table className="table-auto container mx-auto w-1/2 bg-gray-100">
         <thead className="bg-blue-900 text-gray-200 text-sm">

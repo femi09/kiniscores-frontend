@@ -1,11 +1,9 @@
-import femi from './httpService'
-import { kiniscoresApi } from '../config.json'
-
+import femi from "./httpService";
+import { kiniscoresApi } from "../config.json";
 
 export function getPremierLeagueStandings() {
-    return femi.get(`${kiniscoresApi}/standings`)
+  return femi.get(`${kiniscoresApi}/standings`);
 }
-
 
 export function getLaLigaStandings() {}
 
