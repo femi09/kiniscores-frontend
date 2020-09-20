@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getPremierLeagueStandings } from "../services/standingsService";
 import { Link } from "react-router-dom";
-import {truncateTeamName} from '../utils'
+
 
 const MiniTable = () => {
   const [tables, setTables] = useState([]);
