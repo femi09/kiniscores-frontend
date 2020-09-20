@@ -4,12 +4,10 @@ import { getPremierLeagueFixtures } from "../services/fixturesService";
 const Fixture = () => {
   const today = new Date();
   const [fixtures, setFixtures] = useState([]);
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getFixtures = async () => {
       const { data: fixtures } = await getPremierLeagueFixtures();
       setFixtures(fixtures);
-      setLoading(true);
     };
 
     getFixtures();
