@@ -35,7 +35,7 @@ const MiniMatch = () => {
           >
             <div>
               <p className="text-sm">
-                {fixture.status === "Not Started" && fixture.statusShort}
+                {fixture.status !== "Not Started" && fixture.statusShort}
               </p>
             </div>
             <div className="text-center w-1/2">
