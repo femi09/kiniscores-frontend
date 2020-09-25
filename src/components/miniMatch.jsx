@@ -25,16 +25,18 @@ const MiniMatch = () => {
         {formatCurrentDate(today)}
       </p>
       <div className="bg-gray-200 py-8 border-b">
-        {/* <h1 className="text-sm font-semibold text-blue-900 text-center mx-auto">
-          No fixtures for the current day
-        </h1> */}
+        {fixtures.length === 0 && (
+          <h1 className="text-sm font-semibold text-blue-900 text-center mx-auto">
+            No fixtures for the current day
+          </h1>
+        )}
         {fixtures.map((fixture, index) => (
           <div
             key={index}
             className="w-full flex items-center text-xs text-blue-800 font-bold mb-6"
           >
             <div>
-              <p className="text-sm">
+              <p className="text-xs font-normal">
                 {fixture.status !== "Not Started" && fixture.statusShort}
               </p>
             </div>
@@ -48,12 +50,21 @@ const MiniMatch = () => {
                 <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
                   {formatMatchTime(fixture.event_date)}
                 </p>
-              ) : (
+              ) : fixture.status === "Match Finished" ? (
                 <div className="text-xs text-white mx-1 px-1 py-1">
-                  <span className="px-2 bg-blue-800 mr-1">
+                  <span className="px-2 bg-blue-800 border-r border-r-white">
                     {fixture.goalsHomeTeam}
                   </span>
                   <span className="px-2 bg-blue-800">
+                    {fixture.goalsAwayTeam}
+                  </span>
+                </div>
+              ) : (
+                <div className="text-sm text-white mx-1 py-1">
+                  <span className="px-2 py-1 bg-pink-500 border-r border-r-white">
+                    {fixture.goalsHomeTeam}
+                  </span>
+                  <span className="px-2 py-1 bg-pink-500 border-l border-l-white">
                     {fixture.goalsAwayTeam}
                   </span>
                 </div>

@@ -10,8 +10,8 @@ import Teams from "./pages/teams";
 import Fixtures from "./pages/fixtures";
 import Home from "./pages/home";
 import AdminPanel from "./pages/admin";
-import './App.css';
-
+import "./App.css";
+import NextFixtures from "./components/nextFixtures";
 
 function App() {
   return (
@@ -19,14 +19,15 @@ function App() {
       <NavBar />
       <NavItems />
       <Switch>
-        <Route path="/admin" component={AdminPanel}/>
-        <Route path="/fixtures" component={Fixtures}/>
+        <Route path="/admin" component={AdminPanel} />
+        <Route path="/nextFixtures" component={NextFixtures} />
+        <Route path="/fixtures" component={Fixtures} />
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
-        <Route path="/matches" component={Matches}/>
-        <Route path="/" component={Home}/>
+        <Route path="/matches" component={Matches} />
+        <Route path="/" component={Home} />
       </Switch>
     </div>
   );
