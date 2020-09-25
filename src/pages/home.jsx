@@ -1,6 +1,7 @@
 import React from "react";
 import { useSpring, useTransition, animated, config } from "react-spring";
 import { useState, useEffect } from "react";
+import SkeletonHome from "../components/Skeletons/Home";
 import Hero from "../components/hero";
 import NewsCard from "../components/newsCard";
 import MiniTable from "../components/miniTable";
@@ -11,7 +12,9 @@ import { getLatestNews } from "../services/latestServices";
 const Home = () => {
   const [show, set] = useState(false);
   const [latestNews, setLatestNews] = useState([]);
-  const [featuredNews, setFeaturedNews] = useState([])
+  const [featuredNews, setFeaturedNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const setShow = () => {
       set(true);
@@ -19,13 +22,15 @@ const Home = () => {
     setShow();
 
     const getNews = async () => {
-      const { data: news } = await getLatestNews()
-      let featuredNews =news.filter(news => news.isFeatured === true)
-      setFeaturedNews(featuredNews[2])
+      const { data: news } = await getLatestNews();
+      let featuredNews = news.filter((news) => news.isFeatured === true);
+      setFeaturedNews(featuredNews[2]);
       setLatestNews(news);
+      setLoading(false);
     };
     getNews();
   }, []);
+
   const transitions = useTransition(show, null, {
     config: config.slow,
     from: { opacity: 0, marginLeft: -200 },
@@ -38,37 +43,42 @@ const Home = () => {
     to: { opacity: 1, marginTop: 0 },
     config: config.slow,
   });
+
   return (
     <div className="container mx-auto my-6">
-      <div className="flex items-start">
-        {/* Major */}
-        <div className="rounded-lg w-3/4">
-          {transitions.map(
-            ({ item, key, props }) =>
-              item && (
-                <animated.div key={key} style={props} className="mb-4">
-                  <Hero featuredNews={featuredNews} />
-                </animated.div>
-              )
-          )}
+      {loading ? (
+        <SkeletonHome />
+      ) : (
+        <div className="flex items-start">
+          {/* Major */}
+          <div className="rounded-lg w-3/4">
+            {transitions.map(
+              ({ item, key, props }) =>
+                item && (
+                  <animated.div key={key} style={props} className="mb-4">
+                    <Hero featuredNews={featuredNews} />
+                  </animated.div>
+                )
+            )}
 
-          <animated.div style={contentProps}>
-            <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
-              {latestNews.map((news) => (
-                <NewsCard news={news} key={news._id} />
-              ))}
-            </div>
-          </animated.div>
-        </div>
+            <animated.div style={contentProps}>
+              <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
+                {latestNews.map((news) => (
+                  <NewsCard news={news} key={news._id} />
+                ))}
+              </div>
+            </animated.div>
+          </div>
 
-        <div className="flex flex-col justify-around px-4 py-4 ml-5 bg-gray-200 w-1/4 rounded-lg">
-          <animated.div style={contentProps}>
-            <MiniMatch />
-            <MiniTable />
-            <MiniScorers />
-          </animated.div>
+          <div className="flex flex-col justify-around px-4 py-4 ml-5 bg-gray-200 w-1/4 rounded-lg">
+            <animated.div style={contentProps}>
+              <MiniMatch />
+              <MiniTable />
+              <MiniScorers />
+            </animated.div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

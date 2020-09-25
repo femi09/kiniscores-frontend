@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPremierLeagueStandings } from "../services/standingsService";
 import StandingTable from "../components/Standingtable";
+import SkeletonStandings from "../components/Skeletons/Standings";
 
 const Standings = () => {
   const [tables, setTables] = useState([]);
@@ -8,7 +9,7 @@ const Standings = () => {
 
   useEffect(() => {
     const getTable = async () => {
-      const { data: standings } = await getPremierLeagueStandings()
+      const { data: standings } = await getPremierLeagueStandings();
       setTables(standings);
       setIsLoading(false);
     };
@@ -17,13 +18,7 @@ const Standings = () => {
   }, []);
   return (
     <div>
-      {isLoading ? (
-        <div className="font-bold p-8 bg-white text-center text-2xl text-blue-700">
-          <h1>Loading Table...</h1>
-        </div>
-      ) : (
-        <StandingTable tables={tables} />
-      )}
+      {isLoading ? <SkeletonStandings /> : <StandingTable tables={tables} />}
     </div>
   );
 };

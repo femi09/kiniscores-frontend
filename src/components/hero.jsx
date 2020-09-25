@@ -13,7 +13,7 @@ const Hero = ({featuredNews}) => {
           {featuredNews.headline}
         </div>
 
-        <div className="w-full text-gray-900 text-sm  w-1/2 mb-2">
+        <div className="w-full text-gray-900 text-sm w-1/2 mb-2">
           {featuredNews.subTitle}
         </div>
 

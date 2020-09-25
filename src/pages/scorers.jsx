@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPremierLeagueScorers } from "../services/scorerService";
 import ScorersTable from "../components/scorersTable";
+import SkeletonScorers from "../components/Skeletons/Scorers";
 
 const Scorers = () => {
   const [scorers, setScorers] = useState([]);
@@ -22,9 +23,7 @@ const Scorers = () => {
         </h1>
       )}
       {isLoading ? (
-        <div className="font-bold p-8 bg-white text-center text-2xl text-blue-700">
-          <h1>Loading Scorers...</h1>
-        </div>
+        <SkeletonScorers />
       ) : (
         scorers.length !== 0 && <ScorersTable scorers={scorers} />
       )}

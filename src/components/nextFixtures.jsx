@@ -1,13 +1,24 @@
-import React from "react";
-import { formatCurrentDate, formatMatchTime } from "../utils";
-const Fixture = ({fixtures, today}) => {
+import React, { useState, useEffect } from "react";
+import { getNextPremierLeagueFixtures } from "../services/fixturesService";
+import {formatMatchTime, formatCurrentDate} from "../utils"
+
+const NextFixtures = () => {
+  const [nextFixtures, setNextFixtures] = useState([]);
+
+  useEffect(() => {
+    const getNextFixtures = async () => {
+        const { data } = await getNextPremierLeagueFixtures();
+
+    };
+    getNextFixtures();
+  }, []);
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mx-auto mt-8 p-6">
         <h1 className="text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
-          {formatCurrentDate(today)}
+          {/* {formatCurrentDate(today)} */}
         </h1>
-        {fixtures.map((fixture) => (
+        {Array(4).fill().map((fixture) => (
           <div className="flex items-center my-4">
             <div class="w-2/3 bg-gray-400 p-4">
               <div className="flex items-center text-lg font-bold">
@@ -74,4 +85,4 @@ const Fixture = ({fixtures, today}) => {
   );
 };
 
-export default Fixture;
+export default NextFixtures;

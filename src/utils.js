@@ -61,7 +61,8 @@ export const formatCurrentDate = (date) => {
   ];
 
 
-  let formatted_date = `${days[date.getDay()]}, ${date.getDate()}, ${
+
+  let formatted_date = `${days[date.getDay()]}, ${date.getDate()} ${
     months[date.getMonth()]
   } ${date.getFullYear()} `;
 
