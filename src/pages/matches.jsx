@@ -36,7 +36,6 @@ const Matches = () => {
     const sortedMatches = _.sortBy(prevMatches, (dateObj) => {
       return new Date(dateObj.utcDate);
     });
-    console.log(sortedMatches);
     setMatches(sortedMatches);
     setCurrentMatchDay(matchday);
     setLoading(false);

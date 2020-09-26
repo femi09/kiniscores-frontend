@@ -10,7 +10,7 @@ const SkeletonFixture = () => {
         </h1>
         {Array(4).fill().map((item, index) => (
           <div key={index} className="flex items-center my-4">
-            <div class="w-2/3 bg-gray-400 p-4">
+            <div className="w-2/3 bg-gray-400 p-4">
               <div className="flex items-center text-lg font-bold">
                 <div className="text-center w-1/3">
                   <p className="">
@@ -39,7 +39,7 @@ const SkeletonFixture = () => {
                 <Skeleton height={20} width={100} />
               </p>
             </div>
-            <div class="w-1/5 bg-gray-400 p-2 text-xs font-bold">
+            <div className="w-1/5 bg-gray-400 p-2 text-xs font-bold">
               <h1 className="font-bold text-sm">
                 <Skeleton height={20} width={50} />
               </h1>

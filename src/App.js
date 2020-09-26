@@ -10,8 +10,9 @@ import Teams from "./pages/teams";
 import Fixtures from "./pages/fixtures";
 import Home from "./pages/home";
 import AdminPanel from "./pages/admin";
+import NextFixtures from "./pages/nextFixtures";
 import "./App.css";
-import NextFixtures from "./components/nextFixtures";
+
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <NavItems />
       <Switch>
         <Route path="/admin" component={AdminPanel} />
-        <Route path="/nextFixtures" component={NextFixtures} />
+        <Route path="/fixtures/:fixtureStatus" component={NextFixtures} />
         <Route path="/fixtures" component={Fixtures} />
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />

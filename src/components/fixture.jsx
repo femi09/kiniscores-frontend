@@ -1,6 +1,7 @@
 import React from "react";
-import { formatCurrentDate, formatMatchTime } from "../utils";
-const Fixture = ({fixtures, today}) => {
+import { formatCurrentDate, formatMatchTime, formatDate } from "../utils";
+const Fixture = ({ fixtures }) => {
+  const today = new Date();
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mx-auto mt-8 p-6">
@@ -11,8 +12,8 @@ const Fixture = ({fixtures, today}) => {
           <div className="flex items-center my-4">
             <div class="w-2/3 bg-gray-400 p-4">
               <div className="flex items-center text-lg font-bold">
-                <div>
-                  <p className="text-sm">
+                <div className="font-bold text-xs">
+                  <p>
                     {fixture.status !== "Not Started" && fixture.statusShort}
                   </p>
                 </div>
