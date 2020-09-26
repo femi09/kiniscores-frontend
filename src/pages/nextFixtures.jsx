@@ -3,12 +3,10 @@ import SkeletonFixtures from "../components/Skeletons/Fixtures";
 import { getNextPremierLeagueFixtures } from "../services/fixturesService";
 import {
   formatMatchTime,
-  formatCurrentDate,
   formatFixturesDate,
 } from "../utils";
 
 const NextFixtures = () => {
-  const [nextFixtures, setNextFixtures] = useState([]);
   const [firstDay, setFirstDay] = useState([]);
   const [secondDay, setSecondDay] = useState([]);
   const [thirdDay, setThirdDay] = useState([]);
