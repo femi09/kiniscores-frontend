@@ -6,11 +6,12 @@ import { getPremierLeagueFixtures } from "../services/fixturesService";
 const MiniMatch = () => {
   const today = new Date();
   const [fixtures, setFixtures] = useState([]);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const getFixtures = async () => {
       const { data: fixtures } = await getPremierLeagueFixtures();
-      // const miniTable = standings.slice(0, 5)
       setFixtures(fixtures);
+      setLoading(false)
     };
 
     getFixtures();
@@ -25,7 +26,7 @@ const MiniMatch = () => {
         {formatCurrentDate(today)}
       </p>
       <div className="bg-gray-200 py-8 border-b">
-        {fixtures.length === 0 && (
+        {!loading && fixtures.length === 0 && (
           <h1 className="text-sm font-semibold text-blue-900 text-center mx-auto">
             No fixtures for the current day
           </h1>

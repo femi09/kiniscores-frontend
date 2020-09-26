@@ -12,7 +12,6 @@ const AdminForm = () => {
     subTitle: "",
     body: "",
     source: "",
-    isFeatured: false,
   });
   const onFileChange = (e) => {
     let newsImage = e.target.files[0];
@@ -36,7 +35,6 @@ const AdminForm = () => {
     formData.append("subTitle", newsField.subTitle);
     formData.append("body", newsField.body);
     formData.append("source", newsField.source);
-    formData.append("isFeatured", newsField.isFeatured);
     try {
       const res = await femi.post(
         `${kiniscoresApi}/news`,
@@ -150,18 +148,6 @@ const AdminForm = () => {
               value={newsField.source}
               onChange={handleInputChange}
             />
-          </div>
-          <div className="pt-4">
-            <label className="md:w-2/3 block text-gray-700 font-bold">
-              <input
-                name="isFeatured"
-                className="mr-2 leading-tight"
-                type="checkbox"
-                value={newsField.featured}
-                onChange={handleInputChange}
-              />
-              <span className="text-sm">Featured</span>
-            </label>
           </div>
           <div className="text-center">
             <button

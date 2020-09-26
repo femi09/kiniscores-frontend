@@ -68,6 +68,51 @@ export const formatCurrentDate = (date) => {
 
   return formatted_date;
 };
+
+
+export const formatFixturesDate = (utcDate) => {
+  let date = new Date(utcDate);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+
+
+  let formatted_date = `${days[date.getDay()]}, ${date.getDate()} ${
+    months[date.getMonth()]
+  } ${date.getFullYear()} `;
+
+  return formatted_date;
+};
+
+
+export const getNewsHours = (utcDate) => {
+  let date = new Date(utcDate);
+  let hours = date.getHours()
+  return hours
+}
+
 export const truncateTeamName = (str) => {
   if (str === "Manchester United") {
     return "Man United";

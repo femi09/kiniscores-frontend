@@ -12,7 +12,7 @@ const SkeletonMatches = () => {
         {Array(10)
           .fill()
           .map((item, index) => (
-            <SkeletonMatch />
+            <SkeletonMatch key={index} />
           ))}
       </div>
     </>

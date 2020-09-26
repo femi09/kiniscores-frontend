@@ -21,7 +21,7 @@ const SkeletonHome = () => {
             {Array(11)
               .fill()
               .map((item, index) => (
-                <SkeletonNews />
+                <SkeletonNews key={index} />
               ))}
           </div>
         </div>

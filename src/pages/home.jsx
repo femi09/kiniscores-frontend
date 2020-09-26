@@ -23,13 +23,15 @@ const Home = () => {
 
     const getNews = async () => {
       const { data: news } = await getLatestNews();
-      let featuredNews = news.filter((news) => news.isFeatured === true);
-      setFeaturedNews(featuredNews[2]);
-      setLatestNews(news);
+      console.log(news)
+      let featuredNews = news[news.length - 1]
+      setFeaturedNews(featuredNews);
+      let latestNews = news.filter(news => news !== featuredNews)
+      setLatestNews(latestNews);
       setLoading(false);
     };
     getNews();
-  }, []);
+  }, []); 
 
   const transitions = useTransition(show, null, {
     config: config.slow,
