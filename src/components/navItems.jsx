@@ -9,7 +9,7 @@ const NavItems = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-          <Link to="/matches">Matches</Link>
+          <Link to="/results">Results</Link>
         </li>
         <li className="px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
         <Link to="/standings">Standings</Link>

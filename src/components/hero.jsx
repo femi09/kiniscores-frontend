@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment"
 import {kiniscoresApi} from '../config.json'
 
 const Hero = ({featuredNews}) => {
@@ -16,7 +17,15 @@ const Hero = ({featuredNews}) => {
         <div className="w-full text-gray-900 text-sm w-1/2 mb-2">
           {featuredNews.subTitle}
         </div>
-
+        <div className="flex justify-start p-2">
+        <img className="w-4 h-4" src="./assets/clock-16.png" alt="" />
+        <p className="inline-block border-r-2 px-2 text-xs font-bold text-gray-700">
+          {moment(featuredNews.createdAt).fromNow(true)}
+        </p>
+        <p className="inline-block px-2 text-xs font-semibold text-gray-700">
+          {featuredNews.source}
+        </p>
+      </div>
       </div>
     </div>
   );
