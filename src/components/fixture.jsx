@@ -1,5 +1,5 @@
 import React from "react";
-import { formatCurrentDate, formatMatchTime, formatDate } from "../utils";
+import { formatCurrentDate, formatMatchTime} from "../utils";
 const Fixture = ({ fixtures }) => {
   const today = new Date();
   return (

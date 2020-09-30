@@ -23,15 +23,15 @@ const Home = () => {
 
     const getNews = async () => {
       const { data: news } = await getLatestNews();
-      console.log(news)
-      let featuredNews = news[news.length - 1]
+      console.log(news);
+      let featuredNews = news[0];
       setFeaturedNews(featuredNews);
-      let latestNews = news.filter(news => news !== featuredNews)
+      let latestNews = news.filter((news) => news !== featuredNews);
       setLatestNews(latestNews);
       setLoading(false);
     };
     getNews();
-  }, []); 
+  }, []);
 
   const transitions = useTransition(show, null, {
     config: config.slow,
@@ -53,24 +53,25 @@ const Home = () => {
       ) : (
         <div className="flex items-start">
           {/* Major */}
-          <div className="rounded-lg w-3/4">
-            {transitions.map(
-              ({ item, key, props }) =>
-                item && (
-                  <animated.div key={key} style={props} className="mb-4">
-                    <Hero featuredNews={featuredNews} />
-                  </animated.div>
-                )
-            )}
-
-            <animated.div style={contentProps}>
-              <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
-                {latestNews.map((news) => (
-                  <NewsCard news={news} key={news._id} />
-                ))}
-              </div>
-            </animated.div>
-          </div>
+          {latestNews !== 0 && (
+            <div className="rounded-lg w-3/4">
+              {transitions.map(
+                ({ item, key, props }) =>
+                  item && (
+                    <animated.div key={key} style={props} className="mb-4">
+                      <Hero featuredNews={featuredNews} />
+                    </animated.div>
+                  )
+              )}
+              <animated.div style={contentProps}>
+                <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
+                  {latestNews.map((news) => (
+                    <NewsCard news={news} key={news._id} />
+                  ))}
+                </div>
+              </animated.div>
+            </div>
+          )}
 
           <div className="flex flex-col justify-around px-4 py-4 ml-5 bg-gray-200 w-1/4 rounded-lg">
             <animated.div style={contentProps}>

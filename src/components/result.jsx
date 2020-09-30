@@ -1,5 +1,5 @@
 import React from "react";
-const Match = ({ match, matchDate, matchTime }) => {
+const Result = ({ match, matchDate, matchTime }) => {
   return (
     <>
       <div className="grid grid-cols-3 py-6 bg-gray-100">
@@ -45,4 +45,4 @@ const Match = ({ match, matchDate, matchTime }) => {
   );
 };
 
-export default Match;
+export default Result;

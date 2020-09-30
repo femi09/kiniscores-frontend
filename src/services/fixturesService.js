@@ -6,8 +6,7 @@ export const getPremierLeagueFixtures = () => {
 };
 
 export const getNextPremierLeagueFixtures = () => {
-    // return femi.get(`${kiniscoresApi}/fixtures/nextFixtures`)
-    return femi.get('http://localhost:5001/api/fixtures/nextFixtures')
+    return femi.get(`${kiniscoresApi}/fixtures/nextFixtures`)
 }
 
 export const getLastPremierLeagueFixtures = () => {
