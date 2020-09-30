@@ -10,7 +10,7 @@ const NewsCard = ({ news }) => {
       <img src={imageUrl} alt="news" />
       <div className="py-1">
         <div className="px-2 font-bold text-sm">
-          <Link to="/news/newsbody">{news.headline}</Link>
+          <Link to="/newsId">{news.headline}</Link>
         </div>
       </div>
       <div className="flex items-center justify-start p-2">
