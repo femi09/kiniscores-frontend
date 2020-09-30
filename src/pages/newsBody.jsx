@@ -1,6 +1,7 @@
 import React from "react";
 
 const NewsBody = () => {
+
   return (
     <div className="w-2/3 bg-gray-100 text-center mx-auto">
       <div className="bg-gray-100 py-6 my-4">

@@ -27,7 +27,7 @@ function App() {
         <Route path="/fixtures" component={Fixtures} />
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
-        <Route path="/news/:id" component={NewsBody} />
+        <Route path="/newsId" component={NewsBody} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
         <Route path="/results" component={Results} />
