@@ -59,9 +59,6 @@ export const formatCurrentDate = (date) => {
     "Friday",
     "Saturday",
   ];
-
-
-
   let formatted_date = `${days[date.getDay()]}, ${date.getDate()} ${
     months[date.getMonth()]
   } ${date.getFullYear()} `;
@@ -86,7 +83,6 @@ export const formatFixturesDate = (utcDate) => {
     "November",
     "December",
   ];
-
   const days = [
     "Sunday",
     "Monday",
@@ -96,9 +92,6 @@ export const formatFixturesDate = (utcDate) => {
     "Friday",
     "Saturday",
   ];
-
-
-
   let formatted_date = `${days[date.getDay()]}, ${date.getDate()} ${
     months[date.getMonth()]
   } ${date.getFullYear()} `;
@@ -107,10 +100,14 @@ export const formatFixturesDate = (utcDate) => {
 };
 
 
-export const getNewsHours = (utcDate) => {
-  let date = new Date(utcDate);
-  let hours = date.getHours()
-  return hours
+export const formatDay = (utcDate) => {
+  const day = new Date(utcDate)
+  const year = day.getFullYear();
+  const month = day.getMonth() + 1;
+  const date = day.getDate();
+  
+  const formatDate = year + "-" + month + "-" + date;
+  return formatDate
 }
 
 export const truncateTeamName = (str) => {
@@ -120,23 +117,8 @@ export const truncateTeamName = (str) => {
     return "Man City";
   } else if (str === "Crystal Palace") {
     return "C.Palace";
-  } else if (str === "Brighton and Holve Albion FC") {
-    return "Brighton FC";
-  } else if (str === "Newcastle United FC") {
-    return "Newcastle FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else if (str === "Westham United FC") {
-    return "Westham FC";
-  } else {
+  } 
+   else {
     return str;
   }
 };

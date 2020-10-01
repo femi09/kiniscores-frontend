@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/navBar";
 import NavItems from "./components/navItems";
-import Matches from "./pages/matches";
+import Results from "./pages/results";
 import Standings from "./pages/standings";
 import News from "./pages/news";
 import Scorers from "./pages/scorers";
@@ -11,7 +11,9 @@ import Fixtures from "./pages/fixtures";
 import Home from "./pages/home";
 import AdminPanel from "./pages/admin";
 import NextFixtures from "./pages/nextFixtures";
+import NewsBody from "./pages/newsBody";
 import "./App.css";
+
 
 
 function App() {
@@ -25,9 +27,10 @@ function App() {
         <Route path="/fixtures" component={Fixtures} />
         <Route path="/teams" component={Teams} />
         <Route path="/scorers" component={Scorers} />
+        <Route path="/news/:id" component={NewsBody} />
         <Route path="/news" component={News} />
         <Route path="/standings" component={Standings} />
-        <Route path="/matches" component={Matches} />
+        <Route path="/results" component={Results} />
         <Route path="/" component={Home} />
       </Switch>
     </div>

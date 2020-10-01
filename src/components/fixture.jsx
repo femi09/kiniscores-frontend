@@ -1,16 +1,23 @@
 import React from "react";
-import { formatCurrentDate, formatMatchTime} from "../utils";
-const Fixture = ({ fixtures }) => {
-  const today = new Date();
+import { formatCurrentDate, formatMatchTime } from "../utils";
+const Fixture = ({ fixtures, today, handleNextDay }) => {
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mx-auto mt-8 p-6">
-        <h1 className="text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
-          {formatCurrentDate(today)}
-        </h1>
+        <div className="flex justify-between text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
+          <p>{formatCurrentDate(today)}</p>
+          <button onClick={handleNextDay} className="flex items-center text-sm mx-2 font-bold focus:outline-none">
+            Tommorow
+            <img
+              className="h-4 w-4 ml-1"
+              src="./assets/icons8-right.png"
+              alt=""
+            />
+          </button>
+        </div>
         {fixtures.map((fixture) => (
-          <div className="flex items-center my-4">
-            <div class="w-2/3 bg-gray-400 p-4">
+          <div key={fixture.fixture_id} className="flex items-center my-4">
+            <div className="w-2/3 bg-gray-400 p-4">
               <div className="flex items-center text-lg font-bold">
                 <div className="font-bold text-xs">
                   <p>
@@ -64,7 +71,7 @@ const Fixture = ({ fixtures }) => {
               <p className="text-m">Venue: </p>
               <p>{fixture.venue}</p>
             </div>
-            <div class="w-1/5 bg-gray-400 p-2 text-xs font-bold">
+            <div className="w-1/5 bg-gray-400 p-2 text-xs font-bold">
               <h1 className="font-bold text-sm">Refree: </h1>
               <p>{fixture.referee}</p>
             </div>
