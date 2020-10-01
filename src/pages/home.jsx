@@ -23,7 +23,6 @@ const Home = () => {
 
     const getNews = async () => {
       const { data: news } = await getLatestNews();
-      console.log(news);
       let featuredNews = news[0];
       setFeaturedNews(featuredNews);
       let latestNews = news.filter((news) => news !== featuredNews);
@@ -32,6 +31,10 @@ const Home = () => {
     };
     getNews();
   }, []);
+
+  const getNewsBody = (newsId) => {
+    console.log(newsId);
+  };
 
   const transitions = useTransition(show, null, {
     config: config.slow,
@@ -52,7 +55,6 @@ const Home = () => {
         <SkeletonHome />
       ) : (
         <div className="flex items-start">
-          {/* Major */}
           {latestNews !== 0 && (
             <div className="rounded-lg w-3/4">
               {transitions.map(
@@ -66,7 +68,7 @@ const Home = () => {
               <animated.div style={contentProps}>
                 <div className="bg-gray-200 grid grid-cols-4 gap-4 ">
                   {latestNews.map((news) => (
-                    <NewsCard news={news} key={news._id} />
+                    <NewsCard news={news} key={news._id} getNewsBody={getNewsBody}/>
                   ))}
                 </div>
               </animated.div>
