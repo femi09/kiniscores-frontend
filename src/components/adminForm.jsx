@@ -48,7 +48,6 @@ const AdminForm = () => {
       console.log(res);
       toast.success("Your news has been successfully uploaded!!!")
     } catch (error) {
-      console.log(error.message);
       toast.error(error.message)
     }
   };

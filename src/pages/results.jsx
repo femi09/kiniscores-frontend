@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPremierLeagueMatches } from "../services/matchesService";
 import { formatDate, formatMatchTime } from "../utils";
-import Match from "../components/match";
+import Result from "../components/result";
 import MatchDay from "../components/matchDay";
 import _ from "lodash";
 import SkeletonMatches from "../components/Skeletons/Match";
@@ -78,7 +78,7 @@ const Matches = () => {
       ) : (
         <div className="grid grid-cols-2 gap-2">
           {matches.map((match) => (
-            <Match
+            <Result
               key={match.id}
               match={match}
               matchDate={formatDate}

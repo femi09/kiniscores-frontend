@@ -12,7 +12,7 @@ const SKeletonHero = () => {
           <Skeleton height={25} width={`90%`} />
         </div>
 
-        <div className="w-full text-gray-900 text-sm  w-1/2" mb-2>
+        <div className="w-full text-gray-900 text-sm  w-1/2 mb-2">
           <Skeleton  height={20} width={360} />
           <Skeleton  height={20} width={360} />
         </div>
