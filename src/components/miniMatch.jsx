@@ -4,7 +4,7 @@ import { formatCurrentDate, truncateTeamName, formatMatchTime, formatDay } from 
 import { getPremierLeagueFixtures } from "../services/fixturesService";
 
 const MiniMatch = () => {
-  const [today, setToday] = useState(new Date())
+  const today = new Date()
   const [fixtures, setFixtures] = useState([]);
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -13,7 +13,6 @@ const MiniMatch = () => {
       const { data: fixtures } = await getPremierLeagueFixtures(day);
       setFixtures(fixtures);
       setLoading(false)
-      setToday(day)
     };
 
     getFixtures();
