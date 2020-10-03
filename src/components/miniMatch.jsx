@@ -13,6 +13,7 @@ const MiniMatch = () => {
       const { data: fixtures } = await getPremierLeagueFixtures(day);
       setFixtures(fixtures);
       setLoading(false)
+      setToday(day)
     };
 
     getFixtures();
