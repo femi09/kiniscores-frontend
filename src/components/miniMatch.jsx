@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { formatCurrentDate, truncateTeamName, formatMatchTime } from "../utils";
+import { formatCurrentDate, truncateTeamName, formatMatchTime, formatDay } from "../utils";
 import { getPremierLeagueFixtures } from "../services/fixturesService";
 
 const MiniMatch = () => {
-  const today = new Date();
+  const [today, setToday] = useState(new Date())
   const [fixtures, setFixtures] = useState([]);
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     const getFixtures = async () => {
-      const { data: fixtures } = await getPremierLeagueFixtures();
+      const day = formatDay(today);
+      const { data: fixtures } = await getPremierLeagueFixtures(day);
       setFixtures(fixtures);
       setLoading(false)
     };
 
     getFixtures();
-  });
+  }, [today]);
 
   return (
     <div>
