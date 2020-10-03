@@ -12,7 +12,9 @@ import Home from "./pages/home";
 import AdminPanel from "./pages/admin";
 import NextFixtures from "./pages/nextFixtures";
 import NewsBody from "./pages/newsBody";
+import MatchDetails from "./pages/matchDetails";
 import "./App.css";
+
 
 
 
@@ -22,6 +24,7 @@ function App() {
       <NavBar />
       <NavItems />
       <Switch>
+      <Route path="/match-details" component={MatchDetails} />
         <Route path="/admin" component={AdminPanel} />
         <Route path="/fixtures/:fixtureStatus" component={NextFixtures} />
         <Route path="/fixtures" component={Fixtures} />
