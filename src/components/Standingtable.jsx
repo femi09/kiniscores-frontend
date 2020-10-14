@@ -42,7 +42,7 @@ const StandingTable = ({ tables }) => {
               <td className="px-4 py-2">{table.all.goalsAgainst}</td>
               <td className="px-4 py-2">{table.goalsDiff}</td>
               <td className="px-4 py-2">{table.points}</td>
-              <td className={`px-4 py-2 ${table.forme ==="W" } ? "text-green-500" ? ${table.forme === "L"}: "text-red-500"`}>{table.forme}</td>
+              <td className={`px-4 py-2`}>{table.forme}</td>
             </tr>
           ))}
         </tbody>
