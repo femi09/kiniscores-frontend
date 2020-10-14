@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { formatCurrentDate, truncateTeamName, formatMatchTime, formatDay } from "../utils";
+import { formatCurrentDate, formatMatchTime, formatDay } from "../utils/formatTime";
+import {truncateTeamName } from "../utils/truncate"
 import { getPremierLeagueFixtures } from "../services/fixturesService";
 
 const MiniMatch = () => {

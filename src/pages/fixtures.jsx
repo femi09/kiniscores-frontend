@@ -3,7 +3,7 @@ import Fixture from "../components/fixture";
 import SkeletonFixtures from "../components/Skeletons/Fixtures";
 import { getPremierLeagueFixtures } from "../services/fixturesService";
 import NoFixtures from "../components/noFixtures";
-import { formatDay } from "../utils";
+import { formatDay } from "../utils/formatTime";
 import moment from "moment";
 
 const Fixtures = () => {

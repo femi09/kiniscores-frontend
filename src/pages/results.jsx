@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getPremierLeagueMatches } from "../services/matchesService";
-import { formatDate, formatMatchTime } from "../utils";
+import { formatDate, formatMatchTime } from "../utils/formatTime";
 import Result from "../components/result";
 import MatchDay from "../components/matchDay";
 import _ from "lodash";

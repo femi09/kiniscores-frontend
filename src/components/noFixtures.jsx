@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getNextPremierLeagueFixtures } from "../services/fixturesService";
-import { formatFixturesDate } from "../utils";
+import { formatFixturesDate } from "../utils/formatTime";
 
 const NoFixtures = () => {
   const [nextFixture, setNextFixture] = useState([]);
