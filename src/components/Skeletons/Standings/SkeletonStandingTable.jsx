@@ -8,7 +8,7 @@ const SkeletonStandingTable = () => {
         <h1 className="text-blue-800"><Skeleton height={30} width={`60%`} /></h1>
       </div>
       <table className="table-auto container mx-auto w-2/3 bg-gray-100">
-        <thead className="bg-blue-900 text-gray-200 text-sm">
+        <thead className="bg-gray-500 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2"><Skeleton height={20} width={40} /></th>
             <th className="px-2 w-1/2 text-left py-2"><Skeleton height={20} width={70} /></th>

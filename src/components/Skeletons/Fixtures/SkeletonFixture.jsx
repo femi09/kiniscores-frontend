@@ -5,7 +5,7 @@ const SkeletonFixture = () => {
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mx-auto mt-8 p-6">
-        <h1 className="text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
+        <h1 className="text-gray-800 text-left text-xl p-2 font-bold bg-gray-400">
           <Skeleton height={30} width={`80%`} />
         </h1>
         {Array(4).fill().map((item, index) => (

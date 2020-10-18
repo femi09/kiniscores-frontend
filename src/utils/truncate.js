@@ -5,7 +5,9 @@ export const truncateTeamName = (str) => {
       return "Man City";
     } else if (str === "Crystal Palace") {
       return "C.Palace";
-    } 
+    }  else if(str === "Sheffield Utd") {
+      return "Sheffield"
+    }
      else {
       return str;
     }

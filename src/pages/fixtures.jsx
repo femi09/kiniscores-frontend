@@ -22,9 +22,26 @@ const Fixtures = () => {
     getFixtures();
   }, [today]);
 
-  const handleNextDay = () => {
+  const handleNextDay = async () => {
+    setLoading(true)
     let tommorrow = moment(today).add(1, "days").format();
+    const day = formatDay(tommorrow);
+      const { data: fixtures } = await getPremierLeagueFixtures(day);
+      setFixtures(fixtures);
     setToday(new Date(tommorrow));
+    setLoading(false)
+  };
+
+  const handlePrevDay = async () => {
+    setLoading(true)
+    
+    let yesterday = moment(today).add(-1, "days").format();
+    
+    const day = formatDay(yesterday);
+    const { data: fixtures } = await getPremierLeagueFixtures(day);
+    setFixtures(fixtures);
+    setToday(new Date(yesterday));
+    setLoading(false)
   };
   return (
     <div className="w-2/3 mx-auto">
@@ -35,6 +52,7 @@ const Fixtures = () => {
           fixtures={fixtures}
           today={today}
           handleNextDay={handleNextDay}
+          handlePrevDay={handlePrevDay}
         />
       )}
       {!loading && fixtures.length === 0 && <NoFixtures />}

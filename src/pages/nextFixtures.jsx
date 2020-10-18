@@ -21,7 +21,6 @@ const NextFixtures = () => {
       }, {});
       nextFixtures = _.toArray(nextFixtures);
       setNextFixtures(nextFixtures);
-      console.log(nextFixtures);
       setLoading(false);
     };
     getNextFixtures();
@@ -39,15 +38,14 @@ const NextFixtures = () => {
                 {formatFixturesDate(nextFixtures[0][0].event_date)}
               </h1>
               {nextFixtures[0].map((fixture) => (
-                <Link to={`/fixture/${fixture.fixture_id}/stats`}>
+                <Link key={fixture.fixture_id} to={`/fixture/${fixture.fixture_id}/head-to-head`}>
                   <div
-                    key={fixture.fixture_id}
                     className="flex items-center my-4"
                   >
                     <div className="w-2/3 bg-gray-400 p-4">
                       <div className="flex items-center text-lg font-bold">
-                        <div className="text-center w-1/3">
-                          <p className="">{fixture.homeTeam.team_name}</p>
+                        <div className="w-1/3 text-left">
+                          <p className="ml-1">{fixture.homeTeam.team_name}</p>
                         </div>
                         <div className="w-1/3 flex items-center justify-center mx-2">
                           <img
@@ -89,15 +87,15 @@ const NextFixtures = () => {
                 {formatFixturesDate(nextFixtures[1][0].event_date)}
               </h1>
               {nextFixtures[1].map((fixture) => (
-                <Link to={`/fixture/${fixture.fixture_id}/stats`}>
+                <Link key={fixture.fixture_id} to={`/fixture/${fixture.fixture_id}/head-to-head`}>
                   <div
-                    key={fixture.fixture_id}
+                    
                     className="flex items-center my-4"
                   >
                     <div className="w-2/3 bg-gray-400 p-4">
                       <div className="flex items-center text-lg font-bold">
-                        <div className="text-center w-1/3">
-                          <p className="">{fixture.homeTeam.team_name}</p>
+                        <div className="text-left w-1/3">
+                          <p className="ml-1">{fixture.homeTeam.team_name}</p>
                         </div>
                         <div className="w-1/3 flex items-center justify-center mx-2">
                           <img
@@ -139,15 +137,15 @@ const NextFixtures = () => {
                 {formatFixturesDate(nextFixtures[2][0].event_date)}
               </h1>
               {nextFixtures[2].map((fixture) => (
-                <Link to={`/fixture/${fixture.fixture_id}/stats`}>
+                <Link  key={fixture.fixture_id} to={`/fixture/${fixture.fixture_id}/head-to-head`}>
                   <div
-                    key={fixture.fixture_id}
+                   
                     className="flex items-center my-4"
                   >
                     <div className="w-2/3 bg-gray-400 p-4">
                       <div className="flex items-center text-lg font-bold">
-                        <div className="text-center w-1/3">
-                          <p className="">{fixture.homeTeam.team_name}</p>
+                        <div className="text-left w-1/3">
+                          <p className="ml-1">{fixture.homeTeam.team_name}</p>
                         </div>
                         <div className="w-1/3 flex items-center justify-center mx-2">
                           <img
