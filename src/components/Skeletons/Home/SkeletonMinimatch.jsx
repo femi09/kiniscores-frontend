@@ -9,7 +9,7 @@ const SkeletonMiniMatch = () => {
           <Skeleton height={20}/>
         </h1>
       </div>
-      <p className="bg-white text-xs text-center py-1 font-bold text-white">
+      <p className="bg-gray-500 text-xs text-center py-1 font-bold text-white">
         <Skeleton height={20} width={`80%`}/>
       </p>
       <div className="py-8 border-b">

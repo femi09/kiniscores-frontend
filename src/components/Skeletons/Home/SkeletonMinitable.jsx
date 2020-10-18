@@ -10,7 +10,7 @@ const SkeletonMiniTable = () => {
         </h1>
       </div>
       <table className="table-auto container mx-auto">
-        <thead className="bg-white text-gray-200 text-xs">
+        <thead className="bg-gray-500 text-gray-200 text-xs">
           <tr className="">
             <th className="px-2 py-1">
               {" "}

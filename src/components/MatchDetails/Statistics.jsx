@@ -1,122 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import _ from "lodash";
 
-const Stats = () => {
+const Stats = ({ fixture }) => {
+  const [stats, setStats] = useState([]);
+  const [statsName, setStatsName] = useState([]);
+
+  useEffect(() => {
+    if (fixture.status === "Not Started") {
+      setStats([]);
+      setStatsName([]);
+    } else {
+      let matchStats = fixture.statistics;
+      matchStats = _.toArray(matchStats);
+
+      let statsName = fixture.statistics;
+      statsName = Object.keys(statsName);
+
+      setStats(matchStats);
+      setStatsName(statsName);
+    }
+  }, [fixture]);
+
   return (
     <div>
-      <div className="py-4 bg-gray-100">
-        <div className="flex justify-around border-t-2 border-b-2 text-blue-900 text font-bold py-2">
-          <div className="flex justify-start items-center">
-            <p className="mr-1">Liverpool</p>
-            <img src="/assets/64.png" className="w-6 h-6" alt="" />
+      {stats.length === 0 ? (
+        <div className="w-2/3 mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
+          <h1 className="text-blue-900 p-4">
+            There are no match statistics yet for this fixture
+          </h1>
+        </div>
+      ) : (
+        <div className="py-4 bg-gray-100">
+          <div className="flex justify-around items-center border-t-2 border-b-2 text-blue-900 text font-bold py-2">
+            <div className="w-2/5 flex justify-center items-center">
+              <p className="mr-3">{fixture.homeTeam.team_name}</p>
+              <img src={fixture.homeTeam.logo} className="w-8 h-8" alt="" />
+            </div>
+            <div className="w-1/5 text-center">
+              <p>Match Stats</p>
+            </div>
+            <div className=" w-2/5 flex justify-center items-center">
+              <img src={fixture.awayTeam.logo} className="w-8 h-8" alt="" />
+              <p className="ml-3">{fixture.awayTeam.team_name}</p>
+            </div>
           </div>
-          <div className="mr-2">
-            <p>Match Stats</p>
-          </div>
-          <div className="flex justify-between items-center">
-            <img src="/assets/57.png" className="w-6 h-6" alt="" />
-            <p className="ml-1">Arsenal</p>
+          <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
+            <div className="w-1/3 text-center">
+              {stats.map((stat, index) => (
+                <p key={index} className="py-2">
+                  {stat.home === null ? 0 : stat.home}
+                </p>
+              ))}
+            </div>
+            <div className="w-1/3 text-center ml-2">
+              {statsName.map((stat, index) => (
+                <p className="py-2" key={index}>
+                  {stat}
+                </p>
+              ))}
+            </div>
+            <div className="w-1/3 text-center">
+              {stats.map((stat, index) => (
+                <p key={index} className="py-2">
+                  {stat.away === null ? 0 : stat.away}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">5</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Shots</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">3</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">60%</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Possession</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">40%</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">3</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Shots on target</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">2</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">84%</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Pass accuracy</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">72%</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">14</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Fouls</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">11</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">2</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Yellow cards</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">1</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">1</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Red cards</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">0</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">4</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Offsides</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">4</p>
-          </div>
-        </div>
-        <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
-          <div className="w-1/3 text-center">
-            <p className="">10</p>
-          </div>
-          <div className="w-1/3 text-center ml-2">
-            <p>Corners</p>
-          </div>
-          <div className="w-1/3 text-center">
-            <p className="">8</p>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

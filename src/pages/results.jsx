@@ -14,6 +14,7 @@ const Matches = () => {
   useEffect(() => {
     const getMatches = async () => {
       const { data: matches } = await getPremierLeagueMatches();
+
       let latestMatches = matches.filter(
         (match) => match.matchday === match.season.currentMatchday
       );
@@ -23,6 +24,7 @@ const Matches = () => {
       setMatches(sortedMatches);
       setCurrentMatchDay(latestMatches[0].matchday);
       setLoading(false);
+      console.log(matches)
     };
     getMatches();
   }, []);

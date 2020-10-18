@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { formatCurrentDate, formatMatchTime, formatDay } from "../utils/formatTime";
-import {truncateTeamName } from "../utils/truncate"
+import {
+  formatCurrentDate,
+  formatMatchTime,
+  formatDay,
+} from "../utils/formatTime";
+import { truncateTeamName } from "../utils/truncate";
 import { getPremierLeagueFixtures } from "../services/fixturesService";
 
 const MiniMatch = () => {
-  const today = new Date()
+  const today = new Date();
   const [fixtures, setFixtures] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getFixtures = async () => {
       const day = formatDay(today);
       const { data: fixtures } = await getPremierLeagueFixtures(day);
       setFixtures(fixtures);
-      setLoading(false)
+      setLoading(false);
     };
 
     getFixtures();
@@ -34,52 +38,54 @@ const MiniMatch = () => {
           </h1>
         )}
         {fixtures.map((fixture, index) => (
-          <div
-            key={index}
-            className="w-full flex items-center text-xs text-blue-800 font-bold mb-6"
-          >
-            <div>
-              <p className="text-xs font-normal">
-                {fixture.status !== "Not Started" && fixture.statusShort}
-              </p>
-            </div>
-            <div className="text-center w-1/2">
-              <p className="">{truncateTeamName(fixture.homeTeam.team_name)}</p>
-            </div>
-
-            <div className="w-1/8 flex items-center justify-center mx-1">
-              <img className="h-5 w-5" src={fixture.homeTeam.logo} alt="" />
-              {fixture.status === "Not Started" ? (
-                <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
-                  {formatMatchTime(fixture.event_date)}
+          <Link key={index} to={`/fixture/${fixture.fixture_id}/${
+            fixture.status === "Not Started" ? `head-to-head` : `events`
+          }`}>
+            <div className="w-full flex items-center text-xs text-blue-800 font-bold mb-6">
+              <div></div>
+              <div className="flex text-left w-1/3">
+                <p className="text-xs font-normal text-yellow-600">
+                  {fixture.status !== "Not Started" && fixture.statusShort}
                 </p>
-              ) : fixture.status === "Match Finished" ? (
-                <div className="text-xs text-white mx-1 px-1 py-1">
-                  <span className="px-2 bg-blue-800 border-r border-r-white">
-                    {fixture.goalsHomeTeam}
-                  </span>
-                  <span className="px-2 bg-blue-800">
-                    {fixture.goalsAwayTeam}
-                  </span>
-                </div>
-              ) : (
-                <div className="text-sm text-white mx-1 py-1">
-                  <span className="px-2 py-1 bg-pink-500 border-r border-r-white">
-                    {fixture.goalsHomeTeam}
-                  </span>
-                  <span className="px-2 py-1 bg-pink-500 border-l border-l-white">
-                    {fixture.goalsAwayTeam}
-                  </span>
-                </div>
-              )}
+                <p className="ml-1">
+                  {truncateTeamName(fixture.homeTeam.team_name)}
+                </p>
+              </div>
 
-              <img className="h-5 w-5" src={fixture.awayTeam.logo} alt="" />
-            </div>
+              <div className="w-1/8 flex items-center justify-center mx-1">
+                <img className="h-5 w-5" src={fixture.homeTeam.logo} alt="" />
+                {fixture.status === "Not Started" ? (
+                  <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
+                    {formatMatchTime(fixture.event_date)}
+                  </p>
+                ) : fixture.status === "Match Finished" ? (
+                  <div className="text-xs text-white mx-1 px-1 py-1">
+                    <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
+                      {fixture.goalsHomeTeam}
+                    </span>
+                    <span className="px-2 py-1 bg-blue-800">
+                      {fixture.goalsAwayTeam}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="text-sm text-white mx-1 py-1">
+                    <span className="px-2 py-1 bg-pink-500 border-r border-r-white">
+                      {fixture.goalsHomeTeam}
+                    </span>
+                    <span className="px-2 py-1 bg-pink-500">
+                      {fixture.goalsAwayTeam}
+                    </span>
+                  </div>
+                )}
 
-            <div className="w-1/2 text-center">
-              <p>{truncateTeamName(fixture.awayTeam.team_name)}</p>
+                <img className="h-5 w-5" src={fixture.awayTeam.logo} alt="" />
+              </div>
+
+              <div className="w-1/3 text-center">
+                <p>{truncateTeamName(fixture.awayTeam.team_name)}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">

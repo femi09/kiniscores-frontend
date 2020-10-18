@@ -10,7 +10,7 @@ const SkeletonScoreresTable = () => {
         </h1>
       </div>
       <table className="table-auto container mx-auto w-1/2 bg-gray-100">
-        <thead className="bg-blue-900 text-gray-200 text-sm">
+        <thead className="bg-gray-500 text-gray-200 text-sm">
           <tr>
             <th className="px-2 text-left py-2">
               <Skeleton height={20} width={40} />
