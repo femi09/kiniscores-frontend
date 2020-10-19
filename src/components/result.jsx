@@ -5,39 +5,39 @@ const Result = ({ match, matchDate, matchTime }) => {
       <div className="grid grid-cols-3 py-6 bg-gray-100">
         <div className="flex items-center col-span-2 justify-between">
           <div className="flex flex-col justify-start text-xs items-start font-bold text-blue-900 left">
-            <div className="flex justify-between items-center p-3 team-name">
+            <div className="flex justify-between items-center p-2 team-name">
               <img
                 className="w-5 h-5 mr-4"
-                src={`./assets/${match.homeTeam.id}.png`}
+                src={match.homeTeam.logo}
                 alt=""
               />
-              <p>{match.homeTeam.name}</p>
+              <p>{match.homeTeam.team_name}</p>
             </div>
-            <div className="flex justify-between items-center p-3 team-name">
+            <div className="flex justify-between items-center p-2 team-name">
               <img
                 className="w-5 h-5 mr-4"
-                src={`./assets/${match.awayTeam.id}.png`}
+                src={match.awayTeam.logo}
                 alt=""
               />
-              <p>{match.awayTeam.name}</p>
+              <p>{match.awayTeam.team_name}</p>
             </div>
           </div>
 
           <div className="text-xs font-bold text-blue-900 middle border-r-2">
-            <p className="p-3">{match.score.fullTime.homeTeam}</p>
-            <p className="p-3">{match.score.fullTime.awayTeam}</p>
+            <p className="p-3">{match.goalsHomeTeam}</p>
+            <p className="p-3">{match.goalsAwayTeam}</p>
           </div>
         </div>
-        <div className="text-xs text-center font-semibold text-blue-900 right">
-          <p className="p-3">{match.status}</p>
+        <div className="flex flex-col justify-center text-xs text-center font-semibold text-blue-900 right">
+          <p className="py-2 px-3">{match.statusShort}</p>
           <div className="p-3 flex justify-around items-center">
           <img className="w-4 h-4"src="./assets/calendar.png" alt=""/>
-            <p>{matchDate(match.utcDate)}</p>
+            <p >{matchDate(match.event_date)}</p>
           </div>
 
-          <div className="bg-yellow-500 font-bold flex items-center justify-center">
-          <img className="w-4 h-4 mr-2"src="./assets/clock.png" alt=""/>
-            <p className="">{matchTime(match.utcDate)}</p>
+          <div className="text-white mx-4 font-bold flex items-center justify-center">
+          <img className="w-4 h-4 mr-1"src="./assets/clock-24.png" alt=""/>
+            <p className="p-1 bg-blue-900 ">{matchTime(match.event_date)}</p>
           </div>
         </div>
       </div>
