@@ -9,7 +9,7 @@ const SkeletonMatchDay = () => {
         >
           <Skeleton height={20} width={40}/>
         </button>
-        <h1 className="mx-6"><Skeleton height={30} width={300}/></h1>
+        <h1 className="mx-6"><Skeleton height={30} width={100}/></h1>
         <button
           className="text-gray-700 text-sm font-bold px-2 rounded-r focus:outline-none"
         >
