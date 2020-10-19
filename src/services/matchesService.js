@@ -3,11 +3,11 @@ import {kiniscoresApi} from '../config.json'
 
 
 export function getPremierLeagueResults(matchday){
-    return femi.get(`http://localhost:5001/api/results/${matchday}`)
+    return femi.get(`${kiniscoresApi}/results/${matchday}`)
 }
 
 export function getMatchday(){
-    return femi.get("http://localhost:5001/api/results/matchday")
+    return femi.get(`${kiniscoresApi}/results/matchday`)
 }
 
 export function getLaLigaMatches() {}
