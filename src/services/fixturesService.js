@@ -17,3 +17,10 @@ export const getFixtureDetails = (id) => {
 export const getHeadtoHead = (teamAId, teamBId) => {
     return femi.get(`${kiniscoresApi}/fixtures/h2h/${teamAId}/${teamBId}`)
 }
+
+
+// matchDate(moment(today).add(1, "days").format()) === matchDate(match.event_date) ? (
+//     <div className="p-3 flex justify-center items-center">
+//       <img className="w-3 h-3" src="./assets/calendar.png" alt="" />
+//       <p className="mx-1 text-gray-800 px-2">TOMORROW</p>
+//     </div>
