@@ -82,7 +82,6 @@ const Fixture = ({ fixtures, today, handleNextDay, handlePrevDay }) => {
                         </span>
                       </div>
                     )}
-
                     <img
                       className="h-6 w-6"
                       src={fixture.awayTeam.logo}
