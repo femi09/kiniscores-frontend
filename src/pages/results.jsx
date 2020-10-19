@@ -7,7 +7,6 @@ import {
 import { formatDate, formatMatchTime } from "../utils/formatTime";
 import Result from "../components/result";
 import MatchDay from "../components/matchDay";
-import _ from "lodash";
 import SkeletonMatches from "../components/Skeletons/Match";
 import SkeletonMatchDay from "../components/Skeletons/Match/SkeletonMatchDay";
 import moment from "moment";
@@ -27,7 +26,7 @@ const Matches = () => {
     
 
     getMatches();
-  }, []);
+  });
 
   useEffect(() => {
     const getResults = async () => {
