@@ -9,7 +9,7 @@ import Result from "../components/result";
 import MatchDay from "../components/matchDay";
 import SkeletonMatches from "../components/Skeletons/Match";
 import SkeletonMatchDay from "../components/Skeletons/Match/SkeletonMatchDay";
-import moment from "moment";
+
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
@@ -21,12 +21,9 @@ const Matches = () => {
     const getMatches = async () => {
       const { data: matchday } = await getMatchday();
       setCurrentMatchDay(matchday);
-      console.log(currentMatchDay);
     };
-    
-
     getMatches();
-  });
+  }, []);
 
   useEffect(() => {
     const getResults = async () => {
@@ -35,7 +32,6 @@ const Matches = () => {
       );
       setMatches(latestmatches);
       setLoading(false);
-      console.log(moment(latestmatches[7].event_date).fromNow(true));
     };
     getResults();
   }, [currentMatchDay]);
