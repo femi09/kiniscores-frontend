@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { formatFixturesDate, formatMatchTime } from "../../utils/formatTime";
+import moment from "moment"
 
 const TeamsInfo = ({ fixture }) => {
   const [homeScorers, setHomeScorers] = useState([]);
@@ -31,6 +32,8 @@ const TeamsInfo = ({ fixture }) => {
       setAwayScorers(awayScorers);
     }
   }, [fixture]);
+
+  let today = new Date();
   return (
     <div
       className="flex flex-col justify-between"
@@ -45,10 +48,37 @@ const TeamsInfo = ({ fixture }) => {
       {/* upper */}
       <div className="flex bg-blue-900 bg-opacity-75 px-4 py-2 my-3 justify-between text-gray-100 text-xs font-bold">
         <div className="flex justify-between">
-          <div className="flex items-center mr-4">
-            <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
-            <p className="ml-2">{formatFixturesDate(fixture.event_date)}</p>
-          </div>
+          {fixture.statusShort === "1H" ||
+          fixture.statusShort === "2H" ||
+          fixture.statusShort === "HT" ? (
+            <div className="flex items-center mr-4">
+              <img className="w-4 h-4" src="/assets/red-circle-48.png" alt="" />
+              <p className="ml-2">LIVE</p>
+            </div>
+          ) : formatFixturesDate(fixture.event_date) ===
+            formatFixturesDate(today) ? (
+            <div className="flex items-center mr-4">
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
+              <p className="ml-2">TODAY</p>
+            </div>
+          ) : formatFixturesDate(moment(today).add(-1, "days").format()) ===
+            formatFixturesDate(fixture.event_date) ? (
+            <div className="flex items-center mr-4">
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
+              <p className="ml-2">YESTERDAY</p>
+            </div>
+          ) : formatFixturesDate(moment(today).add(1, "days").format()) ===
+            formatFixturesDate(fixture.event_date) ? (
+            <div className="flex items-center mr-4">
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
+              <p className="ml-2">TOMORROW</p>
+            </div>
+          ) : (
+            <div className="flex items-center mr-4">
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
+              <p className="ml-2">{formatFixturesDate(fixture.event_date)}</p>
+            </div>
+          )}
           <div className="flex items-center">
             <img className="w-6 h-6" src="/assets/stadium-48.png" alt="" />
             <p className="ml-1">{fixture.venue}</p>
