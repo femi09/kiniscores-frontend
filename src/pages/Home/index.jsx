@@ -39,7 +39,7 @@ const Home = () => {
         <div className="flex flex-col lg:flex lg:flex-row lg:items-start xl:mx-0 ">
           {latestNews !== 0 && (
             <div className="sm:rounded-lg lg:w-2/3 xl:w-3/4">
-              <div className="mb-2">
+              <div className="mb-4">
               <Hero featuredNews={featuredNews} />
               </div>
                 <div className="px-2 sm:mx-2 sm:px-0 sm:bg-gray-200 sm:grid sm:grid-cols-4 sm:gap-2 lg:grid-cols-3 lg:gap-4 xl:grid-cols-4  xl:mx-0">
