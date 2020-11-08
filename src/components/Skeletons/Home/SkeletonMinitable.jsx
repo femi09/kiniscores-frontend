@@ -3,10 +3,10 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonMiniTable = () => {
   return (
-    <div>
-      <div className=" py-1 text-sm text-center font-bold mx-auto">
+    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
+      <div className="py-1 text-sm text-center font-bold mx-auto">
         <h1 className="text-blue-800">
-          <Skeleton duration={1} height={20} width={290} />
+          <Skeleton duration={1} height={20} width={220} />
         </h1>
       </div>
       <table className="table-auto container mx-auto">
@@ -25,7 +25,7 @@ const SkeletonMiniTable = () => {
             <th className="px-2 py-1">
               <Skeleton height={20} width={30}/>
             </th>
-            <th className="px-2 py-1">
+            <th className=" px-2 py-1">
               <Skeleton height={20} width={30} />
             </th>
           </tr>

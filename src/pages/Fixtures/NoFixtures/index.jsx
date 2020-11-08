@@ -19,7 +19,7 @@ const NoFixtures = () => {
     <div>
       {show && (
         <>
-          <div className="text-3xl font-semibold text-blue-800 p-8 bg-gray-200 shadow-lg text-center mx-auto">
+          <div className="text-sm font-bold sm:text-3xl sm:font-semibold text-blue-800 p-8 bg-gray-200 shadow-lg text-center xl:mx-auto">
             No Premier League fixtures today
             <div className="flex w-1/2 mx-auto justify-center items-center text-sm my-6 font-bold">
               {/* <Link to="/fixtures/next">

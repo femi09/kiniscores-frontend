@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { truncateTeamName } from "../../../utils/truncate";
 import _ from "lodash";
 
 const Lineups = ({ fixture }) => {
   const [lineups, setLineups] = useState([]);
   const [homestartXI, setHomeStartXI] = useState([]);
   const [awaystartXI, setAwayStartXI] = useState([]);
+  const [showHomeTeam, setShowHomeTeam] = useState(true);
+  const [showAwayTeam, setShowAwayTeam] = useState(false);
 
   useEffect(() => {
     if (fixture.status === "Not Started") {
@@ -29,19 +32,59 @@ const Lineups = ({ fixture }) => {
       setLineups(lineup);
     }
   }, [fixture]);
+
+  const handleShowTeam = (team) => {
+    if (team === "homeTeam" && !showHomeTeam) {
+      setShowHomeTeam(!showHomeTeam);
+      setShowAwayTeam(!showAwayTeam);
+    }
+    if (team === "awayTeam" && !showAwayTeam) {
+      setShowAwayTeam(!showAwayTeam);
+      setShowHomeTeam(!showHomeTeam);
+    }
+  };
+
   return (
     <div>
       {lineups.length === 0 ? (
-        <div className="w-2/3 mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
+        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
           <h1 className="text-blue-900 p-4">
             Lineups are not announced until an hour before the match
           </h1>
         </div>
       ) : (
-        <div className="flex justify-around mx-8 mt-8">
+        <div className="sm:flex sm:justify-around mx-6 sm:mx-8 my-6">
+          <div className="flex justify-center border-2 border-blue-900 bg-blue-900 rounded-md font-bold sm:hidden my-4">
+            <div
+              onClick={() => handleShowTeam("homeTeam")}
+              className={`${
+                showHomeTeam
+                  ? "w-1/2 bg-white py-2 text-center"
+                  : "w-1/2 text-white rounded-md text-center py-2"
+              }`}
+            >
+              {truncateTeamName(fixture.homeTeam.team_name)}
+            </div>
+            <div
+              onClick={() => handleShowTeam("awayTeam")}
+              className={`${
+                showAwayTeam
+                  ? "w-1/2 py-2 bg-white text-center"
+                  : "w-1/2 text-white rounded-l-md text-center py-2"
+              }`}
+            >
+              {truncateTeamName(fixture.awayTeam.team_name)}
+            </div>
+          </div>
           {lineups[0] !== undefined && (
-            <div className="w-1/2 mr-6 border-r border-l">
-              <div className="flex font-bold bg-blue-900 text-white p-1">
+            <div
+              className={`${
+                showHomeTeam
+                  ? " my-6 sm:my-0 sm:w-1/2 sm:mr-6 border-r border-l"
+                  : " my-6 hidden sm:block sm:my-0 sm:w-1/2 sm:mr-6 border-r border-l"
+              }`}
+            >
+              <div className="flex font-bold bg-blue-900 text-white p-2">
                 <img src={fixture.homeTeam.logo} className="w-6 h-6" alt="" />
                 <p className="mx-2">{fixture.homeTeam.team_name}</p>
                 <p>{lineups[0].formation}</p>
@@ -68,7 +111,7 @@ const Lineups = ({ fixture }) => {
                     className="flex border-b font-semibold text-sm py-2"
                   >
                     <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="sm:w-1/2">{player.player}</div>
                   </div>
                 ))}
               </div>
@@ -96,7 +139,7 @@ const Lineups = ({ fixture }) => {
                     className="flex border-b font-semibold text-sm py-2"
                   >
                     <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="sm:w-1/2">{player.player}</div>
                   </div>
                 ))}
               </div>
@@ -110,7 +153,7 @@ const Lineups = ({ fixture }) => {
                     className="flex border-b font-semibold text-sm py-2"
                   >
                     <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="sm:w-1/2">{player.player}</div>
                   </div>
                 ))}
               </div>
@@ -126,8 +169,14 @@ const Lineups = ({ fixture }) => {
           )}
 
           {lineups[1] !== undefined && (
-            <div className="w-1/2 border-r border-l">
-              <div className="flex font-bold bg-blue-900 text-white p-1">
+            <div
+              className={`${
+                showAwayTeam
+                  ? "my-6 sm:my-0 sm:w-1/2 border-r border-l"
+                  : "hidden sm:block my-6 sm:my-0 sm:w-1/2 border-r border-l"
+              }`}
+            >
+              <div className="flex font-bold bg-blue-900 text-white p-2">
                 <img src={fixture.awayTeam.logo} className="w-6 h-6" alt="" />
                 <p className="mx-2">{fixture.awayTeam.team_name}</p>
                 <p>{lineups[1].formation}</p>

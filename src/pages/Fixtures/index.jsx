@@ -44,7 +44,7 @@ const Fixtures = () => {
     setLoading(false)
   };
   return (
-    <div className="w-2/3 mx-auto">
+    <div className="mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
       {loading ? (
         <SkeletonFixtures />
       ) : (

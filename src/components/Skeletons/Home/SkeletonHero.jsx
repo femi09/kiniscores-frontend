@@ -3,18 +3,33 @@ import Skeleton from "react-loading-skeleton";
 
 const SKeletonHero = () => {
   return (
-    <div className="flex justify-between">
-      <div className="w-1/2 rounded-l-lg">
+    <div className="mx-2 sm:flex sm:justify-around xl:mx-0">
+      <div className="sm:w-1/2 sm:rounded">
         <Skeleton height={314} width={`100%`} />
       </div>
-      <div className=" w-1/2 flex flex-col items-start text-left justify-center px-6 rounded-r-lg">
-        <div className="w-full text-gray-900 font-bold text-xl mb-2">
-          <Skeleton height={25} width={`90%`} />
+      <div className="px-3 py-2 flex flex-col text-left sm:w-1/2 sm:relative sm:justify-center sm:items-start sm:px-6 sm:rounded-r-lg">
+        <div className="mb-3 text-gray-900 font-bold text-sm sm:text-xl sm:mb-2">
+          <h1 className="hidden sm:block">
+            <Skeleton height={25} width={310} />
+          </h1>
+          <h1 className="block sm:hidden">
+            <Skeleton height={25} width={`90%`} />
+          </h1>
         </div>
 
-        <div className="w-full text-gray-900 text-sm  w-1/2 mb-2">
-          <Skeleton  height={20} width={360} />
-          <Skeleton  height={20} width={360} />
+        <div className="pb-3 text-gray-900 sm:mb-2">
+          <p className="hidden sm:block">
+            <Skeleton height={20} width={280} />
+          </p>
+          <p className="hidden sm:block">
+            <Skeleton height={20} width={280} />
+          </p>
+          <p className="block sm:hidden">
+            <Skeleton height={20} width={`80%`} />
+          </p>
+          <p className="block sm:hidden">
+            <Skeleton height={20} width={`80%`} />
+          </p>
         </div>
       </div>
     </div>

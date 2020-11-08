@@ -17,7 +17,7 @@ const MiniStandings = () => {
     getTable();
   }, []);
   return (
-    <div>
+    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
       <div className="bg-white py-1 text-sm text-center font-bold mx-auto">
         <h1 className="text-blue-800">Premier League Table</h1>
       </div>

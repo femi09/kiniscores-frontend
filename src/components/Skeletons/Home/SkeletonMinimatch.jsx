@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonMiniMatch = () => {
   return (
-    <div>
+    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
       <div className="py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800 ">
           <Skeleton height={20}/>

@@ -17,7 +17,7 @@ const Events = ({ fixture }) => {
   return (
     <div>
       {matchEvents.length === 0 ? (
-        <div className="w-2/3 mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
+        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
           <h1 className="text-blue-900 p-4">
             There are no match events yet for this fixture
           </h1>
@@ -29,9 +29,9 @@ const Events = ({ fixture }) => {
           </div>
           {matchEvents.map((matchEvent, index) =>
             matchEvent.teamName === fixture.homeTeam.team_name ? (
-              <div key={index} className="w-2/3 px-3 py-2 flex">
-                <div className="w-2/3 bg-gray-300 border-r-8 border-blue-900 flex items-center justify-around py-2 px-3">
-                  <div className="text-gray-800 font-bold text-xs">
+              <div key={index} className="px-1 sm:w-2/3 sm:px-3 py-2 flex">
+                <div className="sm:w-2/3 bg-gray-300 border-r-8 border-blue-900 flex items-center justify-between sm:justify-around py-2 px-3">
+                  <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-xs">
                     <div className="mb-1">
                       {matchEvent.player}
                       {matchEvent.type === "Goal" &&
@@ -101,7 +101,7 @@ const Events = ({ fixture }) => {
                   ) : matchEvent.type === "subst" ? (
                     <div className="text-center pl-1">
                       <img
-                        className="w-8 h-8"
+                        className="w-6 h-6 sm:w-8 sm:h-8"
                         src="/assets/player-substitution.png"
                         alt=""
                       />
@@ -109,7 +109,7 @@ const Events = ({ fixture }) => {
                   ) : matchEvent.detail === "Yellow Card" ? (
                     <div className="text-center pl-1">
                       <img
-                        className="w-8 h-8"
+                        className="w-6 h-6 sm:w-8 sm:h-8"
                         src="/assets/soccer-yellow-card-48.png"
                         alt=""
                       />
@@ -117,7 +117,7 @@ const Events = ({ fixture }) => {
                   ) : matchEvent.detail === "Red Card" ? (
                     <div className="text-center pl-1">
                       <img
-                        className="w-8 h-8"
+                        className="w-6 h-6 sm:w-8 sm:h-8"
                         src="/assets/soccer-red-card-48.png"
                         alt=""
                       />
@@ -126,7 +126,7 @@ const Events = ({ fixture }) => {
                     <div className="text-center pl-1"></div>
                   )}
                 </div>
-                <div className="w-1/5 text-center font-bold text-blue-900 py-4 px-2">
+                <div className="sm:w-1/5 text-xs sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
                   {matchEvent.elapsed_plus ? (
                     <p>
                       {matchEvent.elapsed}+{matchEvent.elapsed_plus}'
@@ -138,8 +138,8 @@ const Events = ({ fixture }) => {
               </div>
             ) : (
               <div key={index} className="flex justify-end pl-4">
-                <div className="w-2/3 px-3 py-2 flex justify-end">
-                  <div className="w-1/5 text-center font-bold text-blue-900 py-4 px-2">
+                <div className="px-1 sm:w-2/3 sm:px-3 py-2 flex sm:justify-end">
+                  <div className="sm:w-1/5 text-xs px-1 sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
                     {matchEvent.elapsed_plus ? (
                       <p>
                         {matchEvent.elapsed}+{matchEvent.elapsed_plus}'
@@ -148,7 +148,7 @@ const Events = ({ fixture }) => {
                       <p>{matchEvent.elapsed}'</p>
                     )}
                   </div>
-                  <div className="w-2/3 bg-gray-300 border-l-8 border-blue-900 flex items-center justify-around py-2 px-3">
+                  <div className="px-1 sm:w-2/3 bg-gray-300 border-l-8 border-blue-900 flex items-center justify-around py-2 sm:px-3">
                     {matchEvent.detail === "Normal Goal" ? (
                       <div className="text-center pl-1">
                         <img
@@ -184,7 +184,7 @@ const Events = ({ fixture }) => {
                     ) : matchEvent.type === "subst" ? (
                       <div className="text-center pl-1">
                         <img
-                          className="w-8 h-8"
+                          className="w-6 h-6 sm:w-8 sm:h-8"
                           src="/assets/player-substitution.png"
                           alt=""
                         />
@@ -192,7 +192,7 @@ const Events = ({ fixture }) => {
                     ) : matchEvent.detail === "Yellow Card" ? (
                       <div className="text-center pl-1">
                         <img
-                          className="w-8 h-8"
+                          className="w-6 h-6 sm:w-8 sm:h-8"
                           src="/assets/soccer-yellow-card-48.png"
                           alt=""
                         />
@@ -200,7 +200,7 @@ const Events = ({ fixture }) => {
                     ) : matchEvent.detail === "Red Card" ? (
                       <div className="text-center pl-1">
                         <img
-                          className="w-8 h-8"
+                          className="w-6 h-6 sm:w-8 sm:h-8"
                           src="/assets/soccer-red-card-48.png"
                           alt=""
                         />
@@ -209,7 +209,7 @@ const Events = ({ fixture }) => {
                       <div className="text-center pl-1"></div>
                     )}
 
-                    <div className="text-gray-800 font-bold text-xs">
+                    <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-xs">
                       <div className="mb-1">
                         {matchEvent.player}
                         {matchEvent.type === "Goal" &&
