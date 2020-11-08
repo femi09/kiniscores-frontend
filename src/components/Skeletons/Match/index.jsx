@@ -4,7 +4,7 @@ import SkeletonMatch from "./SkeletonMatch";
 
 const SkeletonMatches = () => {
   return (
-      <div className="grid grid-cols-2 gap-2">
+      <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
         {Array(10)
           .fill()
           .map((item, index) => (

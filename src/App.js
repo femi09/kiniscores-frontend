@@ -13,11 +13,11 @@ import NewsBody from "./pages/NewsDetails";
 import MatchDetails from "./pages/MatchDetails";
 import "./App.css";
 
+
 function App() {
   return (
     <div className="App">
       <NavBar />
-     
       <Switch>
         <Route path="/fixture/:id" component={MatchDetails} />
         <Route path="/admin" component={AdminPanel} />

@@ -10,12 +10,10 @@ import MatchDay from "./MatchDay";
 import SkeletonMatches from "../../components/Skeletons/Match";
 import SkeletonMatchDay from "../../components/Skeletons/Match/SkeletonMatchDay";
 
-
 const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [currentMatchDay, setCurrentMatchDay] = useState("");
   const [loading, setLoading] = useState(true);
-  
 
   useEffect(() => {
     const getMatches = async () => {
@@ -58,7 +56,7 @@ const Matches = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white w-2/3 shadow-lg">
+    <div className="container mx-auto bg-white xl:w-2/3 shadow-lg">
       {!loading && currentMatchDay === "" && (
         <h1 className="text-3xl font-semibold text-blue-800  text-center mx-auto mt-8">
           No matches for the current season
@@ -80,7 +78,7 @@ const Matches = () => {
       {loading ? (
         <SkeletonMatches />
       ) : (
-        <div className="grid grid-cols-2 gap-2">
+        <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
           {matches.map((match) => (
             <Link
               to={`/fixture/${match.fixture_id}/${

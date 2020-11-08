@@ -24,7 +24,7 @@ const MiniMatch = () => {
   }, [today]);
 
   return (
-    <div>
+    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
       <div className="bg-white py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
@@ -38,21 +38,20 @@ const MiniMatch = () => {
           </h1>
         )}
         {fixtures.map((fixture, index) => (
-          <Link key={index} to={`/fixture/${fixture.fixture_id}/${
-            fixture.status === "Not Started" ? `head-to-head` : `events`
-          }`}>
-            <div className="w-full flex items-center text-xs text-blue-800 font-bold mb-6">
-              <div></div>
-              <div className="flex text-left w-1/3">
-                <p className="text-xs font-normal text-yellow-600">
-                  {fixture.status !== "Not Started" && fixture.statusShort}
-                </p>
-                <p className="ml-1">
+          <Link
+            key={index}
+            to={`/fixture/${fixture.fixture_id}/${
+              fixture.status === "Not Started" ? `head-to-head` : `events`
+            }`}
+          >
+            <div className="bg-gray-400 flex items-center text-xs text-blue-800 font-bold p-2 mb-2">
+              <div className="text-center w-1/3">
+                <p className="">
                   {truncateTeamName(fixture.homeTeam.team_name)}
                 </p>
               </div>
 
-              <div className="w-1/8 flex items-center justify-center mx-1">
+              <div className="w-1/3 flex items-center justify-center mx-1">
                 <img className="h-5 w-5" src={fixture.homeTeam.logo} alt="" />
                 {fixture.status === "Not Started" ? (
                   <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
@@ -84,6 +83,11 @@ const MiniMatch = () => {
               <div className="w-1/3 text-center">
                 <p>{truncateTeamName(fixture.awayTeam.team_name)}</p>
               </div>
+            </div>
+            <div className="mb-2 mx-1 px-1 text-center">
+              <p className="text-center text-xs font-bold text-blue-800">
+                {fixture.status !== "Not Started" && fixture.statusShort}
+              </p>
             </div>
           </Link>
         ))}
