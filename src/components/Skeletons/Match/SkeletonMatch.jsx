@@ -3,16 +3,16 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonMatch = () => {
   return (
-    <div className="grid grid-cols-3 py-6 bg-gray-100">
-      <div className="flex items-center col-span-2 justify-between mx-4">
+    <div className="mb-2 grid grid-cols-3 sm:mb-0">
+      <div className="flex items-center col-span-2 justify-between mx-2 sm:mx-4">
         <div className="flex flex-col justify-start text-xs items-start font-bold text-blue-900 left">
-          <div className="flex justify-between items-center p-2 team-name">
+          <div className="flex justify-between items-center py-2 sm:p-2 team-name">
             <Skeleton circle={true} height={20} width={20} />
             <p className="px-2">
               <Skeleton height={20} width={100}/>
             </p>
           </div>
-          <div className="flex justify-between items-center p-2 team-name">
+          <div className="flex justify-between items-center py-2 sm:p-2 team-name">
             <Skeleton circle={true} height={20} width={20} />
             <p className="px-2">
               <Skeleton height={20} width={100}/>
@@ -20,12 +20,12 @@ const SkeletonMatch = () => {
           </div>
         </div>
 
-        <div className="text-xs font-bold text-blue-900 middle">
-          <p className="py-2 my-1 px-3">
+        <div className="text-xs font-bold text-white middle sm:text-sm">
+          <p className="px-2 py-1 my-2 rounded-lg sm:my-1 sm:py-2 sm:px-3">
             {" "}
             <Skeleton height={25} width={25} />
           </p>
-          <p className="py-2 my-1 px-3">
+          <p className="px-2 py-1 my-2 rounded-lg sm:my-1 sm:py-2 sm:px-3">
             {" "}
             <Skeleton height={25} width={25} />
           </p>
@@ -36,11 +36,11 @@ const SkeletonMatch = () => {
           {" "}
           <Skeleton height={20} width={20} />
         </p>
-        <div className="p-3 flex justify-around items-center">
+        <div className="p-3 flex-col justify-center items-center sm:justify-around flex lg:flex-row">
           <Skeleton circle={true} height={20} width={20} />
           <p className="px-2">
             {" "}
-            <Skeleton height={20} width={100} />
+            <Skeleton height={20} width={80} />
           </p>
         </div>
 
