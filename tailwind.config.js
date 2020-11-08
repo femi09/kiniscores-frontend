@@ -4,7 +4,7 @@ module.exports = {
   },
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
-    fontSize: ["responsive", "hover"],
-    textColor: ['responsive', 'hover', 'focus', 'visited']
+    fontSize: ["responsive", "hover", "active"],
+    textColor: ["responsive", "hover", "focus", "visited", "active"],
   },
 };

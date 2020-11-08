@@ -3,11 +3,11 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonMiniScorers = () => {
   return (
-    <div>
+    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
       <div>
         <div className="py-1 text-sm text-center font-bold mx-auto">
           <h1 className="text-blue-800">
-            <Skeleton duration={1} height={20} width={290} />
+            <Skeleton duration={1} height={20} width={220} />
           </h1>
         </div>
         <table className="table-auto container mx-auto">

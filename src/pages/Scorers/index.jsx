@@ -18,7 +18,7 @@ const Scorers = () => {
   return (
     <div>
       {!isLoading && scorers.length === 0 && (
-        <h1 className="text-3xl font-semibold text-blue-800  text-center mx-auto mt-8">
+        <h1 className="text-sm font-semibold text-blue-800  text-center mx-auto mt-8 sm:text-3xl ">
           No scorers for the current season
         </h1>
       )}

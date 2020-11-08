@@ -6,22 +6,22 @@ import { kiniscoresApi } from "../../../config.json";
 const Hero = ({ featuredNews }) => {
   const imageUrl = `${kiniscoresApi}/news/newsImage/${featuredNews._id}`;
   return (
-    <div className="flex justify-around">
-      <div className="w-1/2 rounded-">
+    <div className="mx-2 sm:flex sm:justify-around xl:mx-0">
+      <div className="sm:w-1/2 sm:rounded">
         <Link to={`/news/${featuredNews._id}`}>
-          <img className="rounded-l-lg" src={imageUrl} alt="" />
+          <img className="sm:rounded-l-lg" src={imageUrl} alt="" />
         </Link>
       </div>
-      <div className="relative w-1/2 flex flex-col text-left justify-center items-start px-6 bg-yellow-500 rounded-r-lg">
-        <div className="w-full text-gray-900 font-bold text-xl mb-2">
+      <div className="px-3 py-2 bg-yellow-500 flex flex-col text-left sm:w-1/2 sm:relative sm:justify-center sm:items-start sm:px-6 sm:rounded-r-lg">
+        <div className="mb-3 text-gray-900 font-bold text-sm sm:text-xl sm:mb-2">
           <Link to={`/news/${featuredNews._id}`}>{featuredNews.headline}</Link>
         </div>
 
-        <div className="w-full text-gray-900 text-sm w-1/2 mb-2">
+        <div className="pb-3 text-gray-900 text-sm sm:mb-2">
           <Link to={`/news/${featuredNews._id}`}>{featuredNews.subTitle}</Link>
         </div>
 
-        <div className="flex items-center absolute bottom-0 py-2">
+        <div className="flex items-center sm:absolute sm:bottom-0 sm:py-2">
           <svg
             className="h-4 w-4 text-gray-600"
             fill="none"
@@ -35,10 +35,10 @@ const Hero = ({ featuredNews }) => {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="border-r-2 border-yellow-400 px-2 text-xs font-bold text-gray-700">
+          <p className="border-r-2 border-yellow-400 text-gray-700 px-2 text-xs xl:font-bold">
             {moment(featuredNews.createdAt).fromNow(true)}
           </p>
-          <p className="px-2 text-xs font-semibold text-gray-700">
+          <p className="px-2 text-gray-700 text-xs sm:font-semibold">
             {featuredNews.source}
           </p>
         </div>

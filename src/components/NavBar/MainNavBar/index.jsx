@@ -1,14 +1,18 @@
-import React, {Fragment} from "react";
-import NavItems from "./"
-import "./index.css"
+import React, { Fragment } from "react";
+import NavItems from "../NavItems";
+import "./index.css";
 
 const NavBar = () => {
   return (
     <Fragment>
-    <nav className="w-full bg-blue-900 xl:flex flex-column">
-      <h1 className="text-white font-bold text-sm xl:text-xl py-3 xl:mx-8">Kiniscores</h1>
-    </nav>
-    <NavItems/>
+      <nav className="w-full bg-blue-900 flex flex-col">
+        <div>
+          <h1 className="text-white text-lg mx-4 font-bold text-sm py-2 xl:text-xl xl:py-3 xl:mx-8">
+            Kiniscores
+          </h1>
+        </div>
+        <NavItems />
+      </nav>
     </Fragment>
   );
 };

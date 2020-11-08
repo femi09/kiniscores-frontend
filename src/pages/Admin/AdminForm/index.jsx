@@ -54,10 +54,10 @@ const AdminForm = () => {
 
   return (
     <div>
-      <div className="w-1/2 mx-auto bg-blue-900 my-8">
+      <div className="mx-4 sm:w-2/3 lg:w-1/2 sm:mx-auto bg-blue-900 my-8">
         <ToastContainer/>
         <h1 className="text-3xl font-semibold text-white  text-center mx-auto">
-          KiniScores
+          Kiniscores
         </h1>
         <form
           onSubmit={onFormSubmit}
