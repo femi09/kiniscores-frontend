@@ -7,9 +7,8 @@ import {
 } from "../../utils/formatTime";
 import { truncateTeamName } from "../../utils/truncate";
 import { getPremierLeagueFixtures } from "../../services/fixturesService";
-
+const today = new Date();
 const MiniMatch = () => {
-  const today = new Date();
   const [fixtures, setFixtures] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -21,7 +20,7 @@ const MiniMatch = () => {
     };
 
     getFixtures();
-  }, [today]);
+  }, []);
 
   return (
     <div className="sm:w-2/3 sm:mx-auto lg:w-full">
