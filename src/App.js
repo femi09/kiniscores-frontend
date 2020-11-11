@@ -5,7 +5,7 @@ import Results from "./pages/Results";
 import Standings from "./pages/Standings";
 import News from "./pages/TransferNews";
 import Scorers from "./pages/Scorers";
-// import Fixtures from "./pages/Fixtures";
+import Fixtures from "./pages/Fixtures";
 import Home from "./pages/Home";
 import AdminPanel from "./pages/Admin";
 import NextFixtures from "./pages/NextFixtures";
@@ -21,7 +21,7 @@ function App() {
         <Route path="/fixture/:id" component={MatchDetails} />
         <Route path="/admin" component={AdminPanel} />
         <Route path="/fixtures/:fixtureStatus" component={NextFixtures} />
-        {/* <Route path="/fixtures" component={Fixtures} /> */}
+        <Route path="/fixtures" component={Fixtures} />
         <Route path="/scorers" component={Scorers} />
         <Route path="/news/:id" component={NewsBody} />
         <Route path="/news" component={News} />
