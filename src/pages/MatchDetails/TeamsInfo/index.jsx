@@ -52,11 +52,7 @@ const TeamsInfo = ({ fixture }) => {
           fixture.statusShort === "2H" ||
           fixture.statusShort === "HT" ? (
             <div className="flex items-center sm:mr-4">
-              <img
-                className="w-4 h-4"
-                src="/assets/red-circle-48.png"
-                alt=""
-              />
+              <img className="w-4 h-4" src="/assets/red-circle-48.png" alt="" />
               <p className="mx-1 text-xs sm:text-md">LIVE</p>
             </div>
           ) : formatFixturesDate(fixture.event_date) ===
@@ -128,7 +124,9 @@ const TeamsInfo = ({ fixture }) => {
         </div>
 
         {/* ScoreBoard */}
-        {fixture.status === "Not Started" ? (
+        {fixture.statusShort === "NS" ||
+        fixture.statusShort === "TBD" ||
+        fixture.statusShort === "PST" ? (
           <div className="sm:w-1/5 text-white text-lg sm:text-3xl text-center font-bold py-6">
             vs
           </div>

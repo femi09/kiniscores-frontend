@@ -29,7 +29,6 @@ const Matches = () => {
         currentMatchDay
       );
       setMatches(latestmatches);
-      console.log(latestmatches)
       setLoading(false);
     };
     getResults();

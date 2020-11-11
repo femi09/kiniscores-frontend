@@ -7,35 +7,14 @@ import {
 } from "../../../utils/formatTime";
 import { truncateTeamName } from "../../../utils/truncate";
 
-const Fixture = ({ fixtures, today, handleNextDay, handlePrevDay }) => {
+const Fixture = ({ fixtures, handleNextDay, handlePrevDay }) => {
+  const today = new Date()
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-8 p-2 sm:p-6">
-        <div className="flex justify-between text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
-          <button
-            onClick={handlePrevDay}
-            className="flex items-center text-sm mx-2 font-bold focus:outline-none"
-          >
-            <img
-              className="h-4 w-4 mr-1"
-              src="./assets/icons8-left.png"
-              alt=""
-            />
-            <span>prev</span>
-          </button>
+        <div className="text-gray-800 text-center text-xl p-2 font-bold bg-yellow-500">
           <p className="hidden sm:block">{formatCurrentDate(today)}</p>
           <p className="sm:hidden text-sm">{formatDate(today)}</p>
-          <button
-            onClick={handleNextDay}
-            className="flex items-center text-sm mx-2 font-bold focus:outline-none"
-          >
-            next
-            <img
-              className="h-4 w-4 ml-1"
-              src="./assets/icons8-right.png"
-              alt=""
-            />
-          </button>
         </div>
         {fixtures.map((fixture) => (
           <Link
