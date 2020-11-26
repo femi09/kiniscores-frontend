@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { getPremierLeagueScorers } from "../../services/scorerService";
+import { useParams } from "react-router-dom";
+import { competitions } from "../../utils/competitions";
+import { getLeagueScorers } from "../../services/scorerService";
 import ScorersTable from "../../components/Tables/ScorersTable";
 import SkeletonScorers from "../../components/Skeletons/Scorers";
 
 const Scorers = () => {
   const [scorers, setScorers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [league, setLeague] = useState("");
+  const { league_id } = useParams();
 
   useEffect(() => {
     const getScorers = async () => {
-      const { data: scorers } = await getPremierLeagueScorers();
-      setScorers(scorers);
-      setIsLoading(false);
+      try {
+        const { data: scorers } = await getLeagueScorers(league_id);
+        setScorers(scorers);
+        const league = competitions.filter(
+          (competition) => competition.id.toString() === league_id
+        );
+        setLeague(league[0].name);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getScorers();
-  }, []);
+  }, [league_id]);
   return (
     <div>
       {!isLoading && scorers.length === 0 && (
@@ -25,7 +37,11 @@ const Scorers = () => {
       {isLoading ? (
         <SkeletonScorers />
       ) : (
-        scorers.length !== 0 && <ScorersTable scorers={scorers} />
+        scorers.length !== 0 && (
+          <div>
+            <ScorersTable scorers={scorers} league={league}/>
+          </div>
+        )
       )}
     </div>
   );

@@ -1,45 +1,52 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  getPremierLeagueResults,
-  getMatchday,
-} from "../../services/matchesService";
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, useParams } from "react-router-dom";
+import { getLeagueResults, getMatchday } from "../../services/matchesService";
 import { formatDate, formatMatchTime } from "../../utils/formatTime";
+import { competitions } from "../../utils/competitions";
 import Result from "./MatchResult";
 import MatchDay from "./MatchDay";
 import SkeletonMatches from "../../components/Skeletons/Match";
 import SkeletonMatchDay from "../../components/Skeletons/Match/SkeletonMatchDay";
+import Dropdown from "../../components/Dropdowns/ResultsDropdown";
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [currentMatchDay, setCurrentMatchDay] = useState("");
+  const [league, setLeague] = useState();
   const [loading, setLoading] = useState(true);
+  const { league_id } = useParams();
 
   useEffect(() => {
     const getMatches = async () => {
-      const { data: matchday } = await getMatchday();
+      const { data: matchday } = await getMatchday(league_id);
+      const league = competitions.filter(
+        (competition) => competition.id.toString() === league_id
+      );
+      setLeague(league[0].name);
+      console.log(matchday);
       setCurrentMatchDay(matchday);
     };
     getMatches();
-  }, []);
+  }, [league_id]);
 
   useEffect(() => {
     const getResults = async () => {
-      const { data: latestmatches } = await getPremierLeagueResults(
-        currentMatchDay
+      const { data: latestmatches } = await getLeagueResults(
+        currentMatchDay,
+        league_id
       );
       setMatches(latestmatches);
       setLoading(false);
     };
     getResults();
-  }, [currentMatchDay]);
+  }, [currentMatchDay, league_id]);
 
   const getPrevMatchDay = async () => {
     const matchday =
       currentMatchDay === 1 ? currentMatchDay : currentMatchDay - 1;
     setLoading(true);
     setCurrentMatchDay(matchday);
-    const { data: latestmatches } = await getPremierLeagueResults(matchday);
+    const { data: latestmatches } = await getLeagueResults(matchday, league_id);
     setMatches(latestmatches);
     setLoading(false);
   };
@@ -49,51 +56,62 @@ const Matches = () => {
       currentMatchDay === 38 ? currentMatchDay : currentMatchDay + 1;
     setCurrentMatchDay(matchday);
     setLoading(true);
-    const { data: latestmatches } = await getPremierLeagueResults(matchday);
+    const { data: latestmatches } = await getLeagueResults(matchday, league_id);
 
     setMatches(latestmatches);
     setLoading(false);
   };
 
   return (
-    <div className="container mx-auto bg-white xl:w-2/3 shadow-lg">
+    <div className="container mx-auto bg-white  xl:w-2/3 shadow-lg">
       {!loading && currentMatchDay === "" && (
         <h1 className="text-3xl font-semibold text-blue-800  text-center mx-auto mt-8">
           No matches for the current season
         </h1>
       )}
 
-      <div className="bg-white py-4 text-gray-800 text-center font-bold">
+      <div className="bg-white text-gray-800 text-center font-bold">
         {loading && matches.length === 0 ? (
           <SkeletonMatchDay />
         ) : (
-          <MatchDay
-            matchday={currentMatchDay}
-            nextMatch={getNextMatchDay}
-            prevMatch={getPrevMatchDay}
-          />
+          <Fragment>
+            <div className="text-left sm:w-3/4 mx-auto">
+              <Dropdown league={league} />
+            </div>
+            <div className="py-2 my-2">
+            <MatchDay
+              matchday={currentMatchDay}
+              nextMatch={getNextMatchDay}
+              prevMatch={getPrevMatchDay}
+              league={league}
+            />
+            </div>
+            
+          </Fragment>
         )}
       </div>
 
       {loading ? (
         <SkeletonMatches />
       ) : (
-        <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
-          {matches.map((match) => (
-            <Link
-              to={`/fixture/${match.fixture_id}/${
-                match.status === "Not Started" ? `head-to-head` : `events`
-              }`}
-              key={match.fixture_id}
-            >
-              <Result
-                match={match}
-                matchDate={formatDate}
-                matchTime={formatMatchTime}
-              />
-            </Link>
-          ))}
-        </div>
+        <Fragment>
+          <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
+            {matches.map((match) => (
+              <Link
+                to={`/fixture/${match.fixture_id}/${
+                  match.status === "Not Started" ? `head-to-head` : `events`
+                }`}
+                key={match.fixture_id}
+              >
+                <Result
+                  match={match}
+                  matchDate={formatDate}
+                  matchTime={formatMatchTime}
+                />
+              </Link>
+            ))}
+          </div>
+        </Fragment>
       )}
     </div>
   );

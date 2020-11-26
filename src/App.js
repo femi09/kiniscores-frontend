@@ -11,7 +11,9 @@ import AdminPanel from "./pages/Admin";
 import NextFixtures from "./pages/NextFixtures";
 import NewsBody from "./pages/NewsDetails";
 import MatchDetails from "./pages/MatchDetails";
+import CupStandings from "./pages/Standings/CupStandings";
 import "./App.css";
+
 
 function App() {
   return (
@@ -20,13 +22,14 @@ function App() {
       <Switch>
         <Route path="/fixture/:id" component={MatchDetails} />
         <Route path="/admin" component={AdminPanel} />
-        <Route path="/fixtures/:fixtureStatus" component={NextFixtures} />
         <Route path="/fixtures" component={Fixtures} />
-        <Route path="/scorers" component={Scorers} />
+        <Route path="/fixtures/:fixtureStatus" component={NextFixtures} />
+        <Route path="/scorers/:league/:league_id" component={Scorers} />
+        <Route path="/standings/:league/:league_id" component={Standings} />
+        <Route path="/tables/:league/:league_id" component={CupStandings} />
         <Route path="/news/:id" component={NewsBody} />
+        <Route path="/results/:league/:league_id" component={Results} />
         <Route path="/news" component={News} />
-        <Route path="/standings" component={Standings} />
-        <Route path="/results" component={Results} />
         <Route path="/" component={Home} />
       </Switch>
     </div>

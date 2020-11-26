@@ -1,27 +1,14 @@
 import femi from './httpService'
-import {kiniscoresApi} from '../config.json'
+import { kiniscoresApi } from '../config.json'
 
 
-export function getPremierLeagueResults(matchday){
-    return femi.get(`${kiniscoresApi}/results/${matchday}`)
+export function getLeagueResults(matchday, id){
+    return femi.get(`${kiniscoresApi}/results/${id}/${matchday}`)
+    // return femi.get(`http://localhost:5001/api/results/${id}/${matchday}`)
 }
 
-export function getMatchday(){
-    return femi.get(`${kiniscoresApi}/results/matchday`)
+export function getMatchday(id){
+    return femi.get(`${kiniscoresApi}/results/${id}/matchday`)
+    // return femi.get(`http://localhost:5001/api/results/${id}/matchday`)
 }
 
-export function getLaLigaMatches() {}
-
-export function SeriAMathches() {}
-
-export function BundesligaMatches() {}
-
-export function getLigueOneMatches() {}
-
-export function getChampionsLeagueMatches() {}
-
-export function getEuropaLeagueMatches() {}
-
-export function getFACupMatches() {}
-
-export function getCarlingCupMatches() {}

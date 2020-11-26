@@ -37,7 +37,7 @@ const NextFixtures = () => {
         <SkeletonFixtures />
       ) : (
         <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-8 p-2 sm:p-6">
-          {nextFixtures[0] !== undefined && (
+          {nextFixtures[0] && (
             <div>
               <h1 className="hidden sm:block text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
                 {formatFixturesDate(nextFixtures[0][0].event_date)}
@@ -109,7 +109,7 @@ const NextFixtures = () => {
             </div>
           )}
 
-          {nextFixtures[1] !== undefined && (
+          {nextFixtures[1] && (
             <div>
               <h1 className="hidden sm:block text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
                 {formatFixturesDate(nextFixtures[1][0].event_date)}
@@ -178,7 +178,7 @@ const NextFixtures = () => {
                   </div>
                 </Link>
               ))}
-              {nextFixtures[2] !== undefined && (
+              {nextFixtures[2] && (
                 <div>
                   <h1 className="hidden sm:block text-gray-800 text-left text-xl p-2 font-bold bg-yellow-500">
                     {formatFixturesDate(nextFixtures[2][0].event_date)}

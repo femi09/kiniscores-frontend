@@ -29,7 +29,7 @@ const HeadtoHead = ({ fixture }) => {
   }, [fixture]);
   return (
     <div>
-      {teams[0] !== undefined && teams[1] !== undefined && (
+      {teams[0] && teams[1] && (
         <div className="bg-gray-100 pt-8">
           <div className="text-center font-bold text-2xl text-blue-900">
             <h1>Head to Head</h1>

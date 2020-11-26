@@ -43,7 +43,7 @@ const NewsCard = ({ news, getNewsBody }) => {
         <p className="inline-block border-r-2 px-1 text-gray-600 text-xs sm:px-2  sm:font-bold sm:text-gray-700">
           {moment(news.createdAt).fromNow(true)}
         </p>
-        <p className="inline-block px-1 text-gray-600 text-xs sm:px-2 sm:font-semibold sm:text-gray-700">
+        <p className="inline-block px-1 text-gray-600 text-xs s sm:font-semibold sm:text-gray-700">
           {news.source}
         </p>
       </div>

@@ -1,11 +1,12 @@
 import React from "react";
-import { truncateTeamName } from "../../../utils/truncate";
-import Dropdown from "../../Dropdowns/StandingsDropdown";
+import { truncateString } from "../../../utils/truncate";
 
-const StandingTable = ({ tables, league }) => {
+const CupTable = ({ tables }) => {
   return (
-    <div className="mx-2 sm:mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
-      <Dropdown league={league} />
+    <div className="mx-2 my-6 sm:mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
+      <h1 className="text-sm my-2 p-2 shadow-sm font-bold text-blue-900">
+        {tables[0].group}
+      </h1>
       <table className="hidden sm:block table-auto bg-gray-200">
         <thead className="bg-blue-900 text-gray-200 text-sm">
           <tr className="">
@@ -86,7 +87,7 @@ const StandingTable = ({ tables, league }) => {
               <td className=" flex items-center text-left text-sm py-2">
                 <img className="w-4 h-4" src={table.logo} alt="" />
                 <span className="mx-2 text-xs font-bold">
-                  {truncateTeamName(table.teamName)}
+                  {truncateString(table.teamName, 13)}
                 </span>
               </td>
               <td className="mx-1 text-sm py-2">{table.all.matchsPlayed}</td>
@@ -105,4 +106,4 @@ const StandingTable = ({ tables, league }) => {
   );
 };
 
-export default StandingTable;
+export default CupTable;
