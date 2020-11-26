@@ -30,7 +30,7 @@ const NewsBody = () => {
             <h1 className="text-xl sm:text-2xl text-left text-blue-900 font-bold">
               {news.subTitle}
             </h1>
-            <div className=" text-gray-600 py-4 text-xs font-bold sm:text-sm sm:font-semibold flex items-center xl:w-1/2">
+            <div className=" text-gray-600 py-4 text-xs font-bold sm:text-sm sm:font-semibold flex items-center xl:w-2/3">
               <svg
                 className="h-5 w-5 text-gray-600"
                 fill="none"

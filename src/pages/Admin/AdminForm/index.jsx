@@ -49,6 +49,7 @@ const AdminForm = () => {
       toast.success("Your news has been successfully uploaded!!!")
     } catch (error) {
       toast.error(error.message)
+      console.log(error.message)
     }
   };
 
@@ -77,6 +78,7 @@ const AdminForm = () => {
               placeholder="Headline"
               onChange={handleInputChange}
               value={newsField.headline}
+              required
             />
           </div>
 
@@ -94,6 +96,7 @@ const AdminForm = () => {
               placeholder="Subtitle"
               value={newsField.subTitle}
               onChange={handleInputChange}
+              required
             />
           </div>
 
@@ -110,6 +113,7 @@ const AdminForm = () => {
               type="file"
               placeholder="NewsImage"
               onChange={onFileChange}
+              required
             />
             <img src={imgSrc} alt="" />
           </div>
@@ -129,6 +133,7 @@ const AdminForm = () => {
               placeholder="Body"
               value={newsField.body}
               onChange={handleInputChange}
+              required
             ></textarea>
           </div>
 
@@ -146,6 +151,7 @@ const AdminForm = () => {
               placeholder="Source"
               value={newsField.source}
               onChange={handleInputChange}
+              required
             />
           </div>
           <div className="text-center">

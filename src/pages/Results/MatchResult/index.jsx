@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import {truncateString} from "../../../utils/truncate"
 import "./index.css";
 const Result = ({ match, matchDate, matchTime }) => {
   let today = new Date();
@@ -14,7 +15,7 @@ const Result = ({ match, matchDate, matchTime }) => {
                 src={match.homeTeam.logo}
                 alt=""
               />
-              <p>{match.homeTeam.team_name}</p>
+              <p>{truncateString(match.homeTeam.team_name, 15)}</p>
             </div>
             <div className="flex justify-between items-center py-2 sm:p-2 team-name">
               <img
@@ -22,12 +23,13 @@ const Result = ({ match, matchDate, matchTime }) => {
                 src={match.awayTeam.logo}
                 alt=""
               />
-              <p>{match.awayTeam.team_name}</p>
+              <p>{truncateString(match.awayTeam.team_name, 15)}</p>
             </div>
           </div>
           {match.statusShort === "NS" ||
           match.statusShort === "PST" ||
-          match.statusShort === "TBD" ? (
+          match.statusShort === "TBD" ||
+          match.statusShort === "CANC" ? (
             <div className="text-xs font-bold text-white middle sm:text-sm"></div>
           ) : match.statusShort === "FT" ? (
             <div className="text-xs font-bold text-white middle sm:text-sm ">

@@ -126,7 +126,8 @@ const TeamsInfo = ({ fixture }) => {
         {/* ScoreBoard */}
         {fixture.statusShort === "NS" ||
         fixture.statusShort === "TBD" ||
-        fixture.statusShort === "PST" ? (
+        fixture.statusShort === "PST" ||
+        fixture.statusShort === "CANC" ? (
           <div className="sm:w-1/5 text-white text-lg sm:text-3xl text-center font-bold py-6">
             vs
           </div>

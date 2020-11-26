@@ -18,3 +18,16 @@ export const truncateString = (str, num) => {
   }
   return str.slice(0, num) + "...";
 };
+
+export const shortTeamName = (str, num) => {
+  if (str.length <= num) {
+    return str.toUpperCase();
+  }
+  if (str === "Manchester United") {
+    return "MUN";
+  }
+  if (str === "Manchester City") {
+    return "MCI";
+  }
+  return str.slice(0, num).toUpperCase();
+};
