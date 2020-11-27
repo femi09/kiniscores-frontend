@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 import SkeletonFixtures from "../../../components/Skeletons/Fixtures";
-import { getNextLeagueFixtures } from "../../../services/fixturesService";
+import { getLastLeagueFixtures } from "../../../services/fixturesService";
 import { formatFixturesDate } from "../../../utils/formatTime";
-import NextFixture from "./NextFixture";
+import LastFixture from "./LastFixture";
 
 const NextFixtures = () => {
   const [fixtures, setFixtures] = useState([]);
@@ -14,9 +14,9 @@ const NextFixtures = () => {
   const { league_id } = useParams();
 
   useEffect(() => {
-    const getNextFixtures = async () => {
+    const getLastFixtures = async () => {
       try {
-        const { data } = await getNextLeagueFixtures(league_id);
+        const { data } = await getLastLeagueFixtures(league_id);
         let fixtures = data.reduce((r, a) => {
           r[formatFixturesDate(a.event_date)] = [
             ...(r[formatFixturesDate(a.event_date)] || []),
@@ -36,7 +36,7 @@ const NextFixtures = () => {
         console.log(error);
       }
     };
-    getNextFixtures();
+    getLastFixtures();
   }, [league_id]);
 
   return (
@@ -45,7 +45,7 @@ const NextFixtures = () => {
         <SkeletonFixtures />
       ) : (
         <div>
-          <NextFixture fixtures={fixtures} fixtures_dates={fixtures_dates} league={league} />
+          <LastFixture fixtures={fixtures} fixtures_dates={fixtures_dates} league={league} />
         </div>
       )}
     </div>

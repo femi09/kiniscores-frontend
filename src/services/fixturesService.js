@@ -7,14 +7,18 @@ export const getTodaysFixtures = (day) => {
 };
 
 export const getLeagueFixtures = (day, id) => {
-    return femi.get(`${kiniscoresApi}/fixtures/${id}?day=${day}`);
+  return femi.get(`${kiniscoresApi}/fixtures/${id}?day=${day}`);
   // return femi.get(`http://localhost:5001/api/fixtures/${id}?day=${day}`)
 };
 
-export const getNextPremierLeagueFixtures = (id) => {
+export const getNextLeagueFixtures = (id) => {
   return femi.get(`${kiniscoresApi}/fixtures/${id}/next`);
 };
 
+export const getLastLeagueFixtures = (id) => {
+  return femi.get(`${kiniscoresApi}/fixtures/${id}/last`);
+  // return femi.get(`http://localhost:5001/api/fixtures/${id}/last`)
+};
 export const getFixtureDetails = (id) => {
   return femi.get(`${kiniscoresApi}/fixtures/fixture/${id}`);
 };

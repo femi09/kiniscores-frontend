@@ -4,12 +4,7 @@ import Skeleton from "react-loading-skeleton";
 const SkeletonStandingTable = () => {
   return (
     <div>
-      <div className="py-2 text-center font-bold sm:shadow-sm sm:mx-4 lg:mx-6 xl:w-2/3 xl:mx-auto xl:shadow-lg">
-        <h1 className="text-blue-800">
-          <Skeleton height={30} width={`60%`} />
-        </h1>
-      </div>
-      <table className="hidden sm:block table-auto sm:mx-4 xl:mx-auto xl:w-2/3">
+      <table className="hidden my-4 sm:block table-auto sm:mx-4 xl:mx-auto xl:w-2/3">
         <thead className="bg-gray-400 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2">
@@ -48,7 +43,7 @@ const SkeletonStandingTable = () => {
           </tr>
         </thead>
         <tbody className="text-sm font-bold text-center text-blue-900">
-          {Array(20)
+          {Array(4)
             .fill()
             .map((item, index) => (
               <tr key={index}>
@@ -123,7 +118,7 @@ const SkeletonStandingTable = () => {
           </tr>
         </thead>
         <tbody className="text-sm text-center text-blue-900">
-          {Array(20)
+          {Array(4)
             .fill()
             .map((item, index) => (
               <tr key={index}>

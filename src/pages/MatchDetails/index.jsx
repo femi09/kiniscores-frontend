@@ -25,7 +25,7 @@ const MatchDetails = () => {
 
   return (
     <div>
-      <div className="lg:mx-6 xl:w-2/3 xl:mx-auto">
+      <div className="lg:mx-6 xl:w-3/4 xl:mx-auto">
         {loading ?  <SkeletonMatchDetails/> : (
           <>
             

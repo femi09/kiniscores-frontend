@@ -18,7 +18,7 @@ const SkeletonScoreresTable = () => {
             <th className="px-4 w-1/2 text-left py-2">
               <Skeleton height={20} width={70} />
             </th>
-            <th className="py-2 px-2 w-1/2 text-left">
+            <th className="py-2 px-2 w-1/2 text-center">
               <Skeleton height={20} width={40} />
             </th>
             <th className="px-4 text-center py-2">

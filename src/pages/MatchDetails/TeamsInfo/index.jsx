@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { formatFixturesDate, formatMatchTime } from "../../../utils/formatTime";
-import { truncateTeamName } from "../../../utils/truncate";
+import { truncateString } from "../../../utils/truncate";
 import moment from "moment";
 
 const TeamsInfo = ({ fixture }) => {
@@ -117,9 +117,9 @@ const TeamsInfo = ({ fixture }) => {
             src={fixture.homeTeam.logo}
             alt=""
           />
-          <p className="px-2 hidden sm:block">{fixture.homeTeam.team_name}</p>
+          <p className="px-2 hidden sm:block">{truncateString(fixture.homeTeam.team_name, 20)}</p>
           <p className="mx-1 sm:hidden">
-            {truncateTeamName(fixture.homeTeam.team_name)}
+            {truncateString(fixture.homeTeam.team_name, 12)}
           </p>
         </div>
 
@@ -134,7 +134,7 @@ const TeamsInfo = ({ fixture }) => {
         ) : (
           <div
             className={
-              fixture.status === "Match Finished"
+              fixture.statusShort === "FT" || fixture.statusShort === "AET" || fixture.statusShort === "PEN"
                 ? `sm:w-1/7 flex text-xl sm:text-4xl justify-center py-3 px-2 font-bold text-white bg-red-500`
                 : `sm:w-1/7 text-xl flex sm:text-4xl justify-center py-3 px-2 font-bold text-white bg-green-500`
             }
@@ -147,9 +147,9 @@ const TeamsInfo = ({ fixture }) => {
 
         {/* TeamB */}
         <div className="w-3/5 sm:w-2/5 flex items-center justify-end font-bold text-sm sm:text-xl lg:text-2xl text-white sm:px-4">
-          <p className="px-2 hidden sm:block">{fixture.awayTeam.team_name}</p>
+          <p className="px-2 hidden sm:block">{truncateString(fixture.awayTeam.team_name, 20)}</p>
           <p className="mx-1 sm:hidden">
-            {truncateTeamName(fixture.awayTeam.team_name)}
+            {truncateString(fixture.awayTeam.team_name, 11)}
           </p>
           <img
             className="w-8 h-8 sm:w-16 sm:h-16 my-1"

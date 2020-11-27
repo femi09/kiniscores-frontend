@@ -7,6 +7,7 @@ import {
 } from "../../utils/formatTime";
 import { truncateTeamName, truncateString } from "../../utils/truncate";
 import { fixturesToDisplay } from "../../utils/fixturesToDisplay";
+import { competitions } from "../../utils/competitions";
 import {
   getLeagueFixtures,
   getTodaysFixtures,
@@ -18,6 +19,8 @@ const MiniMatch = () => {
   const [fixtures, setFixtures] = useState([]);
   const [loading, setLoading] = useState(true);
   const [league, setLeague] = useState("");
+  const [leagueSlug, setLeagueSlug] = useState("");
+  const [leagueId, setLeagueId] = useState(null);
 
   useEffect(() => {
     const getFixtures = async () => {
@@ -25,22 +28,28 @@ const MiniMatch = () => {
         const day = formatDay(today);
         const { data } = await getTodaysFixtures(day);
         let fixtures = fixturesToDisplay(data);
-
         fixtures = fixtures.length > 10 ? fixtures.splice(0, 10) : fixtures;
         setFixtures(fixtures);
+        setLeagueId(fixtures[0].league_id);
+        const league = competitions.filter(
+          (competition) => competition.id === fixtures[0].league_id
+        );
+        setLeagueSlug(league[0].slug);
         setLeague(fixtures[0].league.name);
         setLoading(false);
       } catch (error) {
-        console.log(error.toString())
+        console.log(error.toString());
       }
     };
 
     getFixtures();
   }, []);
 
-  const handleCompetition = async (id, league) => {
+  const handleCompetition = async (id, league, slug) => {
     try {
       setLoading(true);
+      setLeagueId(id);
+      setLeagueSlug(slug);
       setLeague(league);
       const day = formatDay(today);
       const { data } = await getLeagueFixtures(day, id);
@@ -66,16 +75,18 @@ const MiniMatch = () => {
         </p>
       ) : (
         <div className="bg-gray-200 py-4 border-b">
-          <div className="">
+          <div>
             <MiniDropdown
               league={league}
               handleCompetition={handleCompetition}
             />
           </div>
           {!loading && fixtures.length === 0 && (
-            <h1 className="text-sm font-semibold text-blue-900 py-6 text-center mx-auto">
-              No {league} fixtures today
-            </h1>
+            <div>
+              <h1 className="text-sm font-semibold text-blue-900 py-6 text-center mx-auto">
+                No {league} fixtures today
+              </h1>
+            </div>
           )}
           {fixtures.map((fixture, index) => (
             <Link
@@ -141,9 +152,23 @@ const MiniMatch = () => {
           ))}
         </div>
       )}
-      <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
-        <Link to="/fixtures">View All {league} Fixtures</Link>
-      </div>
+      {!loading && (
+        <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
+          {fixtures.length === 0 ? (
+            <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
+              {
+                <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
+                  See Next {league} Fixtures
+                </Link>
+              }
+            </div>
+          ) : (
+            <Link to={`/fixtures/${leagueSlug}/${leagueId}`}>
+              View All {league} Fixtures Today
+            </Link>
+          )}
+        </div>
+      )}
     </div>
   );
 };

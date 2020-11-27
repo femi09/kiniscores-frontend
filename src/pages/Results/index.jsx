@@ -23,7 +23,6 @@ const Matches = () => {
         (competition) => competition.id.toString() === league_id
       );
       setLeague(league[0].name);
-      console.log(matchday);
       setCurrentMatchDay(matchday);
     };
     getMatches();
