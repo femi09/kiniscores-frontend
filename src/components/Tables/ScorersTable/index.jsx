@@ -17,6 +17,7 @@ const ScorersTable = ({ scorers, league, handleCompetition }) => {
             <th className="px-4 py-2">Assists</th>
           </tr>
         </thead>
+        
         <tbody className="text-sm font-bold text-blue-900">
           {scorers.map((scorer, index) => (
             <tr key={index} className="border-b-4">

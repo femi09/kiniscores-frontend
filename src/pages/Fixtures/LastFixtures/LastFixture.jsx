@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { truncateString } from "../../../utils/truncate";
 import { formatFixturesDate, formatMatchTime } from "../../../utils/formatTime";
-import NextFixturesDropdown from "../../../components/Dropdowns/NextFixturesDropdown";
+import LastFixturesDropdown from "../../../components/Dropdowns/LastFixturesDropdown";
 
-const NextFixture = ({ fixtures, league, fixtures_dates }) => {
+const LastFixture = ({ fixtures, league, fixtures_dates }) => {
   return (
     <div>
       <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-8 p-2 sm:p-6">
         <div className="text-left my-4">
-          <NextFixturesDropdown league={league} />
+          <LastFixturesDropdown league={league} />
         </div>
         {fixtures_dates.map((date, index) => (
           <div
@@ -21,7 +21,7 @@ const NextFixture = ({ fixtures, league, fixtures_dates }) => {
             </h1>
             {fixtures
               .filter(
-                (fixture) => formatFixturesDate(fixture.event_date) === date 
+                (fixture) => formatFixturesDate(fixture.event_date) === date
               )
               .map((fixture) => (
                 <Link
@@ -51,9 +51,33 @@ const NextFixture = ({ fixtures, league, fixtures_dates }) => {
                             src={fixture.homeTeam.logo}
                             alt=""
                           />
-                          <p className="bg-blue-900 text-sm text-white mx-1 px-1 sm:mx-4 sm:px-2 py-1">
-                            {formatMatchTime(fixture.event_date)}
-                          </p>
+                          {fixture.statusShort === "PST" ||
+                          fixture.statusShort === "TBD" ||
+                          fixture.statusShort === "CANC" ? (
+                            <p className="bg-blue-900 text-sm text-white mx-1 px-1 sm:mx-4 sm:px-2 py-1">
+                              {formatMatchTime(fixture.event_date)}
+                            </p>
+                          ) : fixture.statusShort === "FT" ||
+                            fixture.statusShort === "AET" ||
+                            fixture.statusShort === "PEN" ? (
+                            <div className="text-sm text-white mx-2 py-1">
+                              <span className="px-2 sm:px-3 py-1 bg-blue-800 border-r border-r-white">
+                                {fixture.goalsHomeTeam}
+                              </span>
+                              <span className="px-2 sm:px-3 py-1 bg-blue-800">
+                                {fixture.goalsAwayTeam}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="text-sm text-white mx-1 py-1">
+                              <span className="px-2 sm:px-3 py-1 bg-pink-500 border-r border-r-white">
+                                {fixture.goalsHomeTeam}
+                              </span>
+                              <span className="px-2 py-1 bg-pink-500">
+                                {fixture.goalsAwayTeam}
+                              </span>
+                            </div>
+                          )}
                           <img
                             className="h-4 w-4 sm:h-6 sm:w-6"
                             src={fixture.awayTeam.logo}
@@ -91,4 +115,4 @@ const NextFixture = ({ fixtures, league, fixtures_dates }) => {
   );
 };
 
-export default NextFixture;
+export default LastFixture;

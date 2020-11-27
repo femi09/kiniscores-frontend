@@ -42,26 +42,28 @@ const MiniStandings = () => {
 
   return (
     <div className="sm:w-2/3 sm:mx-auto lg:w-full">
-      {loading ? (
-        <p className="text-sm p-8 font-semibold text-blue-900 text-center mx-auto">
-          Loading...
-        </p>
-      ) : (
-        <div className="">
-          <div className="py-1 text-sm text-center font-bold mx-auto">
-            <h1 className="text-blue-800">Standings</h1>
-          </div>
-          <MiniDropdown league={league} handleCompetition={handleCompetition} />
-          <table className="table-auto my-2 border shadow-xs container mx-auto bg-gray-200">
-            <thead className="bg-blue-900 text-gray-200 text-xs">
-              <tr className="">
-                <th className="px-2 py-1">Pos</th>
-                <th className="px-2 w-full text-left py-2">Club</th>
-                <th className="px-2 py-1">Pl</th>
-                <th className="px-2 py-1">GD</th>
-                <th className="px-2 py-1">Pts</th>
+      <div className="">
+        <div className="py-1 text-sm text-center font-bold mx-auto">
+          <h1 className="text-blue-800">Standings</h1>
+        </div>
+        <MiniDropdown league={league} handleCompetition={handleCompetition} />
+        <table className="table-auto my-2 border shadow-xs container mx-auto bg-gray-200">
+          <thead className="bg-blue-900 text-gray-200 text-xs">
+            <tr className="">
+              <th className="px-2 py-1">Pos</th>
+              <th className="px-2 w-full text-left py-2">Club</th>
+              <th className="px-2 py-1">Pl</th>
+              <th className="px-2 py-1">GD</th>
+              <th className="px-2 py-1">Pts</th>
+            </tr>
+          </thead>
+          {loading ? (
+            <tbody className="text-sm text-center text-blue-900">
+              <tr className="w-1/2 mx-auto px-4 text-center">
+                <td>Loading...</td>
               </tr>
-            </thead>
+            </tbody>
+          ) : (
             <tbody className="text-sm text-center text-blue-900">
               {tables.map((table, index) => (
                 <tr key={index}>
@@ -84,9 +86,10 @@ const MiniStandings = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
-      )}
+          )}
+        </table>
+      </div>
+
       {!loading && (
         <div className="text-right text-xs p-2 font-bold  mb-8 text-blue-900">
           {leagueSlug === "champions_league" ||

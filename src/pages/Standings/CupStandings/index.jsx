@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 import { getLeagueStandings } from "../../../services/standingsService";
 import CupTable from "../../../components/Tables/CupTable";
-import SkeletonStandings from "../../../components/Skeletons/Standings";
+import CupStandingsSkeleton from "../../../components/Skeletons/Standings/CupStandings";
 import Dropdown from "../../../components/Dropdowns/StandingsDropdown";
 
 const CupStandings = () => {
@@ -26,13 +26,12 @@ const CupStandings = () => {
         console.log(error.toString());
       }
     };
-
     getTable();
   }, [league_id]);
   return (
     <div>
       {loading ? (
-        <SkeletonStandings />
+        <CupStandingsSkeleton />
       ) : (
         <Fragment>
           <div className="relative xl:w-2/3 xl:mx-auto">

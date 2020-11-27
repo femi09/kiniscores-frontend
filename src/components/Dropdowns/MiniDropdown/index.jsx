@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
-import { competitions } from "../../utils/competitions";
+import { competitions } from "../../../utils/competitions";
 
-const Dropdown = ({ handleCompetition, league }) => {
+const MiniDropdown = ({ handleCompetition, league }) => {
   const [show, setShow] = useState(false);
-
   return (
     <div className="relative">
-      <div className="flex bg-white justify-between text-sm leading-5 p-2 border font-medium text-gray-700 items-center rounded-md shadow-sm">
-        <div className="w-2/3">{league} Top Scorers</div>
+      <div className="flex bg-white justify-between text-sm leading-5 p-2 font-medium text-gray-700 items-center rounded-md shadow-sm">
+        <div className="w-2/3">{league}</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
           id="options-menu"
@@ -35,7 +33,7 @@ const Dropdown = ({ handleCompetition, league }) => {
       <div
         className={`${
           show
-            ? "z-40 mt-1 font-medium rounded-md shadow-lg"
+            ? "z-40 absolute w-full mt-1 font-medium rounded-md shadow-lg"
             : "hidden z-40  mt-2 rounded-md shadow-lg"
         }`}
       >
@@ -46,23 +44,21 @@ const Dropdown = ({ handleCompetition, league }) => {
           aria-labelledby="options-menu"
         >
           {competitions.map(({ id, name, slug }) => (
-            <Link key={id} to={`/scorers/${slug}/${id}`}>
-              <div
-                onClick={() => {
-                  setShow(!show);
-                  handleCompetition(name);
-                }}
-                
-                className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
+            <div
+              onClick={() => {
+                setShow(!show);
+                handleCompetition(id, name, slug);
+              }}
+              key={id}
+              className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
+            >
+              <span
+                className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                role="menuitem"
               >
-                <span
-                  className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                  role="menuitem"
-                >
-                  {name}
-                </span>
-              </div>
-            </Link>
+                {name}
+              </span>
+            </div>
           ))}
         </div>
       </div>
@@ -70,4 +66,4 @@ const Dropdown = ({ handleCompetition, league }) => {
   );
 };
 
-export default Dropdown;
+export default MiniDropdown;

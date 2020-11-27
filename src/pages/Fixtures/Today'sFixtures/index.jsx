@@ -1,131 +1,84 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  formatCurrentDate,
-  formatMatchTime,
-  formatDate,
-} from "../../../utils/formatTime";
-import { truncateTeamName, truncateString } from "../../../utils/truncate";
+import React, { useState, useEffect } from "react";
+import _ from "lodash";
+import moment from "moment";
+import Fixture from "./Today'sFixture";
+import SkeletonFixtures from "../../../components/Skeletons/Fixtures";
+import { getTodaysFixtures } from "../../../services/fixturesService";
+import NoFixtures from "../NoFixtures";
+import { formatDay } from "../../../utils/formatTime";
 
-const Fixture = ({ fixtures, competitions, handleNextDay, handlePrevDay }) => {
-  const today = new Date();
+const Fixtures = () => {
+  const [fixtures, setFixtures] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [competitions, setCompetitions] = useState("");
+  const [day, setDay] = useState("");
+  const date = new Date();
+  const today = formatDay(date);
+
+  useEffect(() => {
+    const getFixtures = async () => {
+      try {
+        const { data: fixtures } = await getTodaysFixtures(today);
+        const grouped_fixtures = _.groupBy(fixtures, "league.name");
+        const competitions = Object.keys(grouped_fixtures);
+        setCompetitions(competitions);
+        setFixtures(fixtures);
+        setDay(new Date());
+        setLoading(false);
+      } catch (error) {}
+    };
+    getFixtures();
+  }, [today]);
+
+  const handleNext = async () => {
+    try {
+      const nextday = moment.utc(day).add(1, "days").toDate();
+      setDay(nextday);
+      setLoading(true);
+      const tomorrow = formatDay(nextday);
+      const { data: fixtures } = await getTodaysFixtures(tomorrow);
+      const grouped_fixtures = _.groupBy(fixtures, "league.name");
+      const competitions = Object.keys(grouped_fixtures);
+      setCompetitions(competitions);
+      setFixtures(fixtures);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.toString());
+    }
+  };
+
+  const handlePrev = async () => {
+    try {
+      const prevday = moment.utc(day).add(-1, "days").toDate();
+      setDay(prevday);
+      setLoading(true);
+      const yesterday = formatDay(prevday);
+      const { data: fixtures } = await getTodaysFixtures(yesterday);
+      const grouped_fixtures = _.groupBy(fixtures, "league.name");
+      const competitions = Object.keys(grouped_fixtures);
+      setCompetitions(competitions);
+      setFixtures(fixtures);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.toString());
+    }
+  };
+
   return (
-    <div>
-      <div className="text-blue-900 border shadow-sm rounded-lg my-4 text-center text-xl p-2 font-bold">
-        <p className="hidden sm:block">{formatCurrentDate(today)}</p>
-        <p className="sm:hidden text-sm">{formatDate(today)}</p>
-      </div>
-      {competitions.map((competition, index) => (
-        <div
-          key={index}
-          className="text-blue-800 shadow-sm bg-gray-200 text-center "
-        >
-          <h1 className="bg-blue-900 text-white text-lg py-2 font-bold">
-            {competition}
-          </h1>
-          {fixtures
-            .filter((fixture) => fixture.league.name === competition)
-            .map((fixture) => (
-              <Link
-                key={fixture.fixture_id}
-                to={`/fixture/${fixture.fixture_id}/${
-                  fixture.status === "Not Started" ? `head-to-head` : `events`
-                }`}
-              >
-                <div className="flex-col flex items-center my-4 sm:flex-row p-2 sm:px-4 sm:py-2">
-                  <div className="w-full text-sm font-bold sm:hidden">
-                    <p className="text-xs">Venue: </p>
-                    {fixture.venue}
-                  </div>
-                  <div className="w-full xl:w-3/4 bg-gray-400 py-4 px-2 sm:p-4">
-                    <div className="flex items-center text-sm font-bold sm:text-md">
-                      <div className="flex items-center justfy-between text-center w-1/3">
-                        <div className="hidden sm:block text-xs">
-                          <p>
-                            {fixture.status !== "Not Started" &&
-                              fixture.statusShort}
-                          </p>
-                        </div>
-                        <div className="sm:ml-2">
-                          <p className="hidden lg:block">
-                            {truncateString(fixture.homeTeam.team_name, 18)}
-                          </p>
-                          <p className="lg:hidden">
-                            {truncateString(
-                              truncateTeamName(fixture.homeTeam.team_name),
-                              12
-                            )}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="w-1/3 flex items-center justify-center mx-2 sm:mx-2">
-                        <img
-                          className="h-4 w-4 sm:h-6 sm:w-6"
-                          src={fixture.homeTeam.logo}
-                          alt=""
-                        />
-                        {fixture.status === "Not Started" ? (
-                          <p className="bg-blue-900 text-sm text-white mx-1 px-1 sm:mx-4 sm:px-2 py-1">
-                            {formatMatchTime(fixture.event_date)}
-                          </p>
-                        ) : fixture.status === "Match Finished" ? (
-                          <div className="text-sm text-white mx-2 py-1">
-                            <span className="px-2 sm:px-3 py-1 bg-blue-800 border-r border-r-white">
-                              {fixture.goalsHomeTeam}
-                            </span>
-                            <span className="px-2 sm:px-3 py-1 bg-blue-800">
-                              {fixture.goalsAwayTeam}
-                            </span>
-                          </div>
-                        ) : (
-                          <div className="text-sm text-white mx-1 py-1">
-                            <span className="px-2 sm:px-3 py-1 bg-pink-500 border-r border-r-white">
-                              {fixture.goalsHomeTeam}
-                            </span>
-                            <span className="px-2 py-1 bg-pink-500">
-                              {fixture.goalsAwayTeam}
-                            </span>
-                          </div>
-                        )}
-                        <img
-                          className="h-4 w-4 sm:h-6 sm:w-6"
-                          src={fixture.awayTeam.logo}
-                          alt=""
-                        />
-                      </div>
-
-                      <div className="w-1/3 text-center">
-                        <p className="hidden lg:block">
-                          {truncateString(fixture.awayTeam.team_name, 18)}
-                        </p>
-                        <p className="lg:hidden">
-                          {truncateString(
-                            truncateTeamName(fixture.awayTeam.team_name),
-                            12
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full text-sm font-bold sm:hidden">
-                    {fixture.status !== "Not Started" && fixture.statusShort}
-                  </div>
-                  <div className="hidden sm:block w-1/5 bg-gray-400 text-sm text-center p-4 font-bold">
-                    <p className="text-md">Venue: </p>
-                    <p>{fixture.venue}</p>
-                  </div>
-                  <div className="hidden sm:block w-1/5 bg-gray-400 p-2 text-xs font-bold">
-                    <h1 className="font-bold text-sm">Refree: </h1>
-                    <p>{fixture.referee}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-        </div>
-      ))}
+    <div className="mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
+      {loading ? (
+        <SkeletonFixtures />
+      ) : (
+        <Fixture
+          fixtures={fixtures}
+          competitions={competitions}
+          handlePrev={handlePrev}
+          handleNext={handleNext}
+          day={day}
+        />
+      )}
+      {!loading && fixtures.length === 0 && <NoFixtures />}
     </div>
   );
 };
-
-export default Fixture;
+export default Fixtures;

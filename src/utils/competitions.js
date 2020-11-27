@@ -1,18 +1,18 @@
 export const competitions = [
-    {
-        id: 2790,
-        name: "Premier League",
-        type: "league",
-        country: "England",
-        slug: "premier_league"
-      },
-  
+  {
+    id: 2790,
+    name: "Premier League",
+    type: "league",
+    country: "England",
+    slug: "premier_league",
+  },
+
   {
     id: 2771,
     name: "UEFA Champions League",
     type: "league",
     country: "World",
-    slug:"champions_league"
+    slug: "champions_league",
   },
 
   {
@@ -20,7 +20,7 @@ export const competitions = [
     name: "UEFA Europa League",
     type: "league",
     country: "World",
-    slug:"europa_league"
+    slug: "europa_league",
   },
 
   {
@@ -28,7 +28,7 @@ export const competitions = [
     name: "Spanish La Liga",
     type: "league",
     country: "Spain",
-    slug:"spanish_la_liga"
+    slug: "spanish_la_liga",
   },
 
   {
@@ -36,7 +36,7 @@ export const competitions = [
     name: "German Bundesliga",
     type: "league",
     country: "Germany",
-    slug:"german_bundesliga"
+    slug: "german_bundesliga",
   },
 
   {
@@ -44,7 +44,7 @@ export const competitions = [
     name: "Italian Serie A",
     type: "league",
     country: "Italy",
-    slug: "italian_seria_A"
+    slug: "italian_seria_A",
   },
 
   {
@@ -52,7 +52,7 @@ export const competitions = [
     name: "French Ligue 1",
     type: "league",
     country: "France",
-    slug:"french_league_1"
+    slug: "french_league_1",
   },
 
   {
@@ -60,7 +60,7 @@ export const competitions = [
     name: "FA Women Super League",
     type: "league",
     country: "England",
-    slug: "women_super_league"
+    slug: "women_super_league",
   },
 
   {
@@ -68,7 +68,7 @@ export const competitions = [
     name: "FA Cup",
     type: "cup",
     country: "England",
-    slug:"fa_cup"
+    slug: "fa_cup",
   },
 
   {
@@ -76,23 +76,22 @@ export const competitions = [
     name: "Carabao Cup",
     type: "cup",
     country: "England",
-    slug:"carabao_cup"
+    slug: "carabao_cup",
   },
-
 
   {
     id: 2792,
     name: "EFL Trophy",
     type: "cup",
     country: "England",
-    slug:"efl_trophy"
+    slug: "efl_trophy",
   },
   {
     id: 2794,
     name: "Championship",
     type: "league",
     country: "England",
-    slug:"championship"
+    slug: "championship",
   },
 
   {
@@ -100,14 +99,14 @@ export const competitions = [
     name: "DFB Pokal",
     type: "cup",
     country: "Germany",
-    slug:"dfb_pokal"
+    slug: "dfb_pokal",
   },
   {
     id: 2681,
     name: "Women Bundesliga",
     type: "league",
     country: "Germany",
-    slug:"women_bundesliga"
+    slug: "women_bundesliga",
   },
 
   {
@@ -115,26 +114,24 @@ export const competitions = [
     name: "Bundesliga 2",
     type: "league",
     country: "Germany",
-    slug:"bundesliga_2"
+    slug: "bundesliga_2",
   },
 
-  
   // Italy
   {
     id: 2798,
     name: "Serie A Women",
     type: "league",
     country: "Italy",
-    slug:"serie_A_women"
+    slug: "serie_A_women",
   },
- 
 
   {
     id: 2941,
     name: "Coppa Italia",
     type: "cup",
     country: "Italy",
-    slug:"coppa_italia"
+    slug: "coppa_italia",
   },
 
   {
@@ -142,11 +139,10 @@ export const competitions = [
     name: "Serie B",
     type: "league",
     country: "Italy",
-    slug:"serie_B"
+    slug: "serie_B",
   },
 
   // Spain
-  
 
   // {
   //     id: 2833,
@@ -160,15 +156,15 @@ export const competitions = [
     name: "Segunda Division",
     type: "league",
     country: "Spain",
-    slug:"segunda_division"
+    slug: "segunda_division",
   },
 
   {
     id: 3046,
     name: "Copa Del Rey",
-    type: "league",
+    type: "cup",
     country: "Spain",
-    slug:"copa_del_rey"
+    slug: "copa_del_rey",
   },
 
   // France
@@ -178,17 +174,15 @@ export const competitions = [
     name: "Ligue 2",
     type: "league",
     country: "France",
-    slug:"ligue_2"
+    slug: "ligue_2",
   },
-
- 
 
   {
     id: 2668,
     name: "Feminine Division 1",
     type: "league",
     country: "France",
-    slug:"feminine_division_1"
+    slug: "feminine_division_1",
   },
 
   // Nigeria
@@ -197,9 +191,6 @@ export const competitions = [
     name: "NPFL",
     type: "league",
     country: "Nigeria",
-    slug:"npfl"
+    slug: "npfl",
   },
-
 ];
-
-

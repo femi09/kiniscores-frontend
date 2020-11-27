@@ -59,31 +59,31 @@ const Result = ({ match, matchDate, matchTime }) => {
             <div className="my-3 text-sm font-bold flex justify-center items-center">
               <img
                 className="w-4 h-4"
-                src="./assets/red-circle-48.png"
+                src="/assets/red-circle-48.png"
                 alt=""
               />
               <p className="mx-1 bg-yellow-500 text-gray-800 px-2">Live</p>
             </div>
           ) : matchDate(match.event_date) === matchDate(today) ? (
             <div className="p-3 flex flex-col font-bold text-xs justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="./assets/calendar.png" alt="" />
+              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
               <p className=" px-1 sm:mx-1 sm:px-2">TODAY</p>
             </div>
           ) : matchDate(moment(today).add(-1, "days").format()) ===
             matchDate(match.event_date) ? (
             <div className="p-3 flex flex-col justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="./assets/calendar.png" alt="" />
+              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
               <p className="px-1 sm:mx-1 sm:px-2">YESTERDAY</p>
             </div>
           ) : matchDate(moment(today).add(1, "days").format()) ===
             matchDate(match.event_date) ? (
             <div className="p-3 flex flex-col justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="./assets/calendar.png" alt="" />
+              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
               <p className="px-1 sm:mx-1 sm:px-2">TOMORROW</p>
             </div>
           ) : (
             <div className="p-3 flex-col justify-center items-center sm:justify-around flex lg:flex-row">
-              <img className="w-3 h-3" src="./assets/calendar.png" alt="" />
+              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
               <p>{matchDate(match.event_date)}</p>
             </div>
           )}
@@ -92,7 +92,7 @@ const Result = ({ match, matchDate, matchTime }) => {
             <div className="text-white mx-4 font-bold flex items-center justify-center">
               <img
                 className="w-4 h-4 mr-1"
-                src="./assets/clock-24.png"
+                src="/assets/clock-24.png"
                 alt=""
               />
               <p className="p-1 bg-blue-900 rounded-lg">

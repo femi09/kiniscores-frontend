@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { competitions } from "../../utils/competitions";
+import { Link } from "react-router-dom";
+import { competitions } from "../../../utils/competitions";
 
-const MiniDropdown = ({ handleCompetition, league }) => {
+const LastFixturesDropdown = ({ league }) => {
   const [show, setShow] = useState(false);
+
   return (
     <div className="relative">
-      <div className="flex bg-white justify-between text-sm leading-5 p-2 font-medium text-gray-700 items-center rounded-md shadow-sm">
-        <div className="w-2/3">{league}</div>
+      <div className="flex bg-white text-gray-700 justify-between text-sm leading-5 p-2 border font-medium text-white items-center rounded-md shadow-sm">
+        <div className="w-2/3">{league}'s Last Fixtures</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
           id="options-menu"
@@ -33,7 +35,7 @@ const MiniDropdown = ({ handleCompetition, league }) => {
       <div
         className={`${
           show
-            ? "z-40 absolute w-full mt-1 font-medium rounded-md shadow-lg"
+            ? "absolute w-full z-40 mt-1 font-medium rounded-md shadow-lg"
             : "hidden z-40  mt-2 rounded-md shadow-lg"
         }`}
       >
@@ -44,21 +46,19 @@ const MiniDropdown = ({ handleCompetition, league }) => {
           aria-labelledby="options-menu"
         >
           {competitions.map(({ id, name, slug }) => (
-            <div
-              onClick={() => {
-                setShow(!show);
-                handleCompetition(id, name, slug);
-              }}
-              key={id}
-              className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
-            >
-              <span
-                className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                role="menuitem"
+            <Link key={id} to={`/fixtures/last/${slug}/${id}`}>
+              <div
+                onClick={() => setShow(!show)}
+                className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
               >
-                {name}
-              </span>
-            </div>
+                <span
+                  className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                  role="menuitem"
+                >
+                  {name}
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -66,4 +66,4 @@ const MiniDropdown = ({ handleCompetition, league }) => {
   );
 };
 
-export default MiniDropdown;
+export default LastFixturesDropdown;

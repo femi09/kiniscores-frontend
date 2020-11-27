@@ -1,5 +1,5 @@
 import React from "react";
-import { truncateTeamName } from "../../../utils/truncate";
+import { truncateString } from "../../../utils/truncate";
 import Dropdown from "../../Dropdowns/StandingsDropdown";
 
 const StandingTable = ({ tables, league }) => {
@@ -32,7 +32,7 @@ const StandingTable = ({ tables, league }) => {
                   src={table.logo}
                   alt=""
                 />
-                {table.teamName}
+                {truncateString(table.teamName, 18)}
               </td>
               <td className="sm:px-2 lg:px-4 py-2">{table.all.matchsPlayed}</td>
               <td className="sm:px-2 lg:px-4 py-2">{table.all.win}</td>
@@ -86,7 +86,7 @@ const StandingTable = ({ tables, league }) => {
               <td className=" flex items-center text-left text-sm py-2">
                 <img className="w-4 h-4" src={table.logo} alt="" />
                 <span className="mx-2 text-xs font-bold">
-                  {truncateTeamName(table.teamName)}
+                  {truncateString(table.teamName, 15)}
                 </span>
               </td>
               <td className="mx-1 text-sm py-2">{table.all.matchsPlayed}</td>
