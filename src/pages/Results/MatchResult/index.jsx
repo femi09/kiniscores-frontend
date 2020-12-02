@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import {truncateString} from "../../../utils/truncate"
+import { truncateString } from "../../../utils/truncate";
 import "./index.css";
 const Result = ({ match, matchDate, matchTime }) => {
   let today = new Date();
@@ -52,16 +52,16 @@ const Result = ({ match, matchDate, matchTime }) => {
           )}
         </div>
         <div className="flex flex-col justify-center text-xs text-center font-semibold text-blue-800 right border-l-2">
-          <p className="py-1 px-3">{match.statusShort}</p>
+          {match.statusShort === "NS" ? (
+            <p className="py-1 px-3"></p>
+          ) : (
+            <p className="py-1 px-3">{match.statusShort}</p>
+          )}
           {match.statusShort === "1H" ||
           match.statusShort === "2H" ||
           match.statusShort === "HT" ? (
             <div className="my-3 text-sm font-bold flex justify-center items-center">
-              <img
-                className="w-4 h-4"
-                src="/assets/red-circle-48.png"
-                alt=""
-              />
+              <img className="w-4 h-4" src="/assets/red-circle-48.png" alt="" />
               <p className="mx-1 bg-yellow-500 text-gray-800 px-2">Live</p>
             </div>
           ) : matchDate(match.event_date) === matchDate(today) ? (
@@ -90,11 +90,7 @@ const Result = ({ match, matchDate, matchTime }) => {
 
           {match.statusShort === "NS" && (
             <div className="text-white mx-4 font-bold flex items-center justify-center">
-              <img
-                className="w-4 h-4 mr-1"
-                src="/assets/clock-24.png"
-                alt=""
-              />
+              <img className="w-4 h-4 mr-1" src="/assets/clock-24.png" alt="" />
               <p className="p-1 bg-blue-900 rounded-lg">
                 {matchTime(match.event_date)}
               </p>

@@ -95,7 +95,7 @@ const MiniMatch = () => {
                 fixture.status === "Not Started" ? `head-to-head` : `events`
               }`}
             >
-              <div className="bg-gray-400 flex items-center text-xs text-blue-800 font-bold p-1 my-6">
+              <div className="bg-gray-400 flex items-center text-xs text-blue-800 font-bold p-1 mt-4">
                 <div className="text-center w-1/3">
                   <p className="">
                     {truncateString(
@@ -112,7 +112,7 @@ const MiniMatch = () => {
                       {formatMatchTime(fixture.event_date)}
                     </p>
                   ) : fixture.status === "Match Finished" ? (
-                    <div className="text-xs text-white mx-1 px-1 py-1">
+                    <div className="text-xs text-white mx-1 px-1 py-1"> 
                       <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
                         {fixture.goalsHomeTeam}
                       </span>
