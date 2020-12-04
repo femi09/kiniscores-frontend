@@ -92,7 +92,12 @@ const MiniMatch = () => {
             <Link
               key={index}
               to={`/fixture/${fixture.fixture_id}/${
-                fixture.status === "Not Started" ? `head-to-head` : `events`
+                fixture.statusShort === "NS" ||
+                fixture.statusShort === "PST" ||
+                fixture.statusShort === "TBD" ||
+                fixture.statusShort === "CANC"
+                  ? `head-to-head`
+                  : `events`
               }`}
             >
               <div className="bg-gray-400 flex items-center text-xs text-blue-800 font-bold p-1 mt-4">
@@ -107,12 +112,17 @@ const MiniMatch = () => {
 
                 <div className="w-1/3 flex items-center justify-center mx-1">
                   <img className="h-5 w-5" src={fixture.homeTeam.logo} alt="" />
-                  {fixture.status === "Not Started" ? (
+                  {fixture.statusShort === "NS" ||
+                  fixture.statusShort === "PST" ||
+                  fixture.statusShort === "TBD" ||
+                  fixture.statusShort === "CANC" ? (
                     <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
                       {formatMatchTime(fixture.event_date)}
                     </p>
-                  ) : fixture.status === "Match Finished" ? (
-                    <div className="text-xs text-white mx-1 px-1 py-1"> 
+                  ) : fixture.statusShort === "FT" ||
+                    fixture.statusShort === "AET" ||
+                    fixture.statusShort === "PEN" ? (
+                    <div className="text-xs text-white mx-1 px-1 py-1">
                       <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
                         {fixture.goalsHomeTeam}
                       </span>
