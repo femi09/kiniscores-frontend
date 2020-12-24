@@ -13,6 +13,7 @@ import {
   getTodaysFixtures,
 } from "../../services/fixturesService";
 import MiniDropdown from "../Dropdowns/MiniDropdown";
+import SkeletonMiniMatch from "../Skeletons/Home/SkeletonMinis/SkeletonMinimatch";
 
 const today = new Date();
 const MiniMatch = () => {
@@ -27,16 +28,20 @@ const MiniMatch = () => {
       try {
         const day = formatDay(today);
         const { data } = await getTodaysFixtures(day);
-        let fixtures = fixturesToDisplay(data);
-        fixtures = fixtures.length > 10 ? fixtures.splice(0, 10) : fixtures;
-        setFixtures(fixtures);
-        setLeagueId(fixtures[0].league_id);
-        const league = competitions.filter(
-          (competition) => competition.id === fixtures[0].league_id
-        );
-        setLeagueSlug(league[0].slug);
-        setLeague(fixtures[0].league.name);
-        setLoading(false);
+        if (data.length !== 0) {
+          let fixtures = fixturesToDisplay(data);
+          fixtures = fixtures.length > 10 ? fixtures.splice(0, 10) : fixtures;
+          setFixtures(fixtures);
+          setLeagueId(fixtures[0].league_id);
+          const league = competitions.filter(
+            (competition) => competition.id === fixtures[0].league_id
+          );
+          setLeagueSlug(league[0].slug);
+          setLeague(fixtures[0].league.name);
+        } else {
+          setFixtures([]);
+          setLoading(false);
+        }
       } catch (error) {
         console.log(error.toString());
       }
@@ -69,10 +74,8 @@ const MiniMatch = () => {
       <p className="text-xs text-center py-1 font-bold bg-blue-900 text-white">
         {formatCurrentDate(today)}
       </p>
-      {loading ? (
-        <p className="text-sm p-8 font-semibold text-blue-900 text-center mx-auto">
-          Loading...
-        </p>
+      {loading && fixtures.length === 0 ? (
+        <SkeletonMiniMatch />
       ) : (
         <div className="bg-gray-200 py-4 border-b">
           <div>
@@ -84,7 +87,7 @@ const MiniMatch = () => {
           {!loading && fixtures.length === 0 && (
             <div>
               <h1 className="text-sm font-semibold text-blue-900 py-6 text-center mx-auto">
-                No {league} fixtures today
+                No {league ? league : "Premier League"} fixtures today
               </h1>
             </div>
           )}
@@ -166,11 +169,15 @@ const MiniMatch = () => {
         <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
           {fixtures.length === 0 ? (
             <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
-              {
+              {league ? (
                 <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
                   See Next {league} Fixtures
                 </Link>
-              }
+              ) : (
+                <Link to={`/fixtures/next/premier_league/2790`}>
+                  See Next Premier League Fixtures
+                </Link>
+              )}
             </div>
           ) : (
             <Link to={`/fixtures/${leagueSlug}/${leagueId}`}>
