@@ -6,7 +6,7 @@ const MiniDropdown = ({ handleCompetition, league }) => {
   return (
     <div className="relative">
       <div className="flex bg-white justify-between text-sm leading-5 p-2 font-medium text-gray-700 items-center rounded-md shadow-sm">
-        <div className="w-2/3">{league}</div>
+        <div className="w-2/3">{league ? league : "Premier League"}</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
           id="options-menu"
