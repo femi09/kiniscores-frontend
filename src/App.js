@@ -3,18 +3,19 @@ import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/MainNavBar";
 import Results from "./pages/Results";
 import LeagueStandings from "./pages/Standings/LeagueStandings";
-import News from "./pages/TransferNews";
 import Scorers from "./pages/Scorers";
 import Fixtures from "./pages/Fixtures/Today'sFixtures";
-import Home from "./pages/Home";
+import Home from "./pages/NewsStream";
 import AdminPanel from "./pages/Admin";
 import NextFixtures from "./pages/Fixtures/NextFixtures";
 import LastFixtures from "./pages/Fixtures/LastFixtures";
 import LeagueFixtures from "./pages/Fixtures/LeagueFixtures";
-import NewsBody from "./pages/Home/NewsDetails";
+import NewsBody from "./pages/NewsDetails";
 import MatchDetails from "./pages/MatchDetails";
 import CupStandings from "./pages/Standings/CupStandings";
+import Column from "./pages/Column";
 import "./App.css";
+
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
         />
         <Route path="/fixtures/:league/:league_id" component={LeagueFixtures} />
         <Route path="/fixtures" component={Fixtures} />
-        <Route path="/news" component={News} />
+        <Route path="/column" component={Column} />
         <Route path="/" component={Home} />
       </Switch>
     </div>
