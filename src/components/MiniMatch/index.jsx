@@ -38,6 +38,7 @@ const MiniMatch = () => {
           );
           setLeagueSlug(league[0].slug);
           setLeague(fixtures[0].league.name);
+          setLoading(false);
         } else {
           setFixtures([]);
           setLoading(false);
