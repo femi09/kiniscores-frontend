@@ -37,7 +37,8 @@ const MiniMatch = () => {
             (competition) => competition.id === fixtures[0].league_id
           );
           setLeagueSlug(league[0].slug);
-          setLeague(fixtures[0].league.name);
+          setLeague(league[0].name);
+          setLoading(false);
         } else {
           setFixtures([]);
           setLoading(false);
@@ -168,20 +169,12 @@ const MiniMatch = () => {
       {!loading && (
         <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
           {fixtures.length === 0 ? (
-            <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
-              {league ? (
-                <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
-                  See Next {league} Fixtures
-                </Link>
-              ) : (
-                <Link to={`/fixtures/next/premier_league/2790`}>
-                  See Next Premier League Fixtures
-                </Link>
-              )}
-            </div>
+            <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
+              See Next {league ? league : "Premier League"} Fixtures
+            </Link>
           ) : (
             <Link to={`/fixtures/${leagueSlug}/${leagueId}`}>
-              View All {league} Fixtures Today
+              View All {league ? league : "Premier League"} Fixtures Today
             </Link>
           )}
         </div>

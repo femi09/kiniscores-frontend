@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
-    "react-toastify": "^6.0.8"
+    "react-toastify": "^6.0.8",
+    "socket.io-client": "^3.0.5"
   },
   "scripts": {
     "start": "yarn run watch:css && react-scripts start",
@@ -24,9 +25,8 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "s3-deploy":"aws s3 sync ./build s3://kiniscores",
-    "deploy":"npm run build && npm run s3-deploy"
-
+    "s3-deploy": "aws s3 sync ./build s3://kiniscores",
+    "deploy": "npm run build && npm run s3-deploy"
   },
   "eslintConfig": {
     "extends": "react-app"
