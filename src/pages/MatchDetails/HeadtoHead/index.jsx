@@ -30,7 +30,7 @@ const HeadtoHead = ({ fixture }) => {
   return (
     <div>
       {teams[0] && teams[1] && (
-        <div className="bg-gray-100 pt-8">
+        <div className="bg-gray-300 pt-8">
           <div className="text-center font-bold text-2xl text-blue-900">
             <h1>Head to Head</h1>
           </div>
@@ -126,7 +126,7 @@ const HeadtoHead = ({ fixture }) => {
                   {formatFixturesDate(fixture.event_date)}
                 </p>
 
-                <div className="mx-2 flex bg-gray-300 items-center font-bold py-2 px-1">
+                <div className="mx-2 flex bg-gray-400 items-center font-bold py-2 px-1">
                   <div className="text-center text-blue-800 w-1/3">
                     <p className="hidden sm:block">
                       {fixture.homeTeam.team_name}

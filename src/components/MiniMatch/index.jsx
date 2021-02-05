@@ -37,7 +37,7 @@ const MiniMatch = () => {
             (competition) => competition.id === fixtures[0].league_id
           );
           setLeagueSlug(league[0].slug);
-          setLeague(fixtures[0].league.name);
+          setLeague(league[0].name);
           setLoading(false);
         } else {
           setFixtures([]);
@@ -68,8 +68,8 @@ const MiniMatch = () => {
   };
 
   return (
-    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
-      <div className="bg-white py-1 text-sm text-center font-bold m-auto">
+    <div className="">
+      <div className="bg-white mb-2 rounded-lg py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
       <p className="text-xs text-center py-1 font-bold bg-blue-900 text-white">
@@ -78,7 +78,7 @@ const MiniMatch = () => {
       {loading && fixtures.length === 0 ? (
         <SkeletonMiniMatch />
       ) : (
-        <div className="bg-gray-200 py-4 border-b">
+        <div className="px-4 bg-gray-300 py-4 border-b">
           <div>
             <MiniDropdown
               league={league}
@@ -169,20 +169,12 @@ const MiniMatch = () => {
       {!loading && (
         <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
           {fixtures.length === 0 ? (
-            <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
-              {league ? (
-                <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
-                  See Next {league} Fixtures
-                </Link>
-              ) : (
-                <Link to={`/fixtures/next/premier_league/2790`}>
-                  See Next Premier League Fixtures
-                </Link>
-              )}
-            </div>
+            <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
+              See Next {league ? league : "Premier League"} Fixtures
+            </Link>
           ) : (
             <Link to={`/fixtures/${leagueSlug}/${leagueId}`}>
-              View All {league} Fixtures Today
+              View All {league ? league : "Premier League"} Fixtures Today
             </Link>
           )}
         </div>

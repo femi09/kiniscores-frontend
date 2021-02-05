@@ -40,7 +40,7 @@ const NextFixtures = () => {
   }, [league_id]);
 
   return (
-    <div className="mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
+    <div className="mx-2 lg:mx-4">
       {loading ? (
         <SkeletonFixtures />
       ) : (

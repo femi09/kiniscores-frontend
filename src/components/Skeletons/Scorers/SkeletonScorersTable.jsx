@@ -3,13 +3,13 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonScoreresTable = () => {
   return (
-    <div className="mx-2 sm:mx-4 xl:mx-auto xl:w-2/3">
-      <div className="shadow-sm text-center my-2 py-2 lg:py-4 font-bold">
+    <div className="mx-2 sm:mx-4">
+      <div className="bg-white shadow-sm text-center xl:my-0 xl:mb-2 my-2 py-2 lg:py-4 font-bold">
         <h1 className="text-blue-900">
           <Skeleton height={30} width={`60%`} />
         </h1>
       </div>
-      <table className="hidden sm:block table-auto container">
+      <table className="hidden xl:bg-white sm:block table-auto container">
         <thead className="bg-gray-400 text-gray-200 text-sm">
           <tr>
             <th className="px-2 text-left py-2">
@@ -36,7 +36,7 @@ const SkeletonScoreresTable = () => {
           </tr>
         </thead>
         <tbody className="text-sm font-bold text-blue-900">
-          {Array(20)
+          {Array(10)
             .fill()
             .map((items, index) => (
               <tr key={index} className="border-b-4">
@@ -67,7 +67,7 @@ const SkeletonScoreresTable = () => {
       </table>
 
       {/* Mobile screens */}
-      <table className="sm:hidden table-auto container">
+      <table className="sm:hidden bg-white table-auto container">
         <thead className="bg-gray-500 text-gray-200 text-xs">
           <tr className="">
             <th className="px-2 py-1">

@@ -62,7 +62,7 @@ const Matches = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white  xl:w-2/3 shadow-lg">
+    <div className="mx-2 pb-2 sm:mx-4 bg-white shadow-lg">
       {!loading && currentMatchDay === "" && (
         <h1 className="text-3xl font-semibold text-blue-800  text-center mx-auto mt-8">
           No matches for the current season
@@ -78,14 +78,13 @@ const Matches = () => {
               <Dropdown league={league} />
             </div>
             <div className="py-2 my-2">
-            <MatchDay
-              matchday={currentMatchDay}
-              nextMatch={getNextMatchDay}
-              prevMatch={getPrevMatchDay}
-              league={league}
-            />
+              <MatchDay
+                matchday={currentMatchDay}
+                nextMatch={getNextMatchDay}
+                prevMatch={getPrevMatchDay}
+                league={league}
+              />
             </div>
-            
           </Fragment>
         )}
       </div>

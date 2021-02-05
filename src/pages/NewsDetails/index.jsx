@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getLatestNewsBody } from "../../../services/latestServices";
-import { formatFixturesDate } from "../../../utils/formatTime";
-import { kiniscoresApi } from "../../../config.json";
-import SkeletonNewsBody from "../../../components/Skeletons/News/SkeletonNewsbody";
+import { getLatestNewsBody } from "../../services/latestServices";
+import { formatFixturesDate } from "../../utils/formatTime";
+import { kiniscoresApi } from "../../config.json";
+import SkeletonNewsBody from "../../components/Skeletons/News/SkeletonNewsbody";
 
 const NewsBody = () => {
   const [news, setNews] = useState("");
@@ -21,11 +21,11 @@ const NewsBody = () => {
 
   const imageUrl = `${kiniscoresApi}/news/newsImage/${news._id}`;
   return (
-    <div className="px-4 mx-2 sm:mx-4 xl:w-2/3 bg-gray-100 text-center xl:mx-auto">
+    <div className="px-4 mx-2 sm:mx-4 bg-gray-100 text-center">
       {loading ? (
         <SkeletonNewsBody />
       ) : (
-        <div className="bg-gray-100 py-6 my-4">
+        <div className="bg-gray-100 py-6 xl:my-0 my-4">
           <div className="mx-2 sm:w-3/4 mx-auto">
             <h1 className="text-xl sm:text-2xl text-left text-blue-900 font-bold">
               {news.subTitle}
