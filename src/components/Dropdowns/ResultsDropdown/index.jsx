@@ -7,7 +7,7 @@ const Dropdown = ({ league }) => {
 
   return (
     <div className="relative">
-      <div className="flex bg-white justify-between text-xs sm:text-sm leading-5 py-4 my-4  font-bold px-2 sm:font-medium text-gray-700 items-center shadow-sm">
+      <div className="flex bg-white justify-between text-xs sm:text-sm leading-5 py-4 xl:my-0 xl:mb-4 my-4   font-bold px-2 sm:font-medium text-gray-700 items-center shadow-sm">
         <div className="w-2/3">{league} Results</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"

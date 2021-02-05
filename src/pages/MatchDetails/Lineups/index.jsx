@@ -53,7 +53,7 @@ const Lineups = ({ fixture }) => {
           </h1>
         </div>
       ) : (
-        <div className="sm:flex sm:justify-around mx-6 sm:mx-8 my-6">
+        <div className="bg-white xl:p-4 sm:flex sm:justify-around mx-6 sm:mx-8 my-6">
           <div className="flex justify-center border-2 border-blue-900 bg-blue-900 rounded-md font-bold sm:hidden my-4">
             <div
               onClick={() => handleShowTeam("homeTeam")}

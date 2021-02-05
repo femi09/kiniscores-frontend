@@ -12,7 +12,7 @@ const today = new Date();
 const LeagueFixture = ({ fixtures, league, league_id, league_slug }) => {
   return (
     <div>
-      <div className="text-blue-900 border shadow-sm rounded-lg my-4 text-center text-xl p-2 font-bold">
+      <div className="text-blue-900 border shadow-sm rounded-lg xl:my-0 xl:mb-4 my-4 text-center text-xl p-2 font-bold">
         <p className="hidden sm:block">{formatCurrentDate(today)}</p>
         <p className="sm:hidden text-sm">{formatDate(today)}</p>
       </div>
@@ -20,7 +20,7 @@ const LeagueFixture = ({ fixtures, league, league_id, league_slug }) => {
         <Link to={`/fixtures/last/${league_slug}/${league_id}`}>last</Link>
         <Link to={`/fixtures/next/${league_slug}/${league_id}`}>next</Link>
       </div>
-      <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-4 p-2 sm:p-6">
+      <div className="text-blue-800 shadow-lg bg-gray-300 text-center mt-4 p-2 sm:p-6">
         <div className="text-left">
           <FixturesDropdown league={league} />
         </div>

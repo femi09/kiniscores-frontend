@@ -1,0 +1,28 @@
+.sidebar {
+  background-color: #fcfcfc;
+  height: 60%;
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 1;
+}
+
+/* .sidebar li:hover {
+  margin-left: 1.25rem;
+  transition: 0.4s;
+} */
+
+.active {
+  margin-left: 1.25rem;
+  transition: 0.4s;
+  color: #a0aec0;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    height: 35%;
+    top: 8rem;
+    left: 0.5rem;
+    z-index: 1;
+  }
+}

@@ -39,7 +39,7 @@ const MiniScorers = () => {
     }
   };
   return (
-    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
+    <div>
       <div className="py-1 text-sm text-center font-bold mx-auto">
         <h1 className="text-blue-800">Top Scorers</h1>
       </div>
@@ -54,7 +54,7 @@ const MiniScorers = () => {
           </h1>
         )}
 
-        <table className="table-auto shadow-xs border-b py-2 container mx-auto bg-gray-200">
+        <table className="table-auto shadow-xs border-b py-2 container mx-auto bg-gray-300">
           <thead className="bg-blue-900 text-gray-200 text-xs">
             <tr className="">
               <th className="px-2 py-1">Pos</th>

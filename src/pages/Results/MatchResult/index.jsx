@@ -6,7 +6,7 @@ const Result = ({ match, matchDate, matchTime }) => {
   let today = new Date();
   return (
     <>
-      <div className="mb-2 grid grid-cols-3 py-6 bg-gray-200 sm:mb-0">
+      <div className="result mb-2 grid grid-cols-3 py-6 bg-gray-300 sm:mb-0">
         <div className="flex items-center col-span-2 justify-between mx-2 sm:mx-4">
           <div className="flex flex-col justify-start text-sm items-start font-bold text-blue-800 left">
             <div className="flex justify-between items-center py-2 sm:p-2 team-name">

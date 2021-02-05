@@ -4,7 +4,7 @@ import SkeletonNews from "./SkeletonNews";
 
 const SkeletonLatestNews = () => {
   return (
-      <div className="sm:rounded-lg lg:w-2/3 xl:w-3/4">
+      <div className="bg-white sm:rounded-lg p-4 sm:mx-4">
         <div className="mb-4">
           <SkeletonHero />
         </div>
