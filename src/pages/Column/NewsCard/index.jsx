@@ -6,7 +6,7 @@ import { kiniscoresApi } from "../../../config.json";
 const NewsCard = ({ news, getNewsBody }) => {
   const imageUrl = `${kiniscoresApi}/news/newsImage/${news._id}`;
   return (
-    <div className="mx-2 py-2 flex flex-col bg-gray-100 sm:mx-0 sm:py-0 sm:max-w-xs sm:overflow-hidden sm:justify-between">
+    <div className="mx-2 py-2 flex flex-col sm:mx-0 sm:py-0 sm:max-w-xs sm:overflow-hidden sm:justify-between">
       <div className="flex sm:px-0 sm:flex-col">
         <div className="w-1/2 sm:w-full">
           <img

@@ -7,7 +7,7 @@ import NextFixturesDropdown from "../../../components/Dropdowns/NextFixturesDrop
 const NextFixture = ({ fixtures, league, fixtures_dates }) => {
   return (
     <div>
-      <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-8 p-2 sm:p-6">
+      <div className="text-blue-800 shadow-lg bg-gray-300 text-center xl:mt-0 mt-8 p-2 sm:p-6">
         <div className="text-left my-4">
           <NextFixturesDropdown league={league} />
         </div>

@@ -4,8 +4,8 @@ import "./index.css";
 
 const NavItems = () => {
   return (
-    <div className="bg-gray-200 py-2 xl:p-4 flex-row items-center">
-      <ul className="nav flex  disable-scrollbars overflow-x-auto justify-between xl:justify-center align-center">
+    <div className="lg:hidden bg-white py-2 xl:p-4 flex-row items-center">
+      <ul className="nav flex disable-scrollbars overflow-x-auto justify-between xl:justify-center align-center">
         <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
           <Link to="/">News Stream</Link>
         </li>

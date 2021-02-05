@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 const SkeletonStandingTable = () => {
   return (
     <div>
-      <table className="hidden my-4 sm:block table-auto sm:mx-4 xl:mx-auto xl:w-2/3">
+      <table className="my-4 sm:block table-auto sm:mx-4 xl:my-0 xl:mb-4 xl:bg-white">
         <thead className="bg-gray-400 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2">
@@ -87,7 +87,7 @@ const SkeletonStandingTable = () => {
       </table>
 
       {/* Mobile Table */}
-      <table className="sm:hidden table-auto mx-2">
+      <table className="sm:hidden bg-white table-auto mx-2">
         <thead className="bg-gray-400 text-gray-200 text-xs">
           <tr className="">
             <th className="px-1 py-1">

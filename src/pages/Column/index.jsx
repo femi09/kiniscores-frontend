@@ -40,11 +40,11 @@ const Column = () => {
     config: config.slow,
   });
   return (
-    <div className="container mx-auto my-2 lg:my-6">
+    <div className="xl:my-0 my-2">
       {loading && latestNews.length === 0 ? (
         <SkeletonLatestNews />
       ) : (
-        <div className="sm:rounded-lg lg:w-2/3 xl:w-3/4 mx-auto">
+        <div className="sm:rounded-sm sm:mx-6">
           {transitions.map(
             ({ item, key, props }) =>
               item && (

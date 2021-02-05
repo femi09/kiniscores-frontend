@@ -1,0 +1,7 @@
+.tweet {
+  min-height: 180px;
+}
+.tweet-image {
+  max-height: 37.5rem;
+  border-radius: 20px;
+}

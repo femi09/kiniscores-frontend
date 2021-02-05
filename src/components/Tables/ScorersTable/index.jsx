@@ -3,9 +3,9 @@ import { shortTeamName, truncateString } from "../../../utils/truncate";
 import Dropdown from "../../Dropdowns/ScorersDropdown";
 const ScorersTable = ({ scorers, league, handleCompetition }) => {
   return (
-    <div className="mx-2 my-2 sm:mx-4 xl:mx-auto xl:w-2/3">
+    <div className="mx-2 sm:mx-4 xl:mx-4">
       <Dropdown league={league} handleCompetition={handleCompetition} />
-      <table className="hidden sm:block table-auto contain bg-gray-100">
+      <table className="hidden sm:block table-auto contain bg-gray-300">
         <thead className="bg-blue-900 text-center text-gray-200 text-sm">
           <tr>
             <th className="px-4 py-2">Position</th>

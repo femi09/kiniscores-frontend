@@ -6,11 +6,11 @@ export function getLatestNews() {
 }
 
 export function getLatestNewsBody(id) {
-  return femi.get(`${kiniscoresApi}/news/${id}`)
-//   return femi.get(`http://localhost:5001/api/news/${id}`);
+  return femi.get(`${kiniscoresApi}/news/${id}`);
+  //   return femi.get(`http://localhost:5001/api/news/${id}`);
 }
 
 export function getTweets() {
-  // return femi.get(`${kiniscoresApi}/news/${id}`)
-  return femi.get(`http://localhost:5001/api/recent/tweets`);
+  return femi.get(`${kiniscoresApi}/recent/tweets`);
+  // return femi.get(`http://localhost:5001/api/recent/tweets`);
 }

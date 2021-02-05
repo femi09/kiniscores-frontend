@@ -34,7 +34,7 @@ const CupStandings = () => {
         <CupStandingsSkeleton />
       ) : (
         <Fragment>
-          <div className="relative xl:w-2/3 xl:mx-auto">
+          <div className="relative mx-4">
             <Dropdown league={league} />
           </div>
 

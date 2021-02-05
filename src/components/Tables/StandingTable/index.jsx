@@ -4,9 +4,9 @@ import Dropdown from "../../Dropdowns/StandingsDropdown";
 
 const StandingTable = ({ tables, league }) => {
   return (
-    <div className="mx-2 sm:mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
+    <div className="mx-2 sm:mx-2 lg:mx-4 xl:mx-4">
       <Dropdown league={league} />
-      <table className="hidden sm:block table-auto bg-gray-200">
+      <table className="hidden sm:block table-auto bg-gray-300">
         <thead className="bg-blue-900 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2">Position</th>
