@@ -68,8 +68,8 @@ const MiniMatch = () => {
   };
 
   return (
-    <div className="sm:w-2/3 sm:mx-auto lg:w-full">
-      <div className="bg-white py-1 text-sm text-center font-bold m-auto">
+    <div className="">
+      <div className="bg-white mb-2 rounded-lg py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
       <p className="text-xs text-center py-1 font-bold bg-blue-900 text-white">
@@ -78,7 +78,7 @@ const MiniMatch = () => {
       {loading && fixtures.length === 0 ? (
         <SkeletonMiniMatch />
       ) : (
-        <div className="bg-gray-200 py-4 border-b">
+        <div className="px-4 bg-gray-300 py-4 border-b">
           <div>
             <MiniDropdown
               league={league}

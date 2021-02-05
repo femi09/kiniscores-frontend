@@ -6,33 +6,41 @@ import MiniMatch from "../../components/MiniMatch";
 import MiniScorers from "../../components/Tables/MiniScorers";
 import io from "socket.io-client";
 import TweetStream from "./TweetStream";
+import TweetStreamSkeleton from "../../components/Skeletons/TweetStream";
+import "./index.css";
+import TweetButtons from "./TweetButtons";
 
-const Home = () => {
+const NewsStream = () => {
   const [tweets, setTweets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const socket = io("http://kiniscores.herokuapp.com");
+
   useEffect(() => {
     const getNewsTweets = async () => {
       try {
         const { data } = await getTweets();
         setTweets(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
-
     getNewsTweets();
   }, []);
 
   useEffect(() => {
-    const socket = io("http://localhost:5001/", { transports: ["websocket"] });
-
     socket.on("connect", () => {
       console.log("Connected to Server");
     });
 
-    socket.on("tweet", (tweet) => {
-      console.log(tweet);
+    socket.on("tweet", (data) => {
+      setTweets(
+        [...tweets, data].sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        )
+      );
     });
-  });
+  }, [tweets, socket]);
 
   const contentProps = useSpring({
     from: { opacity: 0, marginTop: -200 },
@@ -41,25 +49,31 @@ const Home = () => {
   });
 
   return (
-    <div className="container mx-auto my-2 lg:my-6">
-      <div className="flex flex-col lg:flex lg:flex-row lg:items-start xl:mx-0 ">
-        <div className="sm:rounded-lg lg:w-2/3 xl:w-3/4">
-          <div className="tweet grid grid-cols-2 gap-4">
+    <div className="lg:mx-auto sm:flex lg:justify-between items-start">
+      <div className="stream xl:w-2/3">
+        <div className="rounded-sm sm:rounded-lg mx-2 bg-blue-900 p-2 mb-4 xl:mx-4 text-m bg-white xl:p-4 font-bold text-white">
+          News Stream
+        </div>
+        {loading ? (
+          <TweetStreamSkeleton />
+        ) : (
+          <div className="xl:mx-4 xl:shadow-sm">
             {tweets.map((tweet) => (
-              <TweetStream key={tweet.id} tweet={tweet} />
+              <TweetStream tweet={tweet} key={tweet.id} />
             ))}
           </div>
-        </div>
-        <div className="bg-gray-200 m-2 px-4 py-4 sm:flex sm:flex-col sm:justify-around sm:my-4 lg:my-0 lg:w-1/3 lg:rounded-lg xl:w-1/4 xl:ml-5">
-          {/* <animated.div style={contentProps}>
-            <MiniMatch />
-            <MiniStandings />
-            <MiniScorers />
-          </animated.div> */}
-        </div>
+        )}
       </div>
+      <div className="hidden mini px-2 sm:flex sm:flex-col sm:justify-around lg:my-0 lg:rounded-lg xl:w-1/3">
+        <animated.div style={contentProps}>
+          <MiniMatch />
+          <MiniStandings />
+          <MiniScorers />
+        </animated.div>
+      </div>
+      <TweetButtons title="Go to Top" />
     </div>
   );
 };
 
-export default Home;
+export default NewsStream;

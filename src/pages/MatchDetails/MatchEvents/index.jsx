@@ -17,7 +17,7 @@ const Events = ({ fixture }) => {
   return (
     <div>
       {matchEvents.length === 0 ? (
-        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
+        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-300 text-xl text-center shadow-lg my-6">
           <h1 className="text-blue-900 p-4">
             There are no match events yet for this fixture
           </h1>
