@@ -9,8 +9,8 @@ const TweetStream = ({ tweet }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="tweet bg-white mx-2 px-4 rounded-m lg:rounded-lg lg:mx-auto flex flex-col mb-4 justify-center xl:px-8 pt-4">
-        <p className="pb-4 text-gray-800 font-semibold text-m">{tweet.text}</p>
+      <div className="tweet bg-white mx-2 px-4 rounded-sm lg:rounded-lg lg:mx-auto flex flex-col mb-4 justify-center xl:px-8 pt-4">
+        <p className="pb-4 text-gray-800 font-semibold text-sm">{tweet.text}</p>
         {tweet.media && (
           <img
             className="tweet-image object-cover block w-full"

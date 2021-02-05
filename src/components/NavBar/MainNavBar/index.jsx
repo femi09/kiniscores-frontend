@@ -11,7 +11,7 @@ const NavBar = () => {
             Kiniscores
           </h1>
         </div>
-        <div className="hidden nav-white shadow-sm border-b-8 border-blue-900 lg:block h-12"></div>
+        <div className="hidden nav-white shadow-sm border-b-8 border-blue-900 xl:block h-12"></div>
         <NavItems />
       </nav>
     </Fragment>

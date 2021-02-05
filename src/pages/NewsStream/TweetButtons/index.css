@@ -6,12 +6,7 @@
 
 .tweet-button-mobile {
   position: fixed;
-  left: 5%;
+  right: 5%;
   bottom: 5%;
 }
 
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .tweet-button {
-    bottom: 50%;
-  }
-}
