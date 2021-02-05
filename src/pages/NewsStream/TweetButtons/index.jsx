@@ -23,7 +23,7 @@ const TweetButtons = ({ title }) => {
       {show && (
         <button
           onClick={handleGoToTop}
-          className="hidden lg:flex tweet-button items-center rounded-lg text-m font-bold px-2 py-1 bg-blue-900 text-white focus:outline-none"
+          className="hidden xl:flex tweet-button items-center rounded-lg text-m font-bold px-2 py-1 bg-blue-900 text-white focus:outline-none"
         >
           {title}
           <FontAwesomeIcon icon={faArrowCircleUp} className="mx-2" />
@@ -33,7 +33,7 @@ const TweetButtons = ({ title }) => {
       {show && (
         <button
           onClick={handleGoToTop}
-          className="lg:hidden tweet-button-mobile items-center rounded-lg text-lg font-bold p-1 bg-blue-900 text-white focus:outline-none"
+          className="xl:hidden tweet-button-mobile items-center rounded-lg text-lg font-bold p-1 bg-blue-900 text-white focus:outline-none"
         >
           <FontAwesomeIcon icon={faArrowCircleUp} className="mx-2" />
         </button>

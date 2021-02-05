@@ -19,9 +19,6 @@ const TweetSkeleton = () => {
           <span className="py-1 px-2">
             <Skeleton width={50} height={25} />
           </span>
-          <span className="mx-4 px-2 py-1">
-            <Skeleton width={50} height={25} />
-          </span>
         </div>
         <div>
           <span className="mx-1 px-2 py-1">

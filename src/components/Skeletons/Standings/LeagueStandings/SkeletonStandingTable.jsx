@@ -42,7 +42,7 @@ const SkeletonStandingTable = () => {
             <th className="sm:px-2 lg:px-4 py-2">
               <Skeleton height={20} width={30} />
             </th>
-            <th className="sm:px-2 lg:px-4 py-2">
+            <th className="sm:px-2 lg:hidden xl:px-4 py-2">
               <Skeleton height={20} width={30} />
             </th>
           </tr>
@@ -83,7 +83,7 @@ const SkeletonStandingTable = () => {
                 <td className="sm:px-2 lg:px-4 py-2">
                   <Skeleton height={20} width={20} />
                 </td>
-                <td className="sm:px-2 lg:px-4 py-2">
+                <td className="sm:px-2 lg:hidden xl:px-4 py-2">
                   <Skeleton height={20} width={20} />
                 </td>
               </tr>

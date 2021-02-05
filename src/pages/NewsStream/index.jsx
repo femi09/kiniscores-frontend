@@ -13,7 +13,7 @@ import TweetButtons from "./TweetButtons";
 const NewsStream = () => {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const socket = io("http://kiniscores.herokuapp.com");
+  const socket = io("https://kiniscores.herokuapp.com");
 
   useEffect(() => {
     const getNewsTweets = async () => {

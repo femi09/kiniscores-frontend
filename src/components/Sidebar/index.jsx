@@ -4,7 +4,7 @@ import "./index.css";
 
 const Sidebar = () => {
   return (
-    <div className="hidden sidebar mx-2 lg:w-1/5 rounded-lg p-4 shadow-sm bg-opacity-25 lg:flex flex-col">
+    <div className="hidden sidebar mx-2 xl:w-1/5 rounded-lg p-4 shadow-sm bg-opacity-25 xl:flex flex-col">
       <ul className="px-6 rounded-lg font-semibold text-blue-900 text-sm flex flex-col">
         <NavLink exact to="/">
           <li className="py-4 cursor-pointer hover:text-gray-500">
