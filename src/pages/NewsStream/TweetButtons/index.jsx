@@ -23,7 +23,7 @@ const TweetButtons = ({ title }) => {
       {show && (
         <button
           onClick={handleGoToTop}
-          className="hidden xl:flex tweet-button items-center rounded-lg text-m font-bold px-2 py-1 bg-blue-900 text-white focus:outline-none"
+          className="hidden xl:flex tweet-button items-center rounded-lg text-sm font-bold px-2 py-1 bg-blue-900 text-white focus:outline-none"
         >
           {title}
           <FontAwesomeIcon icon={faArrowCircleUp} className="mx-2" />
