@@ -3,13 +3,13 @@ import Skeleton from "react-loading-skeleton";
 
 const SkeletonStandingTable = () => {
   return (
-    <div>
-      <div className="my-2 py-2 text-center font-bold sm:shadow-sm sm:mx-4 lg:mx-6 xl:w-2/3 xl:mx-auto">
+    <div className="mx-4">
+      <div className="bg-white xl:my-0 xl:mb-2 my-2 py-2 text-center font-bold sm:shadow-sm sm:mx-4">
         <h1 className="text-blue-800">
           <Skeleton height={30} width={`60%`} />
         </h1>
       </div>
-      <table className="hidden sm:block table-auto sm:mx-4 xl:mx-auto xl:w-2/3">
+      <table className="hidden bg-white sm:block table-auto sm:mx-4">
         <thead className="bg-gray-400 text-gray-200 text-sm">
           <tr className="">
             <th className="px-2 py-2">
@@ -42,7 +42,7 @@ const SkeletonStandingTable = () => {
             <th className="sm:px-2 lg:px-4 py-2">
               <Skeleton height={20} width={30} />
             </th>
-            <th className="sm:px-2 lg:px-4 py-2">
+            <th className="sm:px-2 lg:hidden xl:px-4 py-2">
               <Skeleton height={20} width={30} />
             </th>
           </tr>
@@ -83,7 +83,7 @@ const SkeletonStandingTable = () => {
                 <td className="sm:px-2 lg:px-4 py-2">
                   <Skeleton height={20} width={20} />
                 </td>
-                <td className="sm:px-2 lg:px-4 py-2">
+                <td className="sm:px-2 lg:hidden xl:px-4 py-2">
                   <Skeleton height={20} width={20} />
                 </td>
               </tr>
@@ -92,7 +92,7 @@ const SkeletonStandingTable = () => {
       </table>
 
       {/* Mobile Table */}
-      <table className="sm:hidden table-auto mx-2">
+      <table className="sm:hidden bg-white table-auto mx-2">
         <thead className="bg-gray-400 text-gray-200 text-xs">
           <tr className="">
             <th className="px-1 py-1">

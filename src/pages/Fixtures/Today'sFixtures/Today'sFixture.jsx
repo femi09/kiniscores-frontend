@@ -10,7 +10,7 @@ import { truncateTeamName, truncateString } from "../../../utils/truncate";
 const Fixture = ({ fixtures, competitions, day, handlePrev, handleNext }) => {
   return (
     <div>
-      <div className="flex justify-between items-center text-blue-900 border shadow-sm rounded-lg my-4 text-center text-xl p-2 font-bold">
+      <div className="flex justify-between items-center text-blue-900 border shadow-sm rounded-lg mb-4 text-center text-xl p-2 font-bold">
         <button
           onClick={handlePrev}
           className="bg-blue-900 hover:bg-blue-700 text-white py-1 px-2 text-xs font-bold shadow-md rounded-l"

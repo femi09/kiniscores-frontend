@@ -65,7 +65,7 @@ const Fixtures = () => {
   };
 
   return (
-    <div className="mx-2 lg:mx-4 xl:w-2/3 xl:mx-auto">
+    <div className="mx-2 lg:mx-6">
       {loading ? (
         <SkeletonFixtures />
       ) : (

@@ -25,14 +25,14 @@ const Stats = ({ fixture }) => {
   return (
     <div>
       {stats.length === 0 ? (
-        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
+        <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-300 text-xl text-center shadow-lg my-6">
           <h1 className="text-blue-900 p-4">
             There are no match statistics yet for this fixture
           </h1>
         </div>
       ) : (
-        <div className="py-4 bg-gray-100">
-          <div className="flex justify-around items-center border-t-2 border-b-2 text-blue-900 text-xs font-bold py-2">
+        <div className="py-4 bg-gray-300">
+          <div className="flex justify-around items-center border-gray-400 border-t-2 border-b-2 text-blue-900 text-xs font-bold py-2">
             <div className="w-2/5 flex justify-center items-center">
               <p className="mr-3 hidden sm:block">{fixture.homeTeam.team_name}</p>
               <p className="mx-1 sm:hidden">{truncateTeamName(fixture.homeTeam.team_name)}</p>

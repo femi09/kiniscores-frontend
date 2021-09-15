@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 const SKeletonHero = () => {
   return (
-    <div className="mx-2 sm:flex sm:justify-around xl:mx-0">
+    <div className="sm:flex sm:justify-around">
       <div className="sm:w-1/2 sm:rounded">
         <Skeleton height={314} width={`100%`} />
       </div>

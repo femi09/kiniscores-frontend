@@ -7,7 +7,7 @@ import LastFixturesDropdown from "../../../components/Dropdowns/LastFixturesDrop
 const LastFixture = ({ fixtures, league, fixtures_dates }) => {
   return (
     <div>
-      <div className="text-blue-800 shadow-lg bg-gray-200 text-center mt-8 p-2 sm:p-6">
+      <div className="text-blue-800 shadow-lg bg-gray-300 text-center p-2 sm:p-6">
         <div className="text-left my-4">
           <LastFixturesDropdown league={league} />
         </div>
