@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 import { getLeagueStandings } from "../../../services/standingsService";
-import StandingTable from "../../../components/Tables/StandingTable";
+import StandingTable from "../../../components/shared/Tables/StandingTable";
 import SkeletonStandings from "../../../components/Skeletons/Standings/LeagueStandings";
 
 const Standings = () => {
@@ -14,8 +14,9 @@ const Standings = () => {
   useEffect(() => {
     const getTable = async () => {
       try {
-        const { data: standings } = await getLeagueStandings(league_id);
-        setTables(standings[0]);
+        const { data } = await getLeagueStandings(league_id);
+        console.log("standings", data.standings);
+        setTables(data.standings);
         const league = competitions.filter(
           (competition) => competition.id.toString() === league_id
         );

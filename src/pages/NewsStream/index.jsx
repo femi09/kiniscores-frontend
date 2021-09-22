@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated, config } from "react-spring";
 import { getTweets } from "../../services/latestServices";
-import MiniStandings from "../../components/Tables/MiniStandings";
-import MiniMatch from "../../components/MiniMatch";
-import MiniScorers from "../../components/Tables/MiniScorers";
+import MiniStandings from "../../components/shared/Tables/MiniStandings";
+import MiniMatch from "../../components/fixtures/MiniFixtures";
+import MiniScorers from "../../components/shared/Tables/MiniScorers";
 import io from "socket.io-client";
 import TweetStream from "./TweetStream";
 import TweetStreamSkeleton from "../../components/Skeletons/TweetStream";
@@ -66,9 +66,9 @@ const NewsStream = () => {
       </div>
       <div className="hidden mini px-2 sm:flex sm:flex-col sm:justify-around lg:my-0 lg:rounded-lg xl:w-1/3">
         <animated.div style={contentProps}>
-          <MiniMatch />
+          {/* <MiniMatch />
           <MiniStandings />
-          <MiniScorers />
+          <MiniScorers /> */}
         </animated.div>
       </div>
       <TweetButtons title="Go to Top" />

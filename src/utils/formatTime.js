@@ -59,13 +59,13 @@ export const formatCurrentDate = (date) => {
     "Friday",
     "Saturday",
   ];
+
   let formatted_date = `${days[date.getDay()]}, ${date.getDate()} ${
     months[date.getMonth()]
   } ${date.getFullYear()} `;
 
   return formatted_date;
 };
-
 
 export const formatFixturesDate = (utcDate) => {
   let date = new Date(utcDate);
@@ -99,14 +99,14 @@ export const formatFixturesDate = (utcDate) => {
   return formatted_date;
 };
 
-
 export const formatDay = (utcDate) => {
-  const day = new Date(utcDate)
+  const day = new Date(utcDate);
   const year = day.getFullYear();
   const month = day.getMonth() + 1;
   const date = day.getDate();
-  
-  const formatDate = year + "-" + month + "-" + date;
-  return formatDate
-}
 
+  const mm = month < 10 ? "0" + month : month;
+
+  const formatDate = `${year}-${mm}-${date}`;
+  return formatDate;
+};

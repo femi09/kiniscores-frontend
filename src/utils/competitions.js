@@ -1,6 +1,6 @@
 export const competitions = [
   {
-    id: 2790,
+    id: 39,
     name: "Premier League",
     type: "league",
     country: "England",
@@ -8,7 +8,7 @@ export const competitions = [
   },
 
   {
-    id: 2771,
+    id: 2,
     name: "UEFA Champions League",
     type: "league",
     country: "World",
@@ -16,7 +16,7 @@ export const competitions = [
   },
 
   {
-    id: 2777,
+    id: 3,
     name: "UEFA Europa League",
     type: "league",
     country: "World",
@@ -24,7 +24,7 @@ export const competitions = [
   },
 
   {
-    id: 2833,
+    id: 140,
     name: "Spanish La Liga",
     type: "league",
     country: "Spain",
@@ -32,7 +32,7 @@ export const competitions = [
   },
 
   {
-    id: 2755,
+    id: 78,
     name: "German Bundesliga",
     type: "league",
     country: "Germany",
@@ -40,7 +40,7 @@ export const competitions = [
   },
 
   {
-    id: 2857,
+    id: 135,
     name: "Italian Serie A",
     type: "league",
     country: "Italy",
@@ -48,7 +48,7 @@ export const competitions = [
   },
 
   {
-    id: 2664,
+    id: 61,
     name: "French Ligue 1",
     type: "league",
     country: "France",
@@ -56,7 +56,7 @@ export const competitions = [
   },
 
   {
-    id: 2745,
+    id: 44,
     name: "FA Women Super League",
     type: "league",
     country: "England",
@@ -64,7 +64,7 @@ export const competitions = [
   },
 
   {
-    id: 2791,
+    id: 45,
     name: "FA Cup",
     type: "cup",
     country: "England",
@@ -72,7 +72,7 @@ export const competitions = [
   },
 
   {
-    id: 2781,
+    id: 48,
     name: "Carabao Cup",
     type: "cup",
     country: "England",
@@ -80,14 +80,14 @@ export const competitions = [
   },
 
   {
-    id: 2792,
+    id: 46,
     name: "EFL Trophy",
     type: "cup",
     country: "England",
     slug: "efl_trophy",
   },
   {
-    id: 2794,
+    id: 40,
     name: "Championship",
     type: "league",
     country: "England",
@@ -95,14 +95,14 @@ export const competitions = [
   },
 
   {
-    id: 2677,
+    id: 81,
     name: "DFB Pokal",
     type: "cup",
     country: "Germany",
     slug: "dfb_pokal",
   },
   {
-    id: 2681,
+    id: 82,
     name: "Women Bundesliga",
     type: "league",
     country: "Germany",
@@ -110,7 +110,7 @@ export const competitions = [
   },
 
   {
-    id: 2743,
+    id: 79,
     name: "Bundesliga 2",
     type: "league",
     country: "Germany",
@@ -119,7 +119,7 @@ export const competitions = [
 
   // Italy
   {
-    id: 2798,
+    id: 139,
     name: "Serie A Women",
     type: "league",
     country: "Italy",
@@ -127,7 +127,7 @@ export const competitions = [
   },
 
   {
-    id: 2941,
+    id: 137,
     name: "Coppa Italia",
     type: "cup",
     country: "Italy",
@@ -135,7 +135,7 @@ export const competitions = [
   },
 
   {
-    id: 2946,
+    id: 136,
     name: "Serie B",
     type: "league",
     country: "Italy",
@@ -152,7 +152,7 @@ export const competitions = [
   // },
 
   {
-    id: 2847,
+    id: 141,
     name: "Segunda Division",
     type: "league",
     country: "Spain",
@@ -160,7 +160,7 @@ export const competitions = [
   },
 
   {
-    id: 3046,
+    id: 143,
     name: "Copa Del Rey",
     type: "cup",
     country: "Spain",
@@ -170,7 +170,7 @@ export const competitions = [
   // France
 
   {
-    id: 2652,
+    id: 62,
     name: "Ligue 2",
     type: "league",
     country: "France",
@@ -178,7 +178,7 @@ export const competitions = [
   },
 
   {
-    id: 2668,
+    id: 64,
     name: "Feminine Division 1",
     type: "league",
     country: "France",

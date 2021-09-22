@@ -4,9 +4,6 @@ import Skeleton from "react-loading-skeleton";
 const SkeletonFixture = () => {
   return (
     <div>
-      <div className="text-blue-900 bg-white border shadow-sm rounded-lg xl:my-0 xl:mb-2 my-4 text-center text-xl p-2 font-bold">
-        <Skeleton height={30} width={`60%`} />
-      </div>
       {Array(2)
         .fill()
         .map((item, index) => (

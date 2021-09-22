@@ -7,7 +7,7 @@ import Result from "./MatchResult";
 import MatchDay from "./MatchDay";
 import SkeletonMatches from "../../components/Skeletons/Match";
 import SkeletonMatchDay from "../../components/Skeletons/Match/SkeletonMatchDay";
-import Dropdown from "../../components/Dropdowns/ResultsDropdown";
+import LeagueDropdown from "../../components/shared/Dropdowns/leagues";
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
@@ -75,7 +75,7 @@ const Matches = () => {
         ) : (
           <Fragment>
             <div className="text-left sm:w-3/4 mx-auto">
-              <Dropdown league={league} />
+              <LeagueDropdown league={league} />
             </div>
             <div className="py-2 my-2">
               <MatchDay

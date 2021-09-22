@@ -2,9 +2,9 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 import { getLeagueStandings } from "../../../services/standingsService";
-import CupTable from "../../../components/Tables/CupTable";
+import CupTable from "../../../components/shared/Tables/CupTable";
 import CupStandingsSkeleton from "../../../components/Skeletons/Standings/CupStandings";
-import Dropdown from "../../../components/Dropdowns/StandingsDropdown";
+import Dropdown from "../../../components/shared/Dropdowns/leagues";
 
 const CupStandings = () => {
   const [standings, setStandings] = useState([]);
@@ -35,7 +35,7 @@ const CupStandings = () => {
       ) : (
         <Fragment>
           <div className="relative mx-4">
-            <Dropdown league={league} />
+            <Dropdown title={league} page="standings" />
           </div>
 
           {standings.map((tables, index) => (
