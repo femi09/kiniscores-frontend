@@ -1,12 +1,11 @@
 import React from "react";
-import { truncateString } from "../../../../utils/truncate";
+import { truncateString } from "../../../utils/truncate";
+import StandingDropdown from "../dropdowns/standings";
 
-const CupTable = ({ tables }) => {
+const StandingTable = ({ standings, league }) => {
   return (
-    <div className="mx-2 my-6 xl:my-0 sm:mx-2 lg:mx-4">
-      <h1 className="text-sm my-2 p-2 shadow-sm font-bold text-blue-900">
-        {tables[0].group}
-      </h1>
+    <div className="mx-2 sm:mx-2 lg:mx-4 xl:mx-4">
+      <StandingDropdown league={league} />
       <table className="hidden sm:block table-auto bg-gray-300">
         <thead className="bg-blue-900 text-gray-200 text-sm">
           <tr className="">
@@ -24,27 +23,29 @@ const CupTable = ({ tables }) => {
           </tr>
         </thead>
         <tbody className="text-sm font-bold text-center text-blue-900">
-          {tables.map((table) => (
-            <tr key={table.team_id}>
-              <td className="py-2">{table.rank}</td>
+          {standings.map((standing) => (
+            <tr key={standing.team.id}>
+              <td className="py-2">{standing.rank}</td>
               <td className="flex text-left py-2">
                 <img
                   className="w-5 h-5 sm:mr-2 lg:mr-4"
-                  src={table.logo}
+                  src={standing.team.logo}
                   alt=""
                 />
-                {table.teamName}
+                {truncateString(standing.team.name, 18)}
               </td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.matchsPlayed}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.win}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.draw}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.lose}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.goalsFor}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.all.goalsAgainst}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.goalsDiff}</td>
-              <td className="sm:px-2 lg:px-4 py-2">{table.points}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.all.played}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.all.win}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.all.draw}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.all.lose}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.all.goals.for}</td>
+              <td className="sm:px-2 lg:px-4 py-2">
+                {standing.all.goals.against}
+              </td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.goalsDiff}</td>
+              <td className="sm:px-2 lg:px-4 py-2">{standing.points}</td>
               <td className={`lg:px-2 py-2`}>
-                {table.forme.split("").map((char, index) => (
+                {standing.form.split("").map((char, index) => (
                   <span
                     key={index}
                     className={`px-1 border-r-4 border-gray-200 text-white text-sm font-bold ${
@@ -81,23 +82,25 @@ const CupTable = ({ tables }) => {
           </tr>
         </thead>
         <tbody className="text-sm text-center text-blue-900">
-          {tables.map((table, index) => (
+          {standings.map((standing, index) => (
             <tr key={index}>
-              <td className="py-2 font-bold text-xs">{table.rank}</td>
+              <td className="py-2 font-bold text-xs">{standing.rank}</td>
               <td className=" flex items-center text-left text-sm py-2">
-                <img className="w-4 h-4" src={table.logo} alt="" />
+                <img className="w-4 h-4" src={standing.team.logo} alt="" />
                 <span className="mx-2 text-xs font-bold">
-                  {truncateString(table.teamName, 13)}
+                  {truncateString(standing.team.name, 15)}
                 </span>
               </td>
-              <td className="mx-1 text-sm py-2">{table.all.matchsPlayed}</td>
-              <td className="mx-1 text-sm py-2">{table.all.win}</td>
-              <td className="mx-1 text-sm py-2">{table.all.draw}</td>
-              <td className="mx-1 text-sm py-2">{table.all.lose}</td>
-              <td className="mx-1 text-sm py-2">{table.all.goalsFor}</td>
-              <td className="mx-1 text-sm py-2">{table.all.goalsAgainst}</td>
-              <td className="mx-1 text-sm py-2">{table.goalsDiff}</td>
-              <td className="mx-1 font-bold text-sm py-2">{table.points}</td>
+              <td className="mx-1 text-sm py-2">{standing.all.played}</td>
+              <td className="mx-1 text-sm py-2">{standing.all.win}</td>
+              <td className="mx-1 text-sm py-2">{standing.all.draw}</td>
+              <td className="mx-1 text-sm py-2">{standing.all.lose}</td>
+              <td className="mx-1 text-sm py-2">{standing.all.goals.for}</td>
+              <td className="mx-1 text-sm py-2">
+                {standing.all.goals.against}
+              </td>
+              <td className="mx-1 text-sm py-2">{standing.goalsDiff}</td>
+              <td className="mx-1 font-bold text-sm py-2">{standing.points}</td>
             </tr>
           ))}
         </tbody>
@@ -106,4 +109,4 @@ const CupTable = ({ tables }) => {
   );
 };
 
-export default CupTable;
+export default StandingTable;

@@ -1,38 +1,56 @@
 import React from "react";
-import { shortTeamName, truncateString } from "../../../../utils/truncate";
-import LeagueDropdown from "../../../shared/Dropdowns/leagues";
+import { shortTeamName, truncateString } from "../../../utils/truncate";
+import LeagueDropdown from "../dropdowns/leagues";
 const ScorersTable = ({ scorers, league, handleCompetition }) => {
   return (
     <div className="mx-2 sm:mx-4 xl:mx-4">
-      <LeagueDropdown league={league} handleCompetition={handleCompetition} />
+      {/* <LeagueDropdown league={league} handleCompetition={handleCompetition} /> */}
       <table className="hidden sm:block table-auto contain bg-gray-300">
         <thead className="bg-blue-900 text-center text-gray-200 text-sm">
           <tr>
             <th className="px-4 py-2">Position</th>
-            <th className="px-4 w-1/2 text-left py-2">Player Name</th>
-            <th className="py-2 px-2 w-1/2 text-left">Team</th>
+            <th className="px-2 w-1/2 text-left py-2">Player Name</th>
             <th className="px-4 py-2">Goals</th>
             <th className="px-4 py-1">Played</th>
             <th className="px-4 py-1">Shots</th>
             <th className="px-4 py-2">Assists</th>
+            <th className="py-2 px-2 w-1/2 text-left">Team</th>
           </tr>
         </thead>
-        
+
         <tbody className="text-sm font-bold text-blue-900">
           {scorers.map((scorer, index) => (
             <tr key={index} className="border-b-4">
               <td className="px-4 text-center py-2">{index + 1}</td>
-              <td className="px-4 py-2">
-                {truncateString(scorer.player_name, 25)}
+              <td className="py-2 flex items-center">
+                <img
+                  src={scorer.player.photo}
+                  className="w-8 h-8 mx-2"
+                  alt=""
+                />
+                <span>{truncateString(scorer.player.name, 25)}</span>
               </td>
-              <td className="flex text-center py-2">{scorer.team_name}</td>
-              <td className="px-4 text-center py-2">{scorer.goals.total}</td>
               <td className="px-4 text-center py-2">
-                {scorer.games.appearences}
+                {scorer.statistics[0].goals.total}
               </td>
-              <td className="px-4 text-center py-2">{scorer.shots.total}</td>
               <td className="px-4 text-center py-2">
-                {scorer.goals.assists ? scorer.goals.assists : 0}
+                {scorer.statistics[0].games.appearences}
+              </td>
+              <td className="px-4 text-center py-2">
+                {scorer.statistics[0].shots.total}
+              </td>
+              <td className="px-4 text-center py-2">
+                {scorer.statistics[0].goals.assits
+                  ? scorer.statistics[0].goals.assits
+                  : 0}
+              </td>
+              <td className="flex text-center items-center py-2">
+                <img
+                  src={scorer.statistics[0].team.logo}
+                  className="w-6 h-6 mx-2"
+                  alt=""
+                />
+                <span>{scorer.statistics[0].team.name}</span>
               </td>
             </tr>
           ))}
@@ -54,16 +72,16 @@ const ScorersTable = ({ scorers, league, handleCompetition }) => {
             <tr className="border-b-4" key={index}>
               <td className="py-2 font-bold">{index + 1}</td>
               <td className="text-left font-bold py-2">
-                {truncateString(scorer.player_name, 16)}
+                {truncateString(scorer.player.name, 16)}
               </td>
               <td className="flex justify-center font-bold py-2">
-                {shortTeamName(scorer.team_name, 3)}
+                {shortTeamName(scorer.statistics[0].team.name, 3)}
               </td>
               <td className="px-1 text-center font-bold py-2">
-                {scorer.goals.total}
+                {scorer.statistics[0].goals.total}
               </td>
               <td className="px-1 text-center font-bold py-2">
-                {scorer.games.appearences}
+                {scorer.statistics[0].games.appearences}
               </td>
             </tr>
           ))}

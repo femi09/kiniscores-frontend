@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/common/NavBar/MainNavBar";
 import Sidebar from "./components/common/Sidebar";
 import Results from "./pages/Results";
-import LeagueStandings from "./pages/Standings/LeagueStandings";
+import LeagueStandings from "./pages/Standings/league_standings";
 import Scorers from "./pages/Scorers";
-import Fixtures from "./pages/Fixtures/all_fixtures";
+import AllFixtures from "./pages/Fixtures/all_fixtures";
 import NewsStream from "./pages/NewsStream";
 import AdminPanel from "./pages/Admin";
 import NextFixtures from "./pages/Fixtures/next_fixtures";
@@ -13,7 +13,7 @@ import LastFixtures from "./pages/Fixtures/last_fixtures";
 import LeagueFixtures from "./pages/Fixtures/league_fixtures";
 import NewsBody from "./pages/NewsDetails";
 import MatchDetails from "./pages/MatchDetails";
-import CupStandings from "./pages/Standings/CupStandings";
+import CupStandings from "./pages/Standings/cup_standings";
 import Column from "./pages/Column";
 import "./App.css";
 
@@ -46,7 +46,7 @@ function App() {
             path="/fixtures/:league/:league_id"
             component={LeagueFixtures}
           />
-          <Route path="/fixtures" component={Fixtures} />
+          <Route path="/fixtures" component={AllFixtures} />
           <Route path="/column" component={Column} />
           <Route path="/" component={NewsStream} />
         </Switch>

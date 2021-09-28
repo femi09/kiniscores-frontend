@@ -12,7 +12,7 @@ import {
   getLeagueFixtures,
   getTodaysFixtures,
 } from "../../../services/fixturesService";
-import SkeletonMiniMatch from "../../Skeletons/Home/SkeletonMinis/SkeletonMinimatch";
+import SkeletonMiniMatch from "../../skeletons/Home/SkeletonMinis/SkeletonMinimatch";
 // import LeaguesDropdown from './../../Dropdowns/leagues';
 
 const today = new Date();

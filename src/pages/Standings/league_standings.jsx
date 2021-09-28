@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { competitions } from "../../../utils/competitions";
-import { getLeagueStandings } from "../../../services/standingsService";
-import StandingTable from "../../../components/shared/Tables/StandingTable";
-import SkeletonStandings from "../../../components/Skeletons/Standings/LeagueStandings";
+import { competitions } from "../../utils/competitions";
+import { getLeagueStandings } from "../../services/standingsService";
+import StandingTable from "../../components/shared/Tables/leagueTable";
+import SkeletonStandings from "../../components/Skeletons/Standings/LeagueStandings";
 
 const Standings = () => {
-  const [tables, setTables] = useState([]);
+  const [standings, setStandings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [league, setLeague] = useState("");
   const { league_id } = useParams();
@@ -15,8 +15,7 @@ const Standings = () => {
     const getTable = async () => {
       try {
         const { data } = await getLeagueStandings(league_id);
-        console.log("standings", data.standings);
-        setTables(data.standings);
+        setStandings(data.standings[0]);
         const league = competitions.filter(
           (competition) => competition.id.toString() === league_id
         );
@@ -34,7 +33,7 @@ const Standings = () => {
       {loading ? (
         <SkeletonStandings />
       ) : (
-        <StandingTable tables={tables} league={league} />
+        <StandingTable standings={standings} league={league} />
       )}
     </div>
   );

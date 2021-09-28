@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { getLeagueResults, getMatchday } from "../../services/matchesService";
 import { formatDate, formatMatchTime } from "../../utils/formatTime";
 import { competitions } from "../../utils/competitions";
-import Result from "./MatchResult";
-import MatchDay from "./MatchDay";
 import SkeletonMatches from "../../components/Skeletons/Match";
 import SkeletonMatchDay from "../../components/Skeletons/Match/SkeletonMatchDay";
-import LeagueDropdown from "../../components/shared/Dropdowns/leagues";
+import LeagueDropdown from "../../components/shared/dropdowns/leagues";
+import MatchResult from "../../components/results/matchResult";
+import ResultsHeader from "../../components/results/resultsHeader";
+import "./index.css";
 
-const Matches = () => {
+const Results = () => {
   const [matches, setMatches] = useState([]);
   const [currentMatchDay, setCurrentMatchDay] = useState("");
   const [league, setLeague] = useState();
@@ -18,25 +19,28 @@ const Matches = () => {
 
   useEffect(() => {
     const getMatches = async () => {
-      const { data: matchday } = await getMatchday(league_id);
+      const { data } = await getMatchday(league_id);
       const league = competitions.filter(
         (competition) => competition.id.toString() === league_id
       );
       setLeague(league[0].name);
-      setCurrentMatchDay(matchday);
+      setCurrentMatchDay(data.matchday);
     };
     getMatches();
   }, [league_id]);
 
   useEffect(() => {
     const getResults = async () => {
-      const { data: latestmatches } = await getLeagueResults(
-        currentMatchDay,
-        league_id
-      );
-      setMatches(latestmatches);
-      setLoading(false);
+      if (currentMatchDay) {
+        const { data: latestmatches } = await getLeagueResults(
+          currentMatchDay,
+          league_id
+        );
+        setMatches(latestmatches);
+        setLoading(false);
+      }
     };
+
     getResults();
   }, [currentMatchDay, league_id]);
 
@@ -78,7 +82,7 @@ const Matches = () => {
               <LeagueDropdown league={league} />
             </div>
             <div className="py-2 my-2">
-              <MatchDay
+              <ResultsHeader
                 matchday={currentMatchDay}
                 nextMatch={getNextMatchDay}
                 prevMatch={getPrevMatchDay}
@@ -92,27 +96,19 @@ const Matches = () => {
       {loading ? (
         <SkeletonMatches />
       ) : (
-        <Fragment>
-          <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
-            {matches.map((match) => (
-              <Link
-                to={`/fixture/${match.fixture_id}/${
-                  match.status === "Not Started" ? `head-to-head` : `events`
-                }`}
-                key={match.fixture_id}
-              >
-                <Result
-                  match={match}
-                  matchDate={formatDate}
-                  matchTime={formatMatchTime}
-                />
-              </Link>
-            ))}
-          </div>
-        </Fragment>
+        <div className="mx-2 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-2">
+          {matches.map((match) => (
+            <MatchResult
+              key={match.fixture.id}
+              match={match}
+              matchDate={formatDate}
+              matchTime={formatMatchTime}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
 };
 
-export default Matches;
+export default Results;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import { competitions } from "../../../utils/competitions";
-import { getLeagueStandings } from "../../../services/standingsService";
-import CupTable from "../../../components/shared/Tables/CupTable";
-import CupStandingsSkeleton from "../../../components/Skeletons/Standings/CupStandings";
-import Dropdown from "../../../components/shared/Dropdowns/leagues";
+import { competitions } from "../../utils/competitions";
+import { getLeagueStandings } from "../../services/standingsService";
+import CupTable from "../../components/shared/Tables/cupTable"
+import CupStandingsSkeleton from "../../components/Skeletons/Standings/CupStandings";
+import StandingsDropdown from "../../components/shared/dropdowns/standings";
 
 const CupStandings = () => {
   const [standings, setStandings] = useState([]);
@@ -15,8 +15,8 @@ const CupStandings = () => {
   useEffect(() => {
     const getTable = async () => {
       try {
-        const { data: standings } = await getLeagueStandings(league_id);
-        setStandings(standings);
+        const { data } = await getLeagueStandings(league_id);
+        setStandings(data.standings);
         const league = competitions.filter(
           (competition) => competition.id.toString() === league_id
         );
@@ -33,15 +33,15 @@ const CupStandings = () => {
       {loading ? (
         <CupStandingsSkeleton />
       ) : (
-        <Fragment>
+        <>
           <div className="relative mx-4">
-            <Dropdown title={league} page="standings" />
+            <StandingsDropdown league={league}/>
           </div>
 
-          {standings.map((tables, index) => (
-            <CupTable key={index} tables={tables} league={league} />
+          {standings.map((standing, index) => (
+            <CupTable key={index} tables={standing} />
           ))}
-        </Fragment>
+        </>
       )}
     </div>
   );

@@ -14,13 +14,13 @@ const Sidebar = () => {
         <NavLink to="/fixtures">
           <li className="py-4 cursor-pointer hover:text-gray-500">Fixtures</li>
         </NavLink>
-        <NavLink to="/results/premier_league/2790">
+        <NavLink to="/results/premier_league/39">
           <li className="py-4 cursor-pointer hover:text-gray-500">Results</li>
         </NavLink>
-        <NavLink to="/standings/premier_league/2790">
+        <NavLink to="/standings/premier_league/39">
           <li className="py-4 cursor-pointer hover:text-gray-500">Standings</li>
         </NavLink>
-        <NavLink to="/scorers/premier_league/2790">
+        <NavLink to="/scorers/premier_league/39">
           <li className="py-4 cursor-pointe hover:text-gray-500">
             Top Scorers
           </li>

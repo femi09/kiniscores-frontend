@@ -1,10 +1,12 @@
 import React from "react";
-import LeaguesDropdown from "../../shared/Dropdowns/leagues";
+import LeaguesDropdown from "../../shared/dropdowns/leagues";
 
-const NextFixturesHeader = ({league}) => {
+const NextFixturesHeader = ({ league }) => {
+  const theme  =
+    "";
   return (
     <div className="text-left my-4">
-      <LeaguesDropdown title={`Last ${league} Fixtures`} page="fixtures/last" />
+      <LeaguesDropdown title={`Last ${league} Fixtures`} page="fixtures/last" theme={theme} />
     </div>
   );
 };

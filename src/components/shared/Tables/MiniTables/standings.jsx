@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getLeagueStandings } from "../../../../services/standingsService";
 import { Link } from "react-router-dom";
-import MiniDropdown from "../../Dropdowns/miniDropdowns";
+import MiniDropdown from "../../dropdowns/miniDropdowns";
 
 const MiniStandings = () => {
   const [tables, setTables] = useState([]);

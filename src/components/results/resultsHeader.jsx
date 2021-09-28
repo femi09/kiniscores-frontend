@@ -1,6 +1,6 @@
 import React from "react";
 
-const MatchDay = ({matchday, nextMatch, prevMatch}) => {
+const ResultsHeader = ({ matchday, nextMatch, prevMatch }) => {
   return (
     <div className="inline-flex">
       <button
@@ -20,4 +20,4 @@ const MatchDay = ({matchday, nextMatch, prevMatch}) => {
   );
 };
 
-export default MatchDay;
+export default ResultsHeader;

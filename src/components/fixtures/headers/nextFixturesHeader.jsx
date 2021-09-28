@@ -1,5 +1,5 @@
 import React from "react";
-import LeaguesDropdown from "../../shared/Dropdowns/leagues";
+import LeaguesDropdown from "../../shared/dropdowns/leagues";
 
 const NextFixturesHeader = ({league}) => {
   return (

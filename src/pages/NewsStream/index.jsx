@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated, config } from "react-spring";
 import { getTweets } from "../../services/latestServices";
-import MiniStandings from "../../components/shared/Tables/MiniStandings";
+import MiniStandings from "../../components/shared/Tables/MiniTables/standings";
 import MiniMatch from "../../components/fixtures/MiniFixtures";
-import MiniScorers from "../../components/shared/Tables/MiniScorers";
+import MiniScorers from "../../components/shared/Tables/MiniTables/scorers";
 import io from "socket.io-client";
 import TweetStream from "./TweetStream";
 import TweetStreamSkeleton from "../../components/Skeletons/TweetStream";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { formatCurrentDate, formatDate } from "../../../utils/formatTime";
-import LeaguesDropdown from "../../shared/Dropdowns/leagues";
+import LeaguesDropdown from "../../shared/dropdowns/leagues";
 
 const LeagueFixturesHeader = ({ league_slug, league_id, league }) => {
   return (
@@ -15,7 +15,10 @@ const LeagueFixturesHeader = ({ league_slug, league_id, league }) => {
         <Link to={`/fixtures/next/${league_slug}/${league_id}`}>next</Link>
       </div>
       <div className="text-left">
-        <LeaguesDropdown title={`${league}'s Fixtures`} page="/" />
+        <LeaguesDropdown
+          title={`${league}'s Fixtures`}
+          page="/fixtures"
+        />
       </div>
     </div>
   );

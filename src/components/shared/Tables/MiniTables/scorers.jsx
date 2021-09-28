@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { getLeagueScorers } from "../../../../services/scorerService";
 import { shortTeamName } from "../../../../utils/truncate";
 import { Link } from "react-router-dom";
-import MiniDropdown from "../../Dropdowns/miniDropdowns";
+import MiniDropdown from "../../dropdowns/miniDropdowns";
 
 const MiniScorers = () => {
   const [scorers, setScorers] = useState([]);
