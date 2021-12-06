@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { truncateTeamName } from "../../../utils/truncate"
-import _ from "lodash";
+
 
 const Stats = ({ fixture }) => {
   const [stats, setStats] = useState([]);
