@@ -2,23 +2,24 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getLeagueStandings } from "../../../../services/standingsService";
 import { Link } from "react-router-dom";
-import MiniDropdown from "../../dropdowns/miniDropdowns";
+import MiniDropdown from "../../dropdowns/mini_dropdown";
 
 const MiniStandings = () => {
-  const [tables, setTables] = useState([]);
+  const [standings, setStandings] = useState([]);
   const [league, setLeague] = useState("Premier League");
   const [loading, setLoading] = useState(true);
   const [leagueSlug, setLeagueSlug] = useState("premier_league");
-  const [leagueId, setLeagueId] = useState(2790);
+  const [leagueId, setLeagueId] = useState(39);
 
   useEffect(() => {
     const getTable = async () => {
       try {
-        const { data: standings } = await getLeagueStandings(leagueId);
-        const MiniStandings = standings[0].slice(0, 5);
-        setTables(MiniStandings);
+        const { data } = await getLeagueStandings(leagueId);
+        const MiniStandings = data.standings[0].slice(0, 6);
+        setStandings(MiniStandings);
         setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.log(error.toString());
       }
     };
@@ -32,8 +33,8 @@ const MiniStandings = () => {
       setLeagueSlug(slug);
       setLeague(league);
       const { data: standings } = await getLeagueStandings(id);
-      const MiniStandings = standings[0].slice(0, 5);
-      setTables(MiniStandings);
+      const MiniStandings = standings[0].slice(0, 6);
+      setStandings(MiniStandings);
       setLoading(false);
     } catch (error) {
       console.log(error.toString());
@@ -41,7 +42,7 @@ const MiniStandings = () => {
   };
 
   return (
-    <div>
+    <div className="my-16">
       <div>
         <div className="py-1 text-sm text-center font-bold mx-auto">
           <h1 className="text-blue-800">Standings</h1>
@@ -65,23 +66,23 @@ const MiniStandings = () => {
             </tbody>
           ) : (
             <tbody className="text-sm text-center text-blue-900">
-              {tables.map((table, index) => (
-                <tr key={index}>
-                  <td className="py-2 font-bold text-xs">{table.rank}</td>
-                  <td className=" flex items-center text-left text-sm py-2">
-                    <img className="w-4 h-4" src={table.logo} alt="" />
-                    <span className="px-2 text-xs font-bold">
-                      {table.teamName}
+              {standings.map((standing) => (
+                <tr key={standing.team.id}>
+                  <td className="py-2 font-bold text-xs lg:text-sm">{standing.rank}</td>
+                  <td className=" flex items-center text-left text-xs lg:text-sm py-2">
+                    <img className="w-6 h-6" src={standing.team.logo} alt="" />
+                    <span className="px-2 text-sm font-bold">
+                      {standing.team.name}
                     </span>
                   </td>
-                  <td className="px-2 font-bold text-xs py-2">
-                    {table.all.matchsPlayed}
+                  <td className="px-2 font-bold text-xs lg:text-sm py-2">
+                    {standing.all.played}
                   </td>
-                  <td className="px-2 font-bold text-xs py-2">
-                    {table.goalsDiff}
+                  <td className="px-2 font-bold text-xs lg:text-sm py-2">
+                    {standing.goalsDiff}
                   </td>
-                  <td className="px-2 font-bold text-xs py-2">
-                    {table.points}
+                  <td className="px-2 font-bold text-sm py-2">
+                    {standing.points}
                   </td>
                 </tr>
               ))}
@@ -91,7 +92,7 @@ const MiniStandings = () => {
       </div>
 
       {!loading && (
-        <div className="text-right text-xs p-2 font-bold  mb-8 text-blue-900">
+        <div className="text-right text-sm p-2 font-bold  mb-8 text-blue-900">
           {leagueSlug === "champions_league" ||
           leagueSlug === "europa_league" ? (
             <Link to={`/tables/${leagueSlug}/${leagueId}`}>

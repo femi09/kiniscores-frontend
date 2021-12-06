@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 
-const LeaguesDropdown = ({ title, page }) => {
+const LeaguesDropdown = ({ title }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -46,7 +46,7 @@ const LeaguesDropdown = ({ title, page }) => {
           aria-labelledby="options-menu"
         >
           {competitions.map(({ id, name, slug }) => (
-            <Link key={id} to={`/${page}/${slug}/${id}`}>
+            <Link key={id} to={`/fixtures/${slug}/${id}`}>
               <div
                 onClick={() => setShow(!show)}
                 className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"

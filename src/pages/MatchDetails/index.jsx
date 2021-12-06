@@ -7,7 +7,7 @@ import Lineups from "./Lineups";
 import HeadtoHead from "./HeadtoHead";
 import Stats from "./Statistics";
 import Events from "./MatchEvents";
-import SkeletonMatchDetails from "../../components/Skeletons/MatchDetails";
+import SkeletonMatchDetails from "../../components/skeletons/MatchDetails";
 
 const MatchDetails = () => {
   const [fixture, setFixture] = useState({});

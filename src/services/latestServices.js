@@ -1,16 +1,16 @@
-import femi from "./httpService";
+import Kiniscores from "./httpService";
 import { kiniscoresApi } from "../config.json";
 
 export function getLatestNews() {
-  return femi.get(`${kiniscoresApi}/news`);
+  return Kiniscores.get(`${kiniscoresApi}/news`);
 }
 
 export function getLatestNewsBody(id) {
-  return femi.get(`${kiniscoresApi}/news/${id}`);
-  //   return femi.get(`http://localhost:5001/api/news/${id}`);
+  return Kiniscores.get(`${kiniscoresApi}/news/${id}`);
+  //   return Kiniscores.get(`http://localhost:5001/api/news/${id}`);
 }
 
 export function getTweets() {
-  return femi.get(`${kiniscoresApi}/recent/tweets`);
-  // return femi.get(`http://localhost:5001/api/recent/tweets`);
+  return Kiniscores.get(`${kiniscoresApi}/recent/tweets`);
+  // return Kiniscores.get(`http://localhost:5001/api/recent/tweets`);
 }

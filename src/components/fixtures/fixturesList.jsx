@@ -9,12 +9,12 @@ const FixturesList = ({ fixtures }) => {
       {fixtures.map(({ fixture, teams, goals }) => (
         <Link key={fixture.id} to={`/fixture/${fixture.id}/head-to-head`}>
           <div className="flex-col flex items-center my-4 sm:flex-row">
-            <div className="w-full text-sm font-bold sm:hidden">
+            <div className="w-full text-base font-bold sm:hidden">
               <p className="text-xs">Venue: </p>
               {fixture.venue.name} {fixture.venue.city}
             </div>
             <div className="w-full xl:w-3/4 bg-gray-400 py-4 px-2 sm:p-4">
-              <div className="flex items-center text-sm font-bold sm:text-md">
+              <div className="flex items-center text-sm font-bold lg:text-base">
                 <div className="flex items-center justfy-between text-center w-1/3">
                   <div className="sm:ml-2">
                     <p className="hidden lg:block">{teams.home.name}</p>
@@ -25,7 +25,7 @@ const FixturesList = ({ fixtures }) => {
                 </div>
                 <div className="w-1/3 flex items-center justify-center  sm:mx-2">
                   <img
-                    className="h-4 w-4 sm:h-6 sm:w-6"
+                    className="h-4 w-4 sm:h-8 sm:w-8"
                     src={teams.home.logo}
                     alt=""
                   />
@@ -38,7 +38,7 @@ const FixturesList = ({ fixtures }) => {
                     </p>
                   ) : fixture.status.short === "FT" ||
                     fixture.status.short === "AET" ? (
-                    <div className=" flex text-sm text-white mx-2 py-1">
+                    <div className=" flex text-sm lg:text-base text-white mx-2 py-1">
                       <p className="px-2 sm:px-3 py-1 bg-blue-800 border-r border-r-white">
                         {goals.home}
                       </p>
@@ -47,7 +47,7 @@ const FixturesList = ({ fixtures }) => {
                       </p>
                     </div>
                   ) : (
-                    <div className="flex text-sm text-white mx-2 py-1">
+                    <div className="flex text-sm lg:text-base text-white mx-2 py-1">
                       <p className="px-2 sm:px-3 py-1 bg-pink-500 border-r border-r-white">
                         {goals.home}
                       </p>
@@ -55,7 +55,7 @@ const FixturesList = ({ fixtures }) => {
                     </div>
                   )}
                   <img
-                    className="h-4 w-4 sm:h-6 sm:w-6"
+                    className="h-4 w-4 sm:h-8 sm:w-8"
                     src={teams.away.logo}
                     alt=""
                   />

@@ -3,7 +3,7 @@ import { useSpring, useTransition, animated, config } from "react-spring";
 import Hero from "./Hero";
 import NewsCard from "./NewsCard";
 import { getLatestNews } from "../../services/latestServices";
-import SkeletonLatestNews from "../../components/Skeletons/Home/SkeletonNews";
+import SkeletonLatestNews from "../../components/skeletons/Home/SkeletonNews";
 
 const Column = () => {
   const [show, set] = useState(false);

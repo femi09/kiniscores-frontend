@@ -2,8 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";
-import CupTable from "../../components/shared/Tables/cupTable"
-import CupStandingsSkeleton from "../../components/Skeletons/Standings/CupStandings";
+import CupTable from "../../components/shared/tables/cupTable"
+import CupStandingsSkeleton from "../../components/skeletons/Standings/CupStandings";
 import StandingsDropdown from "../../components/shared/dropdowns/standings";
 
 const CupStandings = () => {

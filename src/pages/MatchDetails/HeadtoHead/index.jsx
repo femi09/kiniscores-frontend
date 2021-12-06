@@ -9,11 +9,12 @@ const HeadtoHead = ({ fixture }) => {
   const [fixtures, setFixtures] = useState([]);
 
   useEffect(() => {
-    let teamAId = fixture.homeTeam.team_id;
-    let teamBId = fixture.awayTeam.team_id;
+    let teamAId = fixture.teams.home.id;
+    let teamBId = fixture.teams.away.id;
 
     const getHead2Head = async () => {
       const { data } = await getHeadtoHead(teamAId, teamBId);
+      console.log("data", data);
       setTeams(data.teams);
       let fixtures = data.fixtures;
       fixtures = _.sortBy(fixtures).reverse();
@@ -22,7 +23,7 @@ const HeadtoHead = ({ fixture }) => {
           fixture.status === "Match Finished" &&
           fixture.league.name === "Premier League"
       );
-      let recentMeetings = fixtures.slice(0, 5);
+      let recentMeetings = fixtures.slice(0, 8);
       setFixtures(recentMeetings);
     };
     getHead2Head();
@@ -30,7 +31,7 @@ const HeadtoHead = ({ fixture }) => {
   return (
     <div>
       {teams[0] && teams[1] && (
-        <div className="bg-gray-300 pt-8">
+        <div className="bg-gray-300 py-8">
           <div className="text-center font-bold text-2xl text-blue-900">
             <h1>Head to Head</h1>
           </div>
@@ -61,21 +62,21 @@ const HeadtoHead = ({ fixture }) => {
                   <div className="mx-2 sm:mx-3 text-lg">
                     {teams[0].statistics.wins.total}
                   </div>
-                  <div className="">Total Wins</div>
+                  <div className="text-sm">Total Wins</div>
                 </div>
 
                 <div className="flex p-2 items-center">
                   <div className="mx-2 sm:mx-3 text-lg">
                     {teams[0].statistics.wins.home}
                   </div>
-                  <div>Home</div>
+                  <div className="text-sm">Home</div>
                 </div>
 
                 <div className="flex p-2 items-center">
                   <div className="mx-2 sm:mx-3 text-lg">
                     {teams[0].statistics.wins.away}
                   </div>
-                  <div>Away</div>
+                  <div className="text-sm">Away</div>
                 </div>
               </div>
               <div className="flex flex-col px-2 items-center">
@@ -93,21 +94,21 @@ const HeadtoHead = ({ fixture }) => {
               <div className="flex">
                 <div className="flex flex-col items-start">
                   <div className="flex p-2 items-center">
-                    <div className="">Total Wins</div>
+                    <div className="text-sm">Total Wins</div>
                     <div className="mx-3 text-xl">
                       {teams[1].statistics.wins.total}
                     </div>
                   </div>
 
                   <div className="flex p-2 items-center">
-                    <div className="">Home</div>
+                    <div className="text-sm">Home</div>
                     <div className="mx-2 sm:mx-3 text-lg">
                       {teams[1].statistics.wins.home}
                     </div>
                   </div>
 
                   <div className="flex p-2 items-center">
-                    <div className="">Away</div>
+                    <div className="text-sm">Away</div>
                     <div className="mx-2 sm:mx-3 text-lg">
                       {teams[1].statistics.wins.away}
                     </div>
@@ -116,13 +117,13 @@ const HeadtoHead = ({ fixture }) => {
               </div>
             </div>
           </div>
-          <div className="sm:w-2/3 mx-auto text-center mt-12">
+          <div className="sm:w-2/3 mx-auto text-center my-12">
             <div className="font-bold text-xl text-blue-900">
               <h1>Recent Meetings</h1>
             </div>
             {fixtures.map((fixture) => (
-              <div key={fixture.fixture_id} className="mx-auto my-4">
-                <p className="text-xs font-bold text-blue-800">
+              <div key={fixture.fixture_id} className="mx-auto my-8">
+                <p className="text-xs lg:text-sm font-bold text-blue-800">
                   {formatFixturesDate(fixture.event_date)}
                 </p>
 

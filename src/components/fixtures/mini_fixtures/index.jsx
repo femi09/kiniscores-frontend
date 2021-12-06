@@ -13,7 +13,7 @@ import {
   getTodaysFixtures,
 } from "../../../services/fixturesService";
 import SkeletonMiniMatch from "../../skeletons/Home/SkeletonMinis/SkeletonMinimatch";
-// import LeaguesDropdown from './../../Dropdowns/leagues';
+import MiniDropdown from "../../shared/dropdowns/mini_dropdown";
 
 const today = new Date();
 const MiniMatch = () => {
@@ -72,7 +72,7 @@ const MiniMatch = () => {
       <div className="bg-white mb-2 rounded-lg py-1 text-sm text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
-      <p className="text-xs text-center py-1 font-bold bg-blue-900 text-white">
+      <p className="text-xs lg:text-sm text-center py-1 font-bold bg-blue-900 text-white">
         {formatCurrentDate(today)}
       </p>
       {loading && fixtures.length === 0 ? (
@@ -80,10 +80,7 @@ const MiniMatch = () => {
       ) : (
         <div className="px-4 bg-gray-300 py-4 border-b">
           <div>
-            {/* <leaguesDrropdown
-              title={league}
-              // handleCompetition={handleCompetition}
-            /> */}
+           <MiniDropdown league={league} handleCompetition={handleCompetition}/>
           </div>
           {!loading && fixtures.length === 0 && (
             <div>
@@ -92,74 +89,74 @@ const MiniMatch = () => {
               </h1>
             </div>
           )}
-          {fixtures.map((fixture, index) => (
+          {fixtures.map(({ fixture, teams, goals }) => (
             <Link
-              key={index}
-              to={`/fixture/${fixture.fixture_id}/${
-                fixture.statusShort === "NS" ||
-                fixture.statusShort === "PST" ||
-                fixture.statusShort === "TBD" ||
-                fixture.statusShort === "CANC"
+              key={fixture.id}
+              to={`/fixture/${fixture.id}/${
+                fixture.status.short === "NS" ||
+                fixture.status.short === "PST" ||
+                fixture.status.short === "TBD" ||
+                fixture.status.short === "CANC"
                   ? `head-to-head`
                   : `events`
               }`}
             >
-              <div className="bg-gray-400 flex items-center text-xs text-blue-800 font-bold p-1 mt-4">
+              <div className="bg-gray-400 flex items-center text-xs lg:text-sm text-blue-800 font-bold p-1 mt-4">
                 <div className="text-center w-1/3">
                   <p className="">
                     {truncateString(
-                      truncateTeamName(fixture.homeTeam.team_name),
+                      truncateTeamName(teams.home.name),
                       11
                     )}
                   </p>
                 </div>
 
                 <div className="w-1/3 flex items-center justify-center mx-1">
-                  <img className="h-5 w-5" src={fixture.homeTeam.logo} alt="" />
-                  {fixture.statusShort === "NS" ||
-                  fixture.statusShort === "PST" ||
-                  fixture.statusShort === "TBD" ||
-                  fixture.statusShort === "CANC" ? (
-                    <p className="bg-blue-800 text-xs text-white mx-1 px-1 py-1">
-                      {formatMatchTime(fixture.event_date)}
+                  <img className="h-6 w-6" src={teams.home.logo} alt="" />
+                  {fixture.status.short === "NS" ||
+                  fixture.status.short === "PST" ||
+                  fixture.status.short === "TBD" ||
+                  fixture.status.short === "CANC" ? (
+                    <p className="bg-blue-800 text-xs lg:text-sm text-white mx-1 px-1 py-1">
+                      {formatMatchTime(fixture.date)}
                     </p>
-                  ) : fixture.statusShort === "FT" ||
-                    fixture.statusShort === "AET" ||
-                    fixture.statusShort === "PEN" ? (
-                    <div className="text-xs text-white mx-1 px-1 py-1">
+                  ) : fixture.status.short === "FT" ||
+                  fixture.status.short === "AET" ||
+                  fixture.status.short === "PEN" ? (
+                    <div className="text-xs lg:text-sm text-white mx-1 px-1 py-1">
                       <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
-                        {fixture.goalsHomeTeam}
+                        {goals.home}
                       </span>
                       <span className="px-2 py-1 bg-blue-800">
-                        {fixture.goalsAwayTeam}
+                        {goals.away}
                       </span>
                     </div>
                   ) : (
                     <div className="text-sm text-white mx-1 py-1">
                       <span className="px-2 py-1 bg-pink-500 border-r border-r-white">
-                        {fixture.goalsHomeTeam}
+                        {goals.home}
                       </span>
                       <span className="px-2 py-1 bg-pink-500">
-                        {fixture.goalsAwayTeam}
+                        {goals.away}
                       </span>
                     </div>
                   )}
 
-                  <img className="h-5 w-5" src={fixture.awayTeam.logo} alt="" />
+                  <img className="h-6 w-6" src={teams.away.logo} alt="" />
                 </div>
 
-                <div className="w-1/3 text-center">
+                <div className="w-1/3 text-center text-xs lg:text-sm">
                   <p>
                     {truncateString(
-                      truncateTeamName(fixture.awayTeam.team_name),
+                      truncateTeamName(teams.away.name),
                       11
                     )}
                   </p>
                 </div>
               </div>
               <div className="mx-1 px-1 text-center">
-                <p className="text-center text-xs font-bold text-blue-800">
-                  {fixture.status !== "Not Started" && fixture.statusShort}
+                <p className="text-center text-xs lg:text-sm font-bold text-blue-800">
+                  {fixture.status !== "Not Started" && fixture.status.short}
                 </p>
               </div>
             </Link>
@@ -167,7 +164,7 @@ const MiniMatch = () => {
         </div>
       )}
       {!loading && (
-        <div className="text-right text-xs px-2 py-1 font-bold mb-8 text-blue-900">
+        <div className="text-right text-xs lg:text-sm px-2 py-2 font-bold mb-8 text-blue-900">
           {fixtures.length === 0 ? (
             <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
               See Next {league ? league : "Premier League"} Fixtures

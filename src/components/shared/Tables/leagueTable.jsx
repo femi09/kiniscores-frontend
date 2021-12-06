@@ -7,7 +7,7 @@ const StandingTable = ({ standings, league }) => {
     <div className="mx-2 sm:mx-2 lg:mx-4 xl:mx-4">
       <StandingDropdown league={league} />
       <table className="hidden sm:block table-auto bg-gray-300">
-        <thead className="bg-blue-900 text-gray-200 text-sm">
+        <thead className="bg-blue-900 text-gray-200 text-sm lg:text-base">
           <tr className="">
             <th className="px-2 py-2">Position</th>
             <th className="px-2 w-1/2 text-left py-2">Club</th>
@@ -22,17 +22,20 @@ const StandingTable = ({ standings, league }) => {
             <th className="sm:px-2 lg:px-4 py-2">Form</th>
           </tr>
         </thead>
-        <tbody className="text-sm font-bold text-center text-blue-900">
+        <tbody className="text-sm lg:text-base font-bold text-center text-blue-900">
           {standings.map((standing) => (
             <tr key={standing.team.id}>
               <td className="py-2">{standing.rank}</td>
-              <td className="flex text-left py-2">
+              <td className="">
+                <div className="flex text-left py-2 items-center">
                 <img
-                  className="w-5 h-5 sm:mr-2 lg:mr-4"
+                  className="w-6 h-6 sm:mr-2 lg:mr-4"
                   src={standing.team.logo}
                   alt=""
                 />
                 {truncateString(standing.team.name, 18)}
+                </div>
+               
               </td>
               <td className="sm:px-2 lg:px-4 py-2">{standing.all.played}</td>
               <td className="sm:px-2 lg:px-4 py-2">{standing.all.win}</td>

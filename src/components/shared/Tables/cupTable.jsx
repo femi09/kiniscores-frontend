@@ -4,7 +4,7 @@ import { truncateString } from "../../../utils/truncate";
 const CupTable = ({ tables }) => {
   return (
     <div className="mx-2 my-6 xl:my-0 sm:mx-2 lg:mx-4">
-      <h1 className="text-sm my-2 p-2 shadow-sm font-bold text-blue-900">
+      <h1 className="text-sm lg:text-base my-2 p-2 shadow-sm font-bold text-blue-900">
         {tables[0].group}
       </h1>
       <table className="hidden sm:block table-auto bg-gray-300">
@@ -23,17 +23,20 @@ const CupTable = ({ tables }) => {
             <th className="sm:px-2 lg:px-4 py-2">Form</th>
           </tr>
         </thead>
-        <tbody className="text-sm font-bold text-center text-blue-900">
+        <tbody className="text-sm lg:text-base font-bold text-center text-blue-900">
           {tables.map((table) => (
             <tr key={table.team.id}>
               <td className="py-2">{table.rank}</td>
-              <td className="flex text-left py-2">
+              <td>
+                <div className="flex text-left py-2">
                 <img
-                  className="w-5 h-5 sm:mr-2 lg:mr-4"
+                  className="w-6 h-6 sm:mr-2 lg:mr-4"
                   src={table.team.logo}
                   alt=""
                 />
                 {table.team.name}
+                </div>
+                
               </td>
               <td className="sm:px-2 lg:px-4 py-2">{table.all.played}</td>
               <td className="sm:px-2 lg:px-4 py-2">{table.all.win}</td>

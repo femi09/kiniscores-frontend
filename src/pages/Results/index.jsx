@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { getLeagueResults, getMatchday } from "../../services/matchesService";
 import { formatDate, formatMatchTime } from "../../utils/formatTime";
 import { competitions } from "../../utils/competitions";
-import SkeletonMatches from "../../components/Skeletons/Match";
-import SkeletonMatchDay from "../../components/Skeletons/Match/SkeletonMatchDay";
-import LeagueDropdown from "../../components/shared/dropdowns/leagues";
+import SkeletonMatches from "../../components/skeletons/Match";
+import SkeletonMatchDay from "../../components/skeletons/Match/SkeletonMatchDay";
+import ResultDropdown from "../../components/shared/dropdowns/results";
 import MatchResult from "../../components/results/matchResult";
 import ResultsHeader from "../../components/results/resultsHeader";
 import "./index.css";
@@ -46,7 +46,7 @@ const Results = () => {
 
   const getPrevMatchDay = async () => {
     const matchday =
-      currentMatchDay === 1 ? currentMatchDay : currentMatchDay - 1;
+      currentMatchDay === 1 ? currentMatchDay : Number(currentMatchDay) - 1;
     setLoading(true);
     setCurrentMatchDay(matchday);
     const { data: latestmatches } = await getLeagueResults(matchday, league_id);
@@ -56,7 +56,7 @@ const Results = () => {
 
   const getNextMatchDay = async () => {
     const matchday =
-      currentMatchDay === 38 ? currentMatchDay : currentMatchDay + 1;
+      currentMatchDay === 38 ? currentMatchDay : Number(currentMatchDay) + 1;
     setCurrentMatchDay(matchday);
     setLoading(true);
     const { data: latestmatches } = await getLeagueResults(matchday, league_id);
@@ -79,7 +79,7 @@ const Results = () => {
         ) : (
           <Fragment>
             <div className="text-left sm:w-3/4 mx-auto">
-              <LeagueDropdown league={league} />
+              <ResultDropdown league={league} />
             </div>
             <div className="py-2 my-2">
               <ResultsHeader

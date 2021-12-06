@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";
-import StandingTable from "../../components/shared/Tables/leagueTable";
-import SkeletonStandings from "../../components/Skeletons/Standings/LeagueStandings";
+import StandingTable from "../../components/shared/tables/leagueTable";
+import SkeletonStandings from "../../components/skeletons/Standings/LeagueStandings";
 
 const Standings = () => {
   const [standings, setStandings] = useState([]);

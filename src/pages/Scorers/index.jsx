@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueScorers } from "../../services/scorerService";
-import ScorersTable from "../../components/shared/Tables/scorersTable";
-import SkeletonScorers from "../../components/Skeletons/Scorers";
+import ScorersTable from "../../components/shared/tables/scorersTable";
+import SkeletonScorers from "../../components/skeletons/Scorers";
 
 const Scorers = () => {
   const [scorers, setScorers] = useState([]);

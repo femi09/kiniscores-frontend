@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
-import SkeletonFixtures from "../../components/Skeletons/Fixtures";
+import SkeletonFixtures from "../../components/skeletons/Fixtures";
 import { getLastLeagueFixtures } from "../../services/fixturesService";
 import { formatFixturesDate } from "../../utils/formatTime";
 import Fixtures from "../../components/fixtures";

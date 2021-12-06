@@ -1,15 +1,14 @@
-   
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { competitions } from "../../../utils/competitions";
 
-const ResultDropdown = ({ league }) => {
+const ScorersDropdown = ({ league }) => {
   const [show, setShow] = useState(false);
 
   return (
     <div className="relative">
-      <div className="flex bg-white justify-between text-xs sm:text-sm leading-5 py-4 xl:my-0 xl:mb-4 my-4   font-bold px-2 sm:font-medium text-gray-700 items-center shadow-sm">
-        <div className="w-2/3">{league} Results</div>
+      <div className="flex bg-white justify-between text-sm leading-5 py-4 xl:my-0 xl:mb-4 my-4 px-2 font-medium text-gray-700 items-center shadow-sm">
+        <div className="w-2/3">{league} Top Scorers</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
           id="options-menu"
@@ -46,29 +45,25 @@ const ResultDropdown = ({ league }) => {
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          {competitions
-            .filter(
-              ({ type, id }) => type === "league" && id !== 2 && id !== 3
-            )
-            .map(({ id, name, slug }) => (
-              <Link key={id} to={`/results/${slug}/${id}`}>
-                <div
-                  onClick={() => setShow(!show)}
-                  className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
+          {competitions.map(({ id, name, slug }) => (
+            <Link key={id} to={`/scorers/${slug}/${id}`}>
+              <div
+                onClick={() => setShow(!show)}
+                className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
+              >
+                <span
+                  className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                  role="menuitem"
                 >
-                  <span
-                    className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                    role="menuitem"
-                  >
-                    {name}
-                  </span>
-                </div>
-              </Link>
-            ))}
+                  {name}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default ResultDropdown;
+export default ScorersDropdown;

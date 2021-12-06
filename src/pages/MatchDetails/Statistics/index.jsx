@@ -12,11 +12,9 @@ const Stats = ({ fixture }) => {
       setStatsName([]);
     } else {
       let matchStats = fixture.statistics;
-      matchStats = _.toArray(matchStats);
-
-      let statsName = fixture.statistics;
-      statsName = Object.keys(statsName);
-
+  
+      const statsName = fixture.statistics[0]?.statistics.map(stat => stat.type);
+      
       setStats(matchStats);
       setStatsName(statsName);
     }
@@ -32,26 +30,26 @@ const Stats = ({ fixture }) => {
         </div>
       ) : (
         <div className="py-4 bg-gray-300">
-          <div className="flex justify-around items-center border-gray-400 border-t-2 border-b-2 text-blue-900 text-xs font-bold py-2">
+          <div className="flex justify-around items-center border-gray-400 border-t-2 border-b-2 text-blue-900 text-sm font-bold py-2">
             <div className="w-2/5 flex justify-center items-center">
-              <p className="mr-3 hidden sm:block">{fixture.homeTeam.team_name}</p>
-              <p className="mx-1 sm:hidden">{truncateTeamName(fixture.homeTeam.team_name)}</p>
-              <img src={fixture.homeTeam.logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="" />
+              <p className="mr-3 hidden sm:block">{fixture.teams.home.name}</p>
+              <p className="mx-1 sm:hidden">{truncateTeamName(fixture.teams.home.name)}</p>
+              <img src={fixture.teams.home.logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="" />
             </div>
             <div className="w-1/4 text-center">
               <p>Match Stats</p>
             </div>
             <div className=" w-2/5 flex justify-center items-center">
-              <img src={fixture.awayTeam.logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="" />
-              <p className="ml-3 hidden sm:block">{fixture.awayTeam.team_name}</p>
-              <p className="mx-1 sm:hidden">{truncateTeamName(fixture.awayTeam.team_name)}</p>
+              <img src={fixture.teams.away.logo} className="w-6 h-6 sm:w-8 sm:h-8" alt="" />
+              <p className="ml-3 hidden sm:block">{fixture.teams.away.name}</p>
+              <p className="mx-1 sm:hidden">{truncateTeamName(fixture.teams.away.name)}</p>
             </div>
           </div>
-          <div className="flex justify-around font-semibold text-sm text-blue-900 py-2">
+          <div className="flex justify-around font-semibold text-sm lg:text-base text-blue-900 py-2">
             <div className="w-1/5 sm:w-1/3 text-right sm:text-center">
-              {stats.map((stat, index) => (
+              {stats[0].statistics.map((stat, index) => (
                 <p key={index} className="py-2">
-                  {stat.home === null ? 0 : stat.home}
+                  {stat.value ? stat.value : 0}
                 </p>
               ))}
             </div>
@@ -63,9 +61,9 @@ const Stats = ({ fixture }) => {
               ))}
             </div>
             <div className="w-1/5 sm:w-1/3 text-left sm:text-center">
-              {stats.map((stat, index) => (
+              {stats[1].statistics.map((stat, index) => (
                 <p key={index} className="py-2">
-                  {stat.away === null ? 0 : stat.away}
+                 {stat.value ? stat.value : 0}
                 </p>
               ))}
             </div>

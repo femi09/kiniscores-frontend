@@ -13,10 +13,10 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
     >
       <div className="result mb-2 grid grid-cols-3 py-6 bg-gray-300 sm:mb-0">
         <div className="flex items-center col-span-2 justify-between mx-2 sm:mx-4">
-          <div className="flex flex-col justify-start text-sm items-start font-bold text-blue-800 left">
+          <div className="flex flex-col justify-start text-base items-start font-bold text-blue-800 left">
             <div className="flex justify-between items-center py-2 sm:p-2 team-name">
               <img
-                className="w-5 h-5 mr-2 sm:mr-4"
+                className="w-6 h-6 mr-2 sm:mr-4"
                 src={match.teams.home.logo}
                 alt=""
               />
@@ -24,7 +24,7 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
             </div>
             <div className="flex justify-between items-center py-2 sm:p-2 team-name">
               <img
-                className="w-5 h-5 mr-2 sm:mr-4"
+                className="w-6 h-6 mr-2 sm:mr-4"
                 src={match.teams.away.logo}
                 alt=""
               />
@@ -35,9 +35,9 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
           match.fixture.status.short === "PST" ||
           match.fixture.status.short === "TBD" ||
           match.fixture.status.short === "CANC" ? (
-            <div className="text-xs font-bold text-white middle sm:text-sm"></div>
+            <div className="text-sm font-bold text-white middle sm:text-base"></div>
           ) : match.fixture.status.short === "FT" ? (
-            <div className="text-xs font-bold text-white middle sm:text-sm ">
+            <div className="text-sm font-bold text-white middle sm:text-base ">
               <p className="bg-blue-900 px-2 py-1 my-2 rounded-lg sm:my-1  sm:py-2 sm:px-3">
                 {match.goals.home}
               </p>
@@ -56,7 +56,7 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col justify-center text-xs text-center font-semibold text-blue-800 right border-l-2">
+        <div className="flex flex-col justify-center text-sm text-center font-semibold text-blue-800 right border-l-2">
           {match.fixture.status.short === "NS" ? (
             <p className="py-1 px-3"></p>
           ) : (
@@ -70,25 +70,25 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
               <p className="mx-1 bg-yellow-500 text-gray-800 px-2">Live</p>
             </div>
           ) : matchDate(match.fixture.date) === matchDate(today) ? (
-            <div className="p-3 flex flex-col font-bold text-xs justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
+            <div className="p-3 flex flex-col font-bold text-sm justify-center items-center lg:flex-row">
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
               <p className=" px-1 sm:mx-1 sm:px-2">TODAY</p>
             </div>
           ) : matchDate(moment(today).add(-1, "days").format()) ===
             matchDate(match.fixture.date) ? (
             <div className="p-3 flex flex-col justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
               <p className="px-1 sm:mx-1 sm:px-2">YESTERDAY</p>
             </div>
           ) : matchDate(moment(today).add(1, "days").format()) ===
             matchDate(match.fixture.date) ? (
             <div className="p-3 flex flex-col justify-center items-center lg:flex-row">
-              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
               <p className="px-1 sm:mx-1 sm:px-2">TOMORROW</p>
             </div>
           ) : (
             <div className="p-3 flex flex-col justify-center items-center flex lg:flex-row">
-              <img className="w-3 h-3" src="/assets/calendar.png" alt="" />
+              <img className="w-4 h-4" src="/assets/calendar.png" alt="" />
               <p className="px-1">{matchDate(match.fixture.date)}</p>
             </div>
           )}

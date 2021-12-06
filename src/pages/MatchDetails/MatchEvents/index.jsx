@@ -28,19 +28,19 @@ const Events = ({ fixture }) => {
             <h1>Events</h1>
           </div>
           {matchEvents.map((matchEvent, index) =>
-            matchEvent.teamName === fixture.homeTeam.team_name ? (
+            matchEvent.team.name === fixture.teams.home.name ? (
               <div key={index} className="px-1 sm:w-2/3 sm:px-3 py-2 flex">
                 <div className="sm:w-2/3 bg-gray-300 border-r-8 border-blue-900 flex items-center justify-between sm:justify-around py-2 px-3">
-                  <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-xs">
+                  <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-sm">
                     <div className="mb-1">
-                      {matchEvent.player}
+                      {matchEvent.player.name}
                       {matchEvent.type === "Goal" &&
                       matchEvent.detail !== "Missed Penalty" ? (
                         <span className="mx-1 text-gray-700">
                           ({matchEvent.type} !!!)
                         </span>
                       ) : matchEvent.type === "subst" ? (
-                        <span className="mx-1 text-gray-700">(In)</span>
+                        <span className="mx-1 text-gray-700">(Out)</span>
                       ) : (
                         <span className="mx-1 text-gray-700">
                           ({matchEvent.detail})
@@ -48,13 +48,13 @@ const Events = ({ fixture }) => {
                       )}
                     </div>
 
-                    {matchEvent.assist && matchEvent.type === "Goal" ? (
+                    {matchEvent.assist.name && matchEvent.type === "Goal" ? (
                       <p className="text-gray-600">
-                        (Assist: {matchEvent.assist})
+                        (Assist: {matchEvent.assist.name})
                       </p>
-                    ) : matchEvent.assist && matchEvent.type === "subst" ? (
+                    ) : matchEvent.assist.name && matchEvent.type === "subst" ? (
                       <p className="text-gray-600">
-                        (Out: {matchEvent.assist})
+                        (In: {matchEvent.assist.name})
                       </p>
                     ) : matchEvent.type === "Goal" &&
                       matchEvent.detail === "Penalty" ? (
@@ -126,26 +126,26 @@ const Events = ({ fixture }) => {
                     <div className="text-center pl-1"></div>
                   )}
                 </div>
-                <div className="sm:w-1/5 text-xs sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
-                  {matchEvent.elapsed_plus ? (
+                <div className="sm:w-1/5 text-sm sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
+                  {matchEvent.time.extra ? (
                     <p>
-                      {matchEvent.elapsed}+{matchEvent.elapsed_plus}'
+                      {matchEvent.time.elapsed}+{matchEvent.time.extra}'
                     </p>
                   ) : (
-                    <p>{matchEvent.elapsed}'</p>
+                    <p>{matchEvent.time.elapsed}'</p>
                   )}
                 </div>
               </div>
             ) : (
               <div key={index} className="flex justify-end pl-4">
                 <div className="px-1 sm:w-2/3 sm:px-3 py-2 flex sm:justify-end">
-                  <div className="sm:w-1/5 text-xs px-1 sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
-                    {matchEvent.elapsed_plus ? (
+                  <div className="sm:w-1/5 text-sm px-1 sm:text-sm sm:text-center font-bold text-blue-900 py-4 px-2">
+                    {matchEvent.time.extra ? (
                       <p>
-                        {matchEvent.elapsed}+{matchEvent.elapsed_plus}'
+                        {matchEvent.time.elapsed}+{matchEvent.time.extra}'
                       </p>
                     ) : (
-                      <p>{matchEvent.elapsed}'</p>
+                      <p>{matchEvent.time.elapsed}'</p>
                     )}
                   </div>
                   <div className="px-1 sm:w-2/3 bg-gray-300 border-l-8 border-blue-900 flex items-center justify-around py-2 sm:px-3">
@@ -209,29 +209,29 @@ const Events = ({ fixture }) => {
                       <div className="text-center pl-1"></div>
                     )}
 
-                    <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-xs">
+                    <div className="mx-4 sm:mx-0 text-gray-800 font-bold text-sm">
                       <div className="mb-1">
-                        {matchEvent.player}
+                        {matchEvent.player.name}
                         {matchEvent.type === "Goal" &&
                         matchEvent.detail !== "Missed Penalty" ? (
                           <span className="mx-1 text-gray-700">
                             ({matchEvent.type} !!!)
                           </span>
                         ) : matchEvent.type === "subst" ? (
-                          <span className="mx-1 text-gray-700">(In)</span>
+                          <span className="mx-1 text-gray-700">(Out)</span>
                         ) : (
                           <span className="mx-1 text-gray-700">
                             ({matchEvent.detail})
                           </span>
                         )}
 
-                        {matchEvent.assist && matchEvent.type === "Goal" ? (
+                        {matchEvent.assist.name && matchEvent.type === "Goal" ? (
                           <p className="text-gray-600">
-                            (Assist: {matchEvent.assist})
+                            (Assist: {matchEvent.assist.name})
                           </p>
-                        ) : matchEvent.assist && matchEvent.type === "subst" ? (
+                        ) : matchEvent.assist.name && matchEvent.type === "subst" ? (
                           <p className="text-gray-600">
-                            (Out: {matchEvent.assist})
+                            (In: {matchEvent.assist.name})
                           </p>
                         ) : matchEvent.type === "Goal" &&
                           matchEvent.detail === "Penalty" ? (

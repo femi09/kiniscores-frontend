@@ -13,17 +13,17 @@ const NavItems = () => {
           <NavLink to="/fixtures">Fixtures</NavLink>
         </li>
         <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-          <NavLink to="/results/premier_league/2790">Results</NavLink>
+          <NavLink to="/results/premier_league/39">Results</NavLink>
         </li>
         <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-          <NavLink to="/standings/premier_league/2790">Standings</NavLink>
+          <NavLink to="/standings/premier_league/39">Standings</NavLink>
         </li>
         <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
-          <NavLink to="/scorers/premier_league/2790">Top Scorers</NavLink>
+          <NavLink to="/scorers/premier_league/39">Top Scorers</NavLink>
         </li>
-        <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
+        {/* <li className="px-6 flex flex-none xl:px-8 text-blue-800 font-semibold cursor-pointer hover:text-gray-500">
           <NavLink to="/column">Column</NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

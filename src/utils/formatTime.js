@@ -106,7 +106,8 @@ export const formatDay = (utcDate) => {
   const date = day.getDate();
 
   const mm = month < 10 ? "0" + month : month;
+  const dd = date < 10 ? "0" + date : date;
 
-  const formatDate = `${year}-${mm}-${date}`;
+  const formatDate = `${year}-${mm}-${dd}`;
   return formatDate;
 };

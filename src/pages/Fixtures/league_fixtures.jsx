@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SkeletonFixtures from "../../components/Skeletons/Fixtures";
+import SkeletonFixtures from "../../components/skeletons/Fixtures";
 import { getLeagueFixtures } from "../../services/fixturesService";
 import NoFixtures from "../../components/fixtures/noFixtures";
 import { competitions } from "../../utils/competitions";

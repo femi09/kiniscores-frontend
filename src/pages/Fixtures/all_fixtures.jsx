@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import moment from "moment";
 import Fixtures from "../../components/fixtures";
-import SkeletonFixtures from "../../components/Skeletons/Fixtures";
+import SkeletonFixtures from "../../components/skeletons/Fixtures";
 import { getTodaysFixtures } from "../../services/fixturesService";
 import NoFixtures from "../../components/fixtures/noFixtures";
 import { formatDay } from "../../utils/formatTime";
@@ -17,10 +17,12 @@ const AllFixtures = () => {
 
   const getFixtures = async (date) => {
     try {
+      console.log(date);
       const { data: fixtures } = await getTodaysFixtures(date);
       const grouped_fixtures = _.groupBy(fixtures, "league.name");
       const competitions = Object.keys(grouped_fixtures);
       setCompetitions(competitions);
+      console.log("fixtures", fixtures);
       setFixtures(fixtures);
       setLoading(false);
     } catch (error) {

@@ -16,13 +16,13 @@ const Lineups = ({ fixture }) => {
       setLineups([]);
     } else {
       let lineup = fixture.lineups;
-      lineup = Object.values(lineup);
+      // lineup = Object.values(lineup);
 
-      let homeStartXI = lineup[0].startXI;
-      homeStartXI = _.groupBy(homeStartXI, "pos");
+      let homeStartXI = lineup[0]?.startXI;
+      homeStartXI = _.groupBy(homeStartXI, "player.pos");
 
-      let awayStartXI = lineup[1].startXI;
-      awayStartXI = _.groupBy(awayStartXI, "pos");
+      let awayStartXI = lineup[1]?.startXI;
+      awayStartXI = _.groupBy(awayStartXI, "player.pos");
 
       homeStartXI = _.toArray(homeStartXI);
       awayStartXI = _.toArray(awayStartXI);
@@ -49,7 +49,7 @@ const Lineups = ({ fixture }) => {
       {lineups.length === 0 ? (
         <div className="mx-2 sm:w-2/3 sm:mx-auto bg-gray-200 text-xl text-center shadow-lg my-6">
           <h1 className="text-blue-900 p-4">
-            Lineups are not announced until an hour before the match
+            Lineups are not available until an hour before the match
           </h1>
         </div>
       ) : (
@@ -63,7 +63,7 @@ const Lineups = ({ fixture }) => {
                   : "w-1/2 text-white rounded-md text-center py-2"
               }`}
             >
-              {truncateTeamName(fixture.homeTeam.team_name)}
+              {truncateTeamName(fixture.teams.home.name)}
             </div>
             <div
               onClick={() => handleShowTeam("awayTeam")}
@@ -73,7 +73,7 @@ const Lineups = ({ fixture }) => {
                   : "w-1/2 text-white rounded-l-md text-center py-2"
               }`}
             >
-              {truncateTeamName(fixture.awayTeam.team_name)}
+              {truncateTeamName(fixture.teams.away.name)}
             </div>
           </div>
           {lineups[0] !== undefined && (
@@ -85,8 +85,8 @@ const Lineups = ({ fixture }) => {
               }`}
             >
               <div className="flex font-bold bg-blue-900 text-white p-2">
-                <img src={fixture.homeTeam.logo} className="w-6 h-6" alt="" />
-                <p className="mx-2">{fixture.homeTeam.team_name}</p>
+                <img src={fixture.teams.home.logo} className="w-6 h-6" alt="" />
+                <p className="mx-2">{fixture.teams.home.name}</p>
                 <p>{lineups[0].formation}</p>
               </div>
 
@@ -96,9 +96,9 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 <div className="flex border-b font-semibold text-sm py-2">
                   <div className="w-1/6 text-center">
-                    {homestartXI[0][0].number}
+                    {homestartXI[0][0].player.number}
                   </div>
-                  <div className="w-1/2">{homestartXI[0][0].player}</div>
+                  <div className="w-1/2">{homestartXI[0][0].player.name}</div>
                 </div>
               </div>
               <div className="">
@@ -107,11 +107,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {homestartXI[1].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="sm:w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="sm:w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -121,11 +121,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {homestartXI[2].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -135,11 +135,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {homestartXI[3].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="sm:w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="sm:w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -149,11 +149,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {lineups[0].substitutes.map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="sm:w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="sm:w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -162,7 +162,7 @@ const Lineups = ({ fixture }) => {
                   Manager
                 </h1>
                 <div className="font-semibold text-sm py-2">
-                  <div className="mx-4">{lineups[0].coach}</div>
+                  <div className="mx-4">{lineups[0].coach.name}</div>
                 </div>
               </div>
             </div>
@@ -177,8 +177,8 @@ const Lineups = ({ fixture }) => {
               }`}
             >
               <div className="flex font-bold bg-blue-900 text-white p-2">
-                <img src={fixture.awayTeam.logo} className="w-6 h-6" alt="" />
-                <p className="mx-2">{fixture.awayTeam.team_name}</p>
+                <img src={fixture.teams.away.logo} className="w-6 h-6" alt="" />
+                <p className="mx-2">{fixture.teams.away.name}</p>
                 <p>{lineups[1].formation}</p>
               </div>
               <div className="">
@@ -188,9 +188,9 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 <div className="flex border-b font-semibold text-sm py-2">
                   <div className="w-1/6 text-center">
-                    {awaystartXI[0][0].number}
+                    {awaystartXI[0][0].player.number}
                   </div>
-                  <div className="w-1/2">{awaystartXI[0][0].player}</div>
+                  <div className="w-1/2">{awaystartXI[0][0].player.name}</div>
                 </div>
               </div>
               <div className="">
@@ -199,11 +199,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {awaystartXI[1].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -213,11 +213,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {awaystartXI[2].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -227,11 +227,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {awaystartXI[3].map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -241,11 +241,11 @@ const Lineups = ({ fixture }) => {
                 </h1>
                 {lineups[1].substitutes.map((player) => (
                   <div
-                    key={player.player_id}
+                    key={player.player.id}
                     className="flex border-b font-semibold text-sm py-2"
                   >
-                    <div className="w-1/6 text-center">{player.number}</div>
-                    <div className="w-1/2">{player.player}</div>
+                    <div className="w-1/6 text-center">{player.player.number}</div>
+                    <div className="w-1/2">{player.player.name}</div>
                   </div>
                 ))}
               </div>
@@ -254,7 +254,7 @@ const Lineups = ({ fixture }) => {
                   Manager
                 </h1>
                 <div className="font-semibold text-sm py-2">
-                  <div className="mx-4">{lineups[1].coach}</div>
+                  <div className="mx-4">{lineups[1].coach.name}</div>
                 </div>
               </div>
             </div>
