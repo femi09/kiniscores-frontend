@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";

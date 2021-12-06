@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLeagueResults, getMatchday } from "../../services/matchesService";
 import { formatDate, formatMatchTime } from "../../utils/formatTime";
 import { competitions } from "../../utils/competitions";

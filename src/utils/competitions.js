@@ -186,11 +186,11 @@ export const competitions = [
   },
 
   // Nigeria
-  {
-    id: 990,
-    name: "NPFL",
-    type: "league",
-    country: "Nigeria",
-    slug: "npfl",
-  },
+  // {
+  //   id: 990,
+  //   name: "NPFL",
+  //   type: "league",
+  //   country: "Nigeria",
+  //   slug: "npfl",
+  // },
 ];
