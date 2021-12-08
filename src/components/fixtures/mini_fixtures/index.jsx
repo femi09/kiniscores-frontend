@@ -123,7 +123,7 @@ const MiniMatch = () => {
                   ) : fixture.status.short === "FT" ||
                   fixture.status.short === "AET" ||
                   fixture.status.short === "PEN" ? (
-                    <div className="text-sm lg:text-base text-white mx-1 px-1 py-1">
+                    <div className="text-sm 2xl:text-base text-white mx-1 px-1 py-1">
                       <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
                         {goals.home}
                       </span>

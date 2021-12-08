@@ -20,8 +20,8 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
                 src={match.teams.home.logo}
                 alt=""
               />
-              <p className="hidden sm:block">{truncateString(match.teams.home.name, 20)}</p>
-              <p className="sm:hidden">{truncateString(match.teams.home.name, 15)}</p>
+              <p className="">{truncateString(match.teams.home.name, 20)}</p>
+              
             </div>
             <div className="flex justify-between items-center py-2 sm:p-2 team-name">
               <img
@@ -29,8 +29,7 @@ const MatchResult = ({ match, matchDate, matchTime }) => {
                 src={match.teams.away.logo}
                 alt=""
               />
-              <p className="hidden sm:block">{truncateString(match.teams.away.name, 20)}</p>
-              <p className="sm:hidden">{truncateString(match.teams.away.name, 15)}</p>
+              <p className="">{truncateString(match.teams.away.name, 20)}</p>
             </div>
           </div>
           {match.fixture.status.short === "NS" ||
