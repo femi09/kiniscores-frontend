@@ -101,7 +101,7 @@ const MiniMatch = () => {
                   : `events`
               }`}
             >
-              <div className="bg-gray-400 flex items-center text-sm lg:text-base text-blue-800 font-bold p-1 mt-4">
+              <div className="bg-gray-400 flex items-center text-xs lg:text-sm 2xl:text-base text-blue-800 font-bold p-1 mt-4">
                 <div className="text-center w-1/3">
                   <p className="">
                     {truncateString(
@@ -145,7 +145,7 @@ const MiniMatch = () => {
                   <img className="h-6 w-6" src={teams.away.logo} alt="" />
                 </div>
 
-                <div className="w-1/3 text-center text-xs lg:text-sm">
+                <div className="w-1/3 text-center text-xs lg:text-sm 2xl:text-base">
                   <p>
                     {truncateString(
                       truncateTeamName(teams.away.name),
