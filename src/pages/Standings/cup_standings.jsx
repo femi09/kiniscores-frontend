@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";
 import CupTable from "../../components/shared/tables/cup-table"
-import CupStandingsSkeleton from "../../components/skeletons/Standings/CupStandings";
+import CupStandingsSkeleton from "../../components/common/skeletons/standings/cup-standings";
 import StandingsDropdown from "../../components/shared/dropdowns/standings";
 
 const CupStandings = () => {

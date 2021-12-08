@@ -1,5 +1,5 @@
 import React from 'react';
-import SkeletonScorersTable from './SkeletonScorersTable';
+import SkeletonScorersTable from './skeletonScorersTable';
 
 const SkeletonScorers = () => {
     return ( 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, useParams } from "react-router-dom";
 import { getFixtureDetails } from "../../services/fixturesService";
-import TeamsInfo from "./TeamsInfo";
-import MatchNavs from "./MatchNavs";
-import Lineups from "./Lineups";
-import HeadtoHead from "./HeadtoHead";
-import Stats from "./Statistics";
-import Events from "./MatchEvents";
-import SkeletonMatchDetails from "../../components/skeletons/MatchDetails";
+import TeamsInfo from "./teams-info";
+import MatchNavs from "./match-navs";
+import Lineups from "./lineups";
+import HeadtoHead from "./head-to-head";
+import Stats from "./statistics";
+import Events from "./match-events";
+import SkeletonMatchDetails from "../../components/common/skeletons/match-details";
 
 const MatchDetails = () => {
   const [fixture, setFixture] = useState({});

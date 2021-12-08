@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated, config } from "react-spring";
-import Hero from "./Hero";
-import NewsCard from "./NewsCard";
+import Hero from "./hero";
+import NewsCard from "./news-card";
 import MiniStandings from "../../components/Tables/MiniStandings";
 import MiniMatch from "../../components/MiniMatch";
 import MiniScorers from "../../components/Tables/MiniScorers";
 import { getLatestNews } from "../../services/latestServices";
-import SkeletonLatestNews from "../../components/Skeletons/Home/SkeletonNews";
+import SkeletonLatestNews from "../../components/common/skeletons/home/skeleton-news";
 
 const Home = () => {
   const [show, set] = useState(false);

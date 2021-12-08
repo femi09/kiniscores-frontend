@@ -1,5 +1,5 @@
 import React from "react";
-import TweetSkeleton from "./TweetSkeleton";
+import TweetSkeleton from "./tweetSkeleton";
 
 const TweetStreamSkeleton = () => {
   return (

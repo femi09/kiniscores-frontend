@@ -1,5 +1,5 @@
 import React from "react";
-import SkeletonMatch from "./SkeletonMatch";
+import SkeletonMatch from "./skeletonMatch";
 
 
 const SkeletonMatches = () => {

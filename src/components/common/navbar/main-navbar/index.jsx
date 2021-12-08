@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import NavItems from "../NavItems";
+import NavItems from "../nav-items";
 import "./index.css";
 
 const NavBar = () => {

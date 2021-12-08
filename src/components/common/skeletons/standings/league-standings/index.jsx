@@ -1,5 +1,5 @@
 import React from 'react';
-import SkeletonStandingTable from './SkeletonStandingTable';
+import SkeletonStandingTable from './skeletonStandingTable';
 
 const SkeletonStandings = () => {
     return ( 

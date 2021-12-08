@@ -1,6 +1,6 @@
 import React from 'react';
-import SkeletonTeamInfo from "../MatchDetails/SkeletonTeamInfo"
-import SkeletonMatchNavs from './SkeletonMatchNavs';
+import SkeletonTeamInfo from "./skeletonTeamInfo"
+import SkeletonMatchNavs from './skeletonMatchNavs';
 const SkeletonMatchDetails = () => {
     return (
       <div>

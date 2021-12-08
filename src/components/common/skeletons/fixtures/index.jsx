@@ -1,5 +1,5 @@
 import React from 'react';
-import SkeletonFixture from "./SkeletonFixture"
+import SkeletonFixture from "./skeleton-fixture"
 
 const SkeletonFixtures = () => {
     return ( 

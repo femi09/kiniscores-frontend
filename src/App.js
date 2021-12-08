@@ -1,20 +1,20 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import NavBar from "./components/common/NavBar/MainNavBar";
-import Sidebar from "./components/common/Sidebar";
-import Results from "./pages/Results";
-import LeagueStandings from "./pages/Standings/league_standings";
-import Scorers from "./pages/Scorers";
-import AllFixtures from "./pages/Fixtures/all_fixtures";
-import NewsStream from "./pages/NewsStream";
-import AdminPanel from "./pages/Admin";
-import NextFixtures from "./pages/Fixtures/next_fixtures";
-import LastFixtures from "./pages/Fixtures/last_fixtures";
-import LeagueFixtures from "./pages/Fixtures/league_fixtures";
-import NewsBody from "./pages/NewsDetails";
-import MatchDetails from "./pages/MatchDetails";
-import CupStandings from "./pages/Standings/cup_standings";
-import Column from "./pages/Column";
+import NavBar from "./components/common/navbar/main-navbar";
+import Sidebar from "./components/common/sidebar";
+import Results from "./pages/results";
+import LeagueStandings from "./pages/standings/league_standings";
+import Scorers from "./pages/scorers";
+import AllFixtures from "./pages/fixtures/all_fixtures";
+import NewsStream from "./pages/news-stream";
+import AdminPanel from "./pages/admin";
+import NextFixtures from "./pages/fixtures/next_fixtures";
+import LastFixtures from "./pages/fixtures/last_fixtures";
+import LeagueFixtures from "./pages/fixtures/league_fixtures";
+import NewsBody from "./pages/news-details";
+import MatchDetails from "./pages/match-details";
+import CupStandings from "./pages/standings/cup_standings";
+import Column from "./pages/column";
 import "./App.css";
 
 function App() {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getLatestNewsBody } from "../../../services/latestServices";
 import { formatFixturesDate } from "../../../utils/formatTime";
 import { kiniscoresApi } from "../../../config.json";
-import SkeletonNewsBody from "../../../components/Skeletons/News/SkeletonNewsbody";
+import SkeletonNewsBody from "../../../components/common/skeletons/news/SkeletonNewsbody";
 
 const NewsBody = () => {
   const [news, setNews] = useState("");

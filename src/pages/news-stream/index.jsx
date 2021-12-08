@@ -5,10 +5,10 @@ import MiniStandings from "../../components/shared/tables/mini_tables/standings"
 import MiniMatch from "../../components/fixtures/mini_fixtures";
 import MiniScorers from "../../components/shared/tables/mini_tables/scorers";
 import io from "socket.io-client";
-import TweetStream from "./TweetStream";
-import TweetStreamSkeleton from "../../components/skeletons/TweetStream";
+import TweetStream from "./tweet-stream";
+import TweetStreamSkeleton from "../../components/common/skeletons/tweet-stream";
 import "./index.css";
-import TweetButtons from "./TweetButtons";
+import TweetButtons from "./tweet-buttons";
 
 const NewsStream = () => {
   const [tweets, setTweets] = useState([]);

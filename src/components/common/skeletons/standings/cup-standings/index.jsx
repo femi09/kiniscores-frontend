@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
-import SkeletonCupTable from "./SkeletonCupTable";
+import SkeletonCupTable from "./skeletonCupTable";
 
 const CupStandingsSkeleton = () => {
   return (

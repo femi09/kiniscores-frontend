@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";
 import StandingTable from "../../components/shared/tables/league-table";
-import SkeletonStandings from "../../components/skeletons/Standings/LeagueStandings";
+import SkeletonStandings from "../../components/common/skeletons/standings/league-standings";
 
 const Standings = () => {
   const [standings, setStandings] = useState([]);

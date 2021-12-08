@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueScorers } from "../../services/scorerService";
 import ScorersTable from "../../components/shared/tables/scorersTable";
-import SkeletonScorers from "../../components/skeletons/Scorers";
+import SkeletonScorers from "../../components/common/skeletons/scorers";
 
 const Scorers = () => {
   const [scorers, setScorers] = useState([]);

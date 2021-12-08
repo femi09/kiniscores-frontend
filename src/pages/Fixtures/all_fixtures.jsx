@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import moment from "moment";
 import Fixtures from "../../components/fixtures";
-import SkeletonFixtures from "../../components/skeletons/Fixtures";
+import SkeletonFixtures from "../../components/common/skeletons/fixtures";
 import { getTodaysFixtures } from "../../services/fixturesService";
 import NoFixtures from "../../components/fixtures/noFixtures";
 import { formatDay } from "../../utils/formatTime";

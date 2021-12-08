@@ -1,9 +1,7 @@
 import React from "react";
-import SkeletonHero from "./SkeletonNews/SkeletonHero";
-import SkeletonMiniMatch from "./SkeletonMinis/SkeletonMinimatch";
-import SkeletonMiniTable from "./SkeletonMinis/SkeletonMinitable";
-import SkeletonNews from "./SkeletonNews/SkeletonNews";
-import SkeletonMiniscorers from "./SkeletonMinis/SkeletonMiniscorers";
+import SkeletonMiniMatch from "./skeletonMinimatch";
+import SkeletonMiniTable from "./skeletonMinitable";
+import SkeletonMiniscorers from "./skeletonMiniscorers";
 
 const SkeletonHome = () => {
   return (
