@@ -5,7 +5,7 @@ const MiniDropdown = ({ handleCompetition, league }) => {
   const [show, setShow] = useState(false);
   return (
     <div className="relative">
-      <div className="flex bg-white justify-between text-sm leading-5 p-2 font-medium text-gray-700 items-center rounded-md shadow-sm">
+      <div className="flex bg-white justify-between text-sm lg:text-base leading-5 p-2 font-medium text-gray-700 items-center rounded-md shadow-sm">
         <div className="w-2/3">{league ? league : "Premier League"}</div>
         <div
           className="w-1/3 flex items-center justify-center cursor-pointer rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
@@ -53,7 +53,7 @@ const MiniDropdown = ({ handleCompetition, league }) => {
               className="flex cursor-pointer items-center py-1 px-2 border-t border-gray-100"
             >
               <span
-                className="block px-2 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                className="block px-2 py-2 text-sm lg:text-base leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                 role="menuitem"
               >
                 {name}

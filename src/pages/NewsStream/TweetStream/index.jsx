@@ -10,8 +10,8 @@ const TweetStream = ({ tweet }) => {
       rel="noopener noreferrer"
     >
       <div className="tweet bg-white mx-2 px-4 rounded-sm lg:rounded-lg lg:mx-auto flex flex-col mb-4 justify-center xl:px-8 pt-4">
-        <p className={`${tweet.media ? "pb-4 text-gray-900 font-normal text-lg" : "pb-4 text-gray-900 text-xl font-semibold"}`}>{tweet.text}</p>
-        {tweet.media && (
+        <p className={`${tweet.media ? "pb-4 text-gray-900 font-normal text-lg lg:text-xl" : "pb-4 text-gray-900 text-xl lg:text-2xl font-semibold"}`}>{tweet.text}</p>
+        {tweet.media?.type && (
           <img
             className="tweet-image object-cover block w-full"
             src={

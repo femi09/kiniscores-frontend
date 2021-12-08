@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { competitions } from "../../utils/competitions";
 import { getLeagueStandings } from "../../services/standingsService";
-import CupTable from "../../components/shared/tables/cupTable"
+import CupTable from "../../components/shared/tables/cup-table"
 import CupStandingsSkeleton from "../../components/skeletons/Standings/CupStandings";
 import StandingsDropdown from "../../components/shared/dropdowns/standings";
 

@@ -44,7 +44,7 @@ const MiniStandings = () => {
   return (
     <div className="my-16">
       <div>
-        <div className="py-1 text-sm text-center font-bold mx-auto">
+        <div className="py-1 text-sm lg:text-base text-center font-bold mx-auto">
           <h1 className="text-blue-800">Standings</h1>
         </div>
         <MiniDropdown league={league} handleCompetition={handleCompetition} />
@@ -68,20 +68,20 @@ const MiniStandings = () => {
             <tbody className="text-sm text-center text-blue-900">
               {standings.map((standing) => (
                 <tr key={standing.team.id}>
-                  <td className="py-2 font-bold text-xs lg:text-sm">{standing.rank}</td>
-                  <td className=" flex items-center text-left text-xs lg:text-sm py-2">
+                  <td className="py-2 font-bold text-sm lg:text-base">{standing.rank}</td>
+                  <td className=" flex items-center text-left text-sm lg:text-base py-2">
                     <img className="w-6 h-6" src={standing.team.logo} alt="" />
-                    <span className="px-2 text-sm font-bold">
+                    <span className="px-2 text-sm lg:text-base font-bold">
                       {standing.team.name}
                     </span>
                   </td>
-                  <td className="px-2 font-bold text-xs lg:text-sm py-2">
+                  <td className="px-2 font-bold text-sm lg:text-base py-2">
                     {standing.all.played}
                   </td>
-                  <td className="px-2 font-bold text-xs lg:text-sm py-2">
+                  <td className="px-2 font-bold text-sm lg:text-base py-2">
                     {standing.goalsDiff}
                   </td>
-                  <td className="px-2 font-bold text-sm py-2">
+                  <td className="px-2 font-bold text-sm lg:text-base py-2">
                     {standing.points}
                   </td>
                 </tr>

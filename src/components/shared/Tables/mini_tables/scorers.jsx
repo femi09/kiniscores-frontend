@@ -41,7 +41,7 @@ const MiniScorers = () => {
   };
   return (
     <div>
-      <div className="py-1 text-sm text-center font-bold mx-auto">
+      <div className="py-1 text-sm lg:text-base text-center font-bold mx-auto">
         <h1 className="text-blue-800">Top Scorers</h1>
       </div>
       <Fragment>
@@ -56,7 +56,7 @@ const MiniScorers = () => {
         )}
 
         <table className="table-auto shadow-xs border-b py-2 container mx-auto bg-gray-300">
-          <thead className="bg-blue-900 text-gray-200 text-xs lg:text-sm">
+          <thead className="bg-blue-900 text-gray-200 text-sm lg:text-base">
             <tr className="">
               <th className="px-2 py-1">Pos</th>
               <th className="px-2 w-full text-left py-2">Player</th>
@@ -65,13 +65,13 @@ const MiniScorers = () => {
             </tr>
           </thead>
           {loading ? (
-            <tbody className="text-sm text-center text-blue-900">
+            <tbody className="text-base text-center text-blue-900">
               <tr className="w-1/2 mx-auto px-4 text-center">
                 <td>Loading...</td>
               </tr>
             </tbody>
           ) : (
-            <tbody className="text-xs lg:text-sm text-center text-blue-900">
+            <tbody className="text-sm lg:text-base text-center text-blue-900">
               {scorers.map((scorer, index) => (
                 <tr key={index}>
                   <td className="py-2 font-bold">{index + 1}</td>
@@ -88,7 +88,7 @@ const MiniScorers = () => {
                   <td className="px-2 font-bold py-2">
                     {shortTeamName(scorer.statistics[0].team.name, 3)}
                   </td>
-                  <td className="px-2 font-bold text-xs lg:text-sm py-2">
+                  <td className="px-2 font-bold text-sm lg:text-base py-2">
                     {scorer.statistics[0].goals.total}
                   </td>
                 </tr>

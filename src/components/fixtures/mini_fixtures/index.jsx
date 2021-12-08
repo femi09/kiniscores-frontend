@@ -32,9 +32,9 @@ const MiniMatch = () => {
           let fixtures = fixturesToDisplay(data);
           fixtures = fixtures.length > 10 ? fixtures.splice(0, 10) : fixtures;
           setFixtures(fixtures);
-          setLeagueId(fixtures[0].league_id);
+          setLeagueId(fixtures[0].league.id);
           const league = competitions.filter(
-            (competition) => competition.id === fixtures[0].league_id
+            (competition) => competition.id === fixtures[0].league.id
           );
           setLeagueSlug(league[0].slug);
           setLeague(league[0].name);
@@ -69,10 +69,10 @@ const MiniMatch = () => {
 
   return (
     <div className="">
-      <div className="bg-white mb-2 rounded-lg py-1 text-sm text-center font-bold m-auto">
+      <div className="bg-white mb-2 rounded-lg py-1 text-base text-center font-bold m-auto">
         <h1 className="text-blue-800">Today's Fixtures</h1>
       </div>
-      <p className="text-xs lg:text-sm text-center py-1 font-bold bg-blue-900 text-white">
+      <p className="text-base text-center py-1 font-bold bg-blue-900 text-white">
         {formatCurrentDate(today)}
       </p>
       {loading && fixtures.length === 0 ? (
@@ -84,7 +84,7 @@ const MiniMatch = () => {
           </div>
           {!loading && fixtures.length === 0 && (
             <div>
-              <h1 className="text-sm font-semibold text-blue-900 py-6 text-center mx-auto">
+              <h1 className="text-base font-semibold text-blue-900 py-6 text-center mx-auto">
                 No {league ? league : "Premier League"} fixtures today
               </h1>
             </div>
@@ -101,7 +101,7 @@ const MiniMatch = () => {
                   : `events`
               }`}
             >
-              <div className="bg-gray-400 flex items-center text-xs lg:text-sm text-blue-800 font-bold p-1 mt-4">
+              <div className="bg-gray-400 flex items-center text-sm lg:text-base text-blue-800 font-bold p-1 mt-4">
                 <div className="text-center w-1/3">
                   <p className="">
                     {truncateString(
@@ -117,13 +117,13 @@ const MiniMatch = () => {
                   fixture.status.short === "PST" ||
                   fixture.status.short === "TBD" ||
                   fixture.status.short === "CANC" ? (
-                    <p className="bg-blue-800 text-xs lg:text-sm text-white mx-1 px-1 py-1">
+                    <p className="bg-blue-800 text-sm lg:text-base text-white mx-1 px-1 py-1">
                       {formatMatchTime(fixture.date)}
                     </p>
                   ) : fixture.status.short === "FT" ||
                   fixture.status.short === "AET" ||
                   fixture.status.short === "PEN" ? (
-                    <div className="text-xs lg:text-sm text-white mx-1 px-1 py-1">
+                    <div className="text-sm lg:text-base text-white mx-1 px-1 py-1">
                       <span className="px-2 py-1 bg-blue-800 border-r border-r-white">
                         {goals.home}
                       </span>
@@ -132,7 +132,7 @@ const MiniMatch = () => {
                       </span>
                     </div>
                   ) : (
-                    <div className="text-sm text-white mx-1 py-1">
+                    <div className="text-sm lg:text-base text-white mx-1 py-1">
                       <span className="px-2 py-1 bg-pink-500 border-r border-r-white">
                         {goals.home}
                       </span>
@@ -163,7 +163,7 @@ const MiniMatch = () => {
           ))}
         </div>
       )}
-      {!loading && (
+      {!loading &&
         <div className="text-right text-xs lg:text-sm px-2 py-2 font-bold mb-8 text-blue-900">
           {fixtures.length === 0 ? (
             <Link to={`/fixtures/next/${leagueSlug}/${leagueId}`}>
@@ -175,7 +175,7 @@ const MiniMatch = () => {
             </Link>
           )}
         </div>
-      )}
+      }
     </div>
   );
 };
